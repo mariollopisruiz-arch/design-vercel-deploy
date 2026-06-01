@@ -505,11 +505,11 @@ con contenido creado por IA.</h1>
       </div>
 
       <div class="fi">
-        <form class="cform" id="cform" novalidate>
-          <input type="text"  name="nombre"  placeholder="NOMBRE"  autocomplete="name" required aria-label="Tu nombre">
-          <input type="text"  name="empresa" placeholder="EMPRESA" autocomplete="organization" aria-label="Tu empresa">
-          <input type="email" name="email"   placeholder="EMAIL"   autocomplete="email" required aria-label="Tu email">
-          <textarea           name="mensaje" placeholder="MENSAJE" rows="4" aria-label="Tu mensaje"></textarea>
+        <form class="cform" id="cform" action="https://formspree.io/f/mqejvrkj" method="POST" novalidate>
+          <input type="text"  name="nombre"   placeholder="NOMBRE"    autocomplete="name" required aria-label="Tu nombre">
+          <input type="email" name="email"    placeholder="EMAIL"     autocomplete="email" required aria-label="Tu email">
+          <input type="tel"   name="telefono" placeholder="TELÉFONO"  autocomplete="tel" inputmode="tel" required aria-label="Tu teléfono">
+          <textarea           name="mensaje"  placeholder="MENSAJE"   rows="4" aria-label="Tu mensaje"></textarea>
           <button type="submit" class="cform-btn">SOLICITAR REUNIÓN &rarr;</button>
         </form>
       </div>
@@ -657,16 +657,30 @@ con contenido creado por IA.</h1>
     });
   });
 
-  /* ── Contact form ────────────────────────────────── */
-  document.getElementById('cform').addEventListener('submit', e => {
+  /* ── Contact form — Formspree ────────────────────── */
+  document.getElementById('cform').addEventListener('submit', async e => {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.target));
-    console.log('Yoruu form submission:', data);
-    const btn = e.target.querySelector('.cform-btn');
+    const form = e.target;
+    const btn = form.querySelector('.cform-btn');
     const orig = btn.textContent;
-    btn.textContent = 'ENVIADO — TE CONTACTAMOS EN 72H ✓';
-    btn.style.cssText = 'background:var(--navy-medium);color:var(--gold);border:1px solid var(--gold);';
-    setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; e.target.reset(); }, 4000);
+    btn.disabled = true;
+    btn.textContent = 'ENVIANDO…';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' }
+      });
+      if (!res.ok) throw new Error('Formspree responded ' + res.status);
+      btn.textContent = 'ENVIADO — TE CONTACTAMOS EN 72H ✓';
+      btn.style.cssText = 'background:var(--navy-medium);color:var(--gold);border:1px solid var(--gold);';
+      form.reset();
+    } catch (err) {
+      btn.textContent = 'ERROR — INTÉNTALO DE NUEVO';
+      btn.style.cssText = 'background:transparent;color:var(--gold);border:1px solid var(--gold);';
+    } finally {
+      setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; btn.disabled = false; }, 4000);
+    }
   });
 </script>
 </body>
