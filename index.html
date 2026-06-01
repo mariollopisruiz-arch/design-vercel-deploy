@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yoruu AI Studio · Vídeo IA para Real Estate y Arquitectura</title>
+  <meta name="description" content="Impulsamos el negocio de empresas del sector inmobiliario y arquitectónico con vídeo IA que capta exclusivas, acelera ventas y llega al comprador internacional.">
+  <meta property="og:title" content="Yoruu AI Studio">
+  <meta property="og:description" content="Más exclusivas, más compradores, con contenido creado por IA.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ─── 1. VARIABLES ───────────────────────────────────────────── */
+    :root {
+      --navy-deep:    #0B1929;
+      --navy-medium:  #1A2F45;
+      --gold:         #B8972E;
+      --gold-hover:   #D4AE3A;
+      --white:        #FFFFFF;
+      --off-white:    #F5F5F0;
+      --grey-light:   #C8C8C8;
+      --grey-medium:  #6B6B6B;
+      --black:        #0A0A0A;
+      --whatsapp:     #25D366;
+      --font-serif:   'Cormorant Garamond', Didot, Bodoni, serif;
+      --font-sans:    'Inter', -apple-system, sans-serif;
+      --max-w:        1400px;
+      --tr:           all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── 2. RESET ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-sans); background: var(--white); overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ─── 3. UTILITIES ───────────────────────────────────────────── */
+    .container { max-width: var(--max-w); margin: 0 auto; }
+    .lbl {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .lbl--dark { color: var(--navy-deep); }
+
+    /* Placeholder image tile */
+    .ph {
+      background: repeating-linear-gradient(-45deg,
+        #162436 0, #162436 4px, #0e1d2e 4px, #0e1d2e 9px);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .ph::after {
+      content: attr(data-label);
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(184,151,46,.55);
+      font-family: monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-align: center;
+      text-transform: uppercase;
+      line-height: 1.7;
+      padding: 12px;
+      white-space: pre-wrap;
+    }
+
+    /* Scroll fade-in */
+    .fi { opacity: 0; transform: translateY(28px); transition: opacity .6s ease-out, transform .6s ease-out; }
+    .fi.on { opacity: 1; transform: none; }
+
+    /* ─── 4. BUTTONS ─────────────────────────────────────────────── */
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font-sans); font-size: 13px; font-weight: 300;
+      letter-spacing: .2em; text-transform: uppercase;
+      padding: 18px 40px; transition: var(--tr);
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--navy-deep); }
+
+    .btn-solid {
+      display: inline-block;
+      background: var(--navy-deep); color: var(--gold);
+      border: 1px solid var(--gold);
+      font-family: var(--font-sans); font-size: 13px; font-weight: 300;
+      letter-spacing: .2em; text-transform: uppercase;
+      padding: 18px 40px; transition: var(--tr);
+    }
+    .btn-solid:hover { background: var(--gold); color: var(--navy-deep); }
+
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold); color: var(--navy-deep); border: none;
+      font-family: var(--font-sans); font-size: 13px; font-weight: 400;
+      letter-spacing: .2em; text-transform: uppercase;
+      padding: 18px 40px; transition: var(--tr);
+    }
+    .btn-gold:hover { background: var(--gold-hover); }
+
+    /* ─── 5. HEADER ──────────────────────────────────────────────── */
+    .hdr {
+      position: fixed; top: 0; left: 0; right: 0; height: 80px;
+      padding: 0 80px;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 100;
+      transition: background .3s ease, backdrop-filter .3s ease;
+    }
+    .hdr.scrolled {
+      background: rgba(11,25,41,.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .logo { display: flex; flex-direction: column; gap: 3px; align-items: center; }
+    .logo__w { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--gold); letter-spacing: .06em; line-height: 1; }
+    .logo__s { font-family: var(--font-sans); font-size: 10px; font-weight: 300; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); line-height: 1; }
+
+    .hdr-nav { display: flex; align-items: center; gap: 40px; }
+    .hdr-nav a { font-family: var(--font-sans); font-size: 13px; font-weight: 300; letter-spacing: .18em; text-transform: uppercase; color: var(--white); transition: color .3s; }
+    .hdr-nav a:hover { color: var(--gold); }
+    .hdr-nav .nav-cta { border: 1px solid var(--gold); padding: 12px 24px; }
+    .hdr-nav .nav-cta:hover { background: var(--gold); color: var(--navy-deep); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 1px; background: var(--white); transition: var(--tr); }
+
+    /* Mobile overlay */
+    .mob-menu {
+      position: fixed; inset: 0; background: var(--navy-deep); z-index: 99;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px;
+      opacity: 0; pointer-events: none; transition: opacity .35s ease;
+    }
+    .mob-menu.open { opacity: 1; pointer-events: all; }
+    .mob-menu a { font-family: var(--font-sans); font-size: 15px; font-weight: 300; letter-spacing: .2em; text-transform: uppercase; color: var(--white); }
+    .mob-menu .nav-cta { border: 1px solid var(--gold); padding: 14px 32px; color: var(--gold) !important; }
+    .mob-close { position: absolute; top: 24px; right: 28px; font-size: 30px; color: var(--white); line-height: 1; }
+
+    /* ─── 6. HERO ────────────────────────────────────────────────── */
+    .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy-deep); }
+    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-vid-mobile { display: none; }
+    @media (max-width: 768px) {
+      .hero-vid-desktop { display: none; }
+      .hero-vid-mobile  { display: block; }
+    }
+    .hero-ov { position: absolute; inset: 0; background: rgba(11,25,41,.65); }
+    .hero-cnt { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 920px; }
+    .hero-super { font-family: var(--font-sans); font-size: 12px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; line-height: 1.9; }
+    .hero-h1 { font-family: var(--font-serif); font-size: clamp(40px,5vw,72px); font-weight: 500; color: var(--white); line-height: 1.15; margin-bottom: 28px; }
+    .hero-sub { font-family: var(--font-sans); font-size: clamp(15px,1.2vw,18px); font-weight: 300; color: var(--grey-light); line-height: 1.65; max-width: 700px; margin: 0 auto 44px; }
+    .hero-rule { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--gold); z-index: 2; }
+
+    /* ─── 7. SERVICIOS ───────────────────────────────────────────── */
+    .servicios { background: var(--white); padding: 120px 80px; }
+    .servicios-inner { display: grid; grid-template-columns: 30% 1fr; gap: 60px; align-items: start; }
+    .servicios-left { position: sticky; top: 100px; }
+    .serv-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--navy-deep); line-height: 1.1; margin-bottom: 20px; }
+    .serv-sub { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--grey-medium); line-height: 1.65; }
+
+    .cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+    .card { border: 1px solid var(--gold); padding: 32px 24px; background: var(--white); transition: background .3s; }
+    .card:hover { background: var(--off-white); }
+    .card-h { font-family: var(--font-serif); font-size: 20px; font-weight: 600; color: var(--navy-deep); line-height: 1.2; margin-bottom: 14px; }
+    .card-p { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--grey-medium); line-height: 1.5; }
+    .serv-cta { text-align: center; margin-top: 72px; }
+
+    /* ─── 8. RESULTADOS ──────────────────────────────────────────── */
+    .resultados {
+      background: var(--navy-deep);
+      padding: 120px 80px;
+      border-top: 1px solid rgba(184,151,46,.55);
+      border-bottom: 1px solid rgba(184,151,46,.55);
+    }
+    .res-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .res-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 400; color: var(--white); line-height: 1.12; margin-bottom: 48px; }
+    .res-sub-h { font-family: var(--font-serif); font-size: clamp(28px,3vw,44px); font-weight: 400; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
+    .res-desc { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--grey-light); line-height: 1.65; margin-bottom: 32px; }
+
+    .phones-wr { display: flex; align-items: flex-start; justify-content: center; }
+    .phone-col { display: flex; flex-direction: column; align-items: center; }
+    .phone-tag { font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .phone-frame {
+      width: 200px; aspect-ratio: 9/16;
+      border-radius: 26px; border: 1.5px solid #1e3650;
+      background: #091320; overflow: hidden;
+    }
+    .phone-frame .ph { width: 100%; height: 100%; }
+    .phones-div { width: 1px; background: var(--gold); opacity: .45; align-self: stretch; margin: 34px 28px 0; }
+    .phones-cap { font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .25em; text-transform: uppercase; color: var(--grey-light); text-align: center; margin-top: 22px; }
+    .phone-frame--video { position: relative; }
+    .phone-play {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(11,25,41,.35); border: none; cursor: pointer;
+      opacity: 1; transition: opacity .3s, background .3s;
+    }
+    /* playing state: fully hidden unless hovering */
+    .phone-play.playing       { opacity: 0; background: transparent; }
+    .phone-play.playing:hover { opacity: 1; background: rgba(11,25,41,.25); }
+    .phone-play svg { width: 56px; height: 56px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); transition: transform .25s; }
+    .phone-play:hover svg { transform: scale(1.08); }
+
+    /* ─── 9. CASOS ───────────────────────────────────────────────── */
+    .casos { background: var(--white); padding: 120px 80px; }
+    .sec-hdr { text-align: center; margin-bottom: 80px; }
+    .sec-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--navy-deep); line-height: 1.15; margin-top: 8px; }
+    .casos-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+    .caso-card { border: 1px solid var(--gold); overflow: hidden; display: flex; flex-direction: column; }
+    .caso-img { width: 100%; height: 220px; flex-shrink: 0; }
+    .caso-body { padding: 28px 28px 32px; flex: 1; }
+    .caso-h { font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--navy-deep); line-height: 1.2; margin: 8px 0 12px; }
+    .caso-p { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--grey-medium); line-height: 1.55; }
+
+    /* ─── 10. SOCIAL PROOF ───────────────────────────────────────── */
+    .social { background: var(--off-white); padding: 100px 80px; }
+    .logos-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 64px; margin-top: 40px; }
+    .logo-brand { font-family: var(--font-serif); font-size: 14px; font-weight: 500; color: var(--grey-medium); filter: grayscale(1) brightness(.7); text-align: center; line-height: 1.4; letter-spacing: .04em; white-space: nowrap; }
+    .logo-brand small { display: block; font-size: 9px; letter-spacing: .06em; font-family: var(--font-sans); font-weight: 300; }
+    .gold-rule-wrap { display: flex; justify-content: center; margin: 56px 0; }
+    .gold-rule { width: 80px; height: 1px; background: var(--gold); }
+    .testimonial { max-width: 580px; margin: 0 auto; border-left: 2px solid var(--gold); padding-left: 32px; }
+    .test-mark { font-family: var(--font-serif); font-size: 52px; color: var(--gold); line-height: .5; margin-bottom: 20px; display: block; }
+    .test-body { font-family: var(--font-serif); font-style: italic; font-size: 18px; color: var(--navy-deep); line-height: 1.55; margin-bottom: 24px; }
+    .test-name { font-family: var(--font-sans); font-size: 12px; font-weight: 300; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+    .test-role { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--grey-medium); margin-top: 4px; }
+
+    /* ─── 11. CONTACTO ───────────────────────────────────────────── */
+    .contacto { background: var(--navy-deep); padding: 120px 80px; border-top: 1px solid rgba(184,151,46,.55); }
+    .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .contact-h2 { font-family: var(--font-serif); font-size: clamp(40px,4vw,64px); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 24px; }
+    .contact-desc { font-family: var(--font-sans); font-size: 16px; font-weight: 300; color: var(--grey-light); line-height: 1.65; }
+    .cform { display: flex; flex-direction: column; gap: 14px; }
+    .cform input, .cform textarea {
+      background: transparent; border: 1px solid var(--gold);
+      color: var(--white); padding: 16px 20px;
+      font-family: var(--font-sans); font-size: 14px; font-weight: 300;
+      letter-spacing: .12em; outline: none; transition: border-color .3s; resize: none;
+    }
+    .cform input::placeholder, .cform textarea::placeholder { color: var(--grey-light); letter-spacing: .15em; text-transform: uppercase; font-size: 12px; }
+    .cform input:focus, .cform textarea:focus { border-color: var(--gold-hover); }
+    .cform-btn {
+      width: 100%; background: var(--gold); color: var(--navy-deep); border: none;
+      font-family: var(--font-sans); font-size: 13px; font-weight: 400;
+      letter-spacing: .2em; text-transform: uppercase;
+      padding: 20px; cursor: pointer; transition: background .3s; margin-top: 4px;
+    }
+    .cform-btn:hover { background: var(--gold-hover); }
+
+    /* ─── 12. FOOTER ─────────────────────────────────────────────── */
+    .footer { background: var(--navy-deep); border-top: 1px solid var(--gold); padding: 40px 80px; }
+    .footer-inner { display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; }
+    .footer-logo .logo__w { font-size: 18px; }
+    .footer-logo .logo__s { font-size: 8px; }
+    .footer-copy { font-family: var(--font-sans); font-size: 12px; font-weight: 300; color: var(--grey-medium); text-align: center; line-height: 1.65; }
+    .footer-right { display: flex; align-items: center; justify-content: flex-end; gap: 20px; }
+    .footer-li { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid var(--gold); transition: background .3s; }
+    .footer-li:hover { background: var(--gold); }
+    .footer-li:hover svg path, .footer-li:hover svg circle { stroke: var(--navy-deep); }
+    .footer-li svg { width: 16px; height: 16px; }
+
+    /* ─── 13. FLOATING ───────────────────────────────────────────── */
+    .float-wrap { position: fixed; bottom: 32px; right: 32px; display: flex; flex-direction: column; align-items: flex-end; gap: 12px; z-index: 999; opacity: 0; pointer-events: none; transition: opacity .4s ease; }
+    .float-wrap.vis { opacity: 1; pointer-events: all; }
+    .f-wa { width: 60px; height: 60px; border-radius: 50%; background: var(--whatsapp); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,.2); transition: transform .3s; }
+    .f-wa:hover { transform: scale(1.05); }
+    .f-wa svg { width: 30px; height: 30px; }
+    .f-cta { background: var(--navy-medium); color: var(--gold); border: 1px solid var(--gold); font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .2em; text-transform: uppercase; padding: 14px 18px; box-shadow: 0 4px 12px rgba(0,0,0,.2); transition: var(--tr); white-space: nowrap; }
+    .f-cta:hover { background: var(--gold); color: var(--navy-deep); }
+
+    /* ─── 14. RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hdr { padding: 0 48px; }
+      .servicios, .casos, .resultados, .contacto { padding: 100px 48px; }
+      .social { padding: 80px 48px; }
+      .footer { padding: 40px 48px; }
+      .servicios-inner { grid-template-columns: 1fr; gap: 48px; }
+      .servicios-left { position: static; }
+      .cards { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 768px) {
+      .hdr { height: 64px; padding: 0 24px; }
+      .hdr-nav { display: none; }
+      .hamburger { display: flex; }
+      .servicios, .casos, .resultados, .contacto { padding: 80px 24px; }
+      .social { padding: 60px 24px; }
+      .footer { padding: 32px 24px; }
+      .cards { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .card { padding: 22px 16px; }
+      .res-inner { grid-template-columns: 1fr; gap: 56px; }
+      .casos-grid { grid-template-columns: 1fr; gap: 24px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+      .logos-row { gap: 36px; }
+      .phone-frame { width: 160px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 20px; text-align: center; }
+      .footer-right { justify-content: center; }
+      .float-wrap { bottom: 20px; right: 20px; }
+      .f-wa { width: 52px; height: 52px; }
+      .f-cta { font-size: 10px; padding: 12px 14px; }
+    }
+    @media (max-width: 480px) {
+      .cards { grid-template-columns: 1fr; }
+      .phones-wr { flex-direction: column; align-items: center; gap: 32px; }
+      .phones-div { display: none; }
+      .phone-frame { width: 185px; }
+    }
+  </style>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
+    <rect width="80" height="56" fill="#0B1929"/>
+    <text x="40" y="28" text-anchor="middle" dominant-baseline="middle" font-family="serif" font-size="12" fill="#B8972E" letter-spacing="2">YORUU</text>
+    <rect x="16" y="34" width="48" height="1" fill="#B8972E" opacity=".5"/>
+  </svg>
+</template>
+</head>
+<body>
+
+<!-- ═══ HEADER ══════════════════════════════════════════════════════ -->
+<header class="hdr" id="hdr">
+  <a href="#inicio" class="logo" aria-label="Yoruu AI Studio — Inicio">
+    <span class="logo__w">YORUU</span>
+    <span class="logo__s">AI&nbsp;STUDIO</span>
+  </a>
+  <nav class="hdr-nav" aria-label="Navegación principal">
+    <a href="#servicios">SERVICIOS</a>
+    <a href="#resultados">RESULTADOS</a>
+    <a href="#casos">CASOS</a>
+    <a href="#contacto" class="nav-cta">CONTACTO</a>
+  </nav>
+  <button class="hamburger" id="hbg" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mob-menu" id="mob" role="dialog" aria-modal="true" aria-label="Menú móvil">
+  <button class="mob-close" id="mob-close" aria-label="Cerrar menú">&#x2715;</button>
+  <a href="#servicios">SERVICIOS</a>
+  <a href="#resultados">RESULTADOS</a>
+  <a href="#casos">CASOS</a>
+  <a href="#contacto" class="nav-cta">CONTACTO</a>
+</div>
+
+<main>
+
+<!-- ═══ 1 · HERO ════════════════════════════════════════════════════ -->
+<section id="inicio" class="hero" aria-label="Portada">
+  <video class="hero-vid-desktop" autoplay muted loop playsinline aria-hidden="true">
+    <source src="assets/video/hero-loop.mp4" type="video/mp4">
+  </video>
+  <video class="hero-vid-mobile" autoplay muted loop playsinline aria-hidden="true">
+    <source src="assets/video/hero-loop-mobile.mp4" type="video/mp4">
+  </video>
+  <div class="hero-ov" aria-hidden="true"></div>
+  <div class="hero-cnt">
+    <p class="hero-super fi" style="line-height: 1.5; font-weight: 600; font-size: 18px">PARA LOS QUE YA INVIERTEN EN MARKETING<br>Y QUIEREN QUE RINDA MÁS.</p>
+    <h1 class="hero-h1 fi">Más viviendas en exclusiva, más compradores,
+con contenido creado por IA.</h1>
+    <p class="hero-sub fi">Impulsamos el negocio de empresas del sector inmobiliario y arquitectónico con vídeo IA que capta exclusivas, acelera ventas y llega al comprador internacional.</p>
+    <a href="#contacto" class="btn-outline fi">QUIERO IMPULSAR MI NEGOCIO &rarr;</a>
+  </div>
+  <div class="hero-rule" aria-hidden="true"></div>
+</section>
+
+<!-- ═══ 2 · SERVICIOS ═══════════════════════════════════════════════ -->
+<section id="servicios" class="servicios" aria-labelledby="serv-h">
+  <div class="container">
+    <div class="servicios-inner">
+
+      <div class="servicios-left fi">
+        <span class="lbl">SERVICIOS</span>
+        <h2 class="serv-h2" id="serv-h">¿Qué hacemos?</h2>
+        <p class="serv-sub">Todo lo que necesitas para que tu contenido capture exclusivas, acelere ventas y llegue al comprador internacional.</p>
+      </div>
+
+      <div>
+        <div class="cards">
+          <article class="card fi"><h3 class="card-h">Transforma tu archivo visual</h3><p class="card-p">Tus imágenes profesionales convertidas en vídeos de alto impacto.</p></article>
+          <article class="card fi"><h3 class="card-h">Virtual Staging</h3><p class="card-p">Presenta inmuebles terminados antes de que existan físicamente.</p></article>
+          <article class="card fi"><h3 class="card-h">Contenido por buyer persona</h3><p class="card-p">Piezas distintas para cada perfil sin volver a rodar.</p></article>
+          <article class="card fi"><h3 class="card-h">Guiones de venta</h3><p class="card-p">Cada vídeo diseñado para generar deseo y convertir.</p></article>
+          <article class="card fi"><h3 class="card-h">Guiones y vídeos en cualquier idioma</h3><p class="card-p">Llega al comprador internacional en su idioma.</p></article>
+          <article class="card fi"><h3 class="card-h">Avatares IA</h3><p class="card-p">Presentador de IA con tu identidad de marca. Sin actores ni rodajes.</p></article>
+          <article class="card fi"><h3 class="card-h">A/B Testing de guiones y hooks</h3><p class="card-p">Dos versiones, datos reales, decisiones basadas en resultados.</p></article>
+          <article class="card fi"><h3 class="card-h">Convierte tus renders en vídeo</h3><p class="card-p">Transforma renders arquitectónicos en vídeos de presentación de alto impacto.</p></article>
+        </div>
+        <div class="serv-cta fi">
+          <a href="#contacto" class="btn-solid">HABLEMOS DE TU PROYECTO →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 3 · RESULTADOS ══════════════════════════════════════════════ -->
+<section id="resultados" class="resultados" aria-labelledby="res-h">
+  <div class="container">
+    <div class="res-inner">
+
+      <div class="res-left">
+        <span class="lbl fi">RESULTADOS</span>
+        <h2 class="res-h2 fi" id="res-h">Transformamos espacios.<br>Generamos negocio.</h2>
+        <span class="lbl fi">CONTACTO</span>
+        <h3 class="res-sub-h fi">¿Listo para<br>impulsar tu<br>negocio?</h3>
+        <p class="res-desc fi">Cuéntanos tu proyecto y te presentamos una propuesta a medida en 72 horas.</p>
+        <a href="#contacto" class="btn-gold fi">QUIERO ESTOS RESULTADOS →</a>
+      </div>
+
+      <div class="fi" style="display:flex;flex-direction:column;align-items:center;">
+        <div class="phones-wr">
+          <div class="phone-col">
+            <span class="phone-tag">ANTES</span>
+            <div class="phone-frame">
+              <img src="assets/img/before.jpg" alt="Propiedad antes del vídeo IA — villa mediterránea" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
+            </div>
+          </div>
+          <div class="phones-div" aria-hidden="true"></div>
+          <div class="phone-col">
+            <span class="phone-tag">DESPUÉS</span>
+            <div class="phone-frame phone-frame--video" id="despues-frame">
+              <video id="despues-vid" src="assets/video/despues.mp4" loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;" aria-label="Vídeo IA — resultado después del virtual staging"></video>
+              <button class="phone-play" id="despues-play" aria-label="Reproducir vídeo">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><polygon points="10,8 17,12 10,16" fill="#B8972E"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="phones-cap">VIRTUAL STAGING · AVATARES IA · RRSS</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4 · CASOS DE ÉXITO ══════════════════════════════════════════ -->
+<section id="casos" class="casos" aria-labelledby="casos-h">
+  <div class="container">
+    <div class="sec-hdr fi">
+      <span class="lbl" style="text-align:center;">CASOS DE ÉXITO</span>
+      <h2 class="sec-h2" id="casos-h">Proyectos que generan resultados.</h2>
+    </div>
+    <div class="casos-grid">
+      <article class="caso-card fi">
+        <div class="caso-img" aria-label="Deluxe Sweet Homes — propiedad de lujo"><img src="assets/img/case-1.jpg" alt="Villa mediterránea de lujo con piscina infinity — Deluxe Sweet Homes" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="caso-body">
+          <span class="lbl">INMOBILIARIA</span>
+          <h3 class="caso-h">Deluxe Sweet Homes</h3>
+          <p class="caso-p">Estrategia de contenido IA para captación de exclusivas y compradores internacionales.</p>
+        </div>
+      </article>
+      <article class="caso-card fi">
+        <div class="caso-img" aria-label="Proyecto Hotelero — resort vacacional"><img src="assets/img/case-2.jpg" alt="Boutique hotel de lujo con piscina y terraza mediterránea — Proyecto Hotelero" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="caso-body">
+          <span class="lbl">SECTOR VACACIONAL</span>
+          <h3 class="caso-h">Proyecto Hotelero</h3>
+          <p class="caso-p">Transformación de archivo fotográfico en contenido activo para Booking y RRSS.</p>
+        </div>
+      </article>
+      <article class="caso-card fi">
+        <div class="caso-img" aria-label="Estudio de Arquitectura — diseño contemporáneo"><img src="assets/img/case-3.jpg" alt="Interior contemporáneo de arquitectura de lujo con vistas al mar — Estudio de Arquitectura" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div class="caso-body">
+          <span class="lbl">ARQUITECTURA</span>
+          <h3 class="caso-h">Estudio de Arquitectura</h3>
+          <p class="caso-p">Renders arquitectónicos convertidos en vídeos de presentación para clientes y concursos.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 5 · SOCIAL PROOF ════════════════════════════════════════════ -->
+<section class="social" aria-labelledby="social-h">
+  <div class="container">
+    <span class="lbl lbl--dark fi" style="text-align:center;display:block;" id="social-h">CONFÍAN EN NOSOTROS</span>
+    <div class="logos-row" role="list">
+      <span class="logo-brand fi" role="listitem">DELUXE SWEET HOMES</span>
+    </div>
+    <div class="gold-rule-wrap fi"><div class="gold-rule"></div></div>
+    <blockquote class="testimonial fi">
+      <span class="test-mark" aria-hidden="true">&ldquo;</span>
+      <p class="test-body">Yoruu AI Studio transformó cómo presentamos nuestros proyectos a los clientes. Los renders cobraron vida y el impacto fue inmediato.</p>
+      <p class="test-name">RAMÓN L.</p>
+      <p class="test-role">Arquitecto</p>
+    </blockquote>
+  </div>
+</section>
+
+<!-- ═══ 6 · CONTACTO ════════════════════════════════════════════════ -->
+<section id="contacto" class="contacto" aria-labelledby="contact-h">
+  <div class="container">
+    <div class="contact-inner">
+
+      <div class="fi">
+        <span class="lbl">CONTACTO</span>
+        <h2 class="contact-h2" id="contact-h">¿Listo para<br>impulsar tu<br>negocio?</h2>
+        <p class="contact-desc">Cuéntanos tu proyecto en una reunión y te presentamos una propuesta a medida en 72 horas.</p>
+      </div>
+
+      <div class="fi">
+        <form class="cform" id="cform" novalidate>
+          <input type="text"  name="nombre"  placeholder="NOMBRE"  autocomplete="name" required aria-label="Tu nombre">
+          <input type="text"  name="empresa" placeholder="EMPRESA" autocomplete="organization" aria-label="Tu empresa">
+          <input type="email" name="email"   placeholder="EMAIL"   autocomplete="email" required aria-label="Tu email">
+          <textarea           name="mensaje" placeholder="MENSAJE" rows="4" aria-label="Tu mensaje"></textarea>
+          <button type="submit" class="cform-btn">SOLICITAR REUNIÓN &rarr;</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════════ -->
+<footer class="footer" aria-label="Pie de página">
+  <div class="container">
+    <div class="footer-inner">
+      <a href="#inicio" class="logo footer-logo" aria-label="Yoruu AI Studio — inicio">
+        <span class="logo__w">YORUU</span>
+        <span class="logo__s">AI&nbsp;STUDIO</span>
+      </a>
+      <p class="footer-copy">&copy; 2025 Yoruu AI Studio.<br>Todos los derechos reservados.</p>
+      <div class="footer-right">
+        <a href="#" class="footer-li" target="_blank" rel="noopener" aria-label="LinkedIn de Yoruu AI Studio">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="#B8972E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="2" y="9" width="4" height="12" stroke="#B8972E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="4" cy="4" r="2" stroke="#B8972E" stroke-width="1.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══ FLOATING BUTTONS ════════════════════════════════════════════ -->
+<div class="float-wrap" id="float" aria-label="Contacto rápido">
+  <a href="https://wa.me/34000000000?text=Hola%2C%20vengo%20de%20la%20web%20de%20Yoruu%20AI%20y%20me%20gustar%C3%ADa%20conocer%20c%C3%B3mo%20pod%C3%A9is%20impulsar%20mi%20negocio%20con%20v%C3%ADdeo%20IA."
+     class="f-wa" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="white" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+  <a href="#contacto" class="f-cta">QUIERO IMPULSAR MI NEGOCIO &rarr;</a>
+</div>
+
+<script>
+  /* ── Hero video swap (mobile/desktop) ───────────── */
+  const vidDesktop = document.querySelector('.hero-vid-desktop');
+  const vidMobile  = document.querySelector('.hero-vid-mobile');
+  const mq = window.matchMedia('(max-width: 768px)');
+  function syncVideos(e) {
+    if (e.matches) { vidDesktop.pause(); vidMobile.play(); }
+    else           { vidMobile.pause();  vidDesktop.play(); }
+  }
+  mq.addEventListener('change', syncVideos);
+  syncVideos(mq); // run on load
+
+  /* ── Después video — toggle play/pause + auto-pause on scroll ── */
+  const despuesVid  = document.getElementById('despues-vid');
+  const despuesPlay = document.getElementById('despues-play');
+
+  const svgPlay  = '<circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><polygon points="10,8 17,12 10,16" fill="#B8972E"/>';
+  const svgPause = '<circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><rect x="8" y="8" width="3" height="8" fill="#B8972E" rx=".5"/><rect x="13" y="8" width="3" height="8" fill="#B8972E" rx=".5"/>';
+
+  function setBtn(playing) {
+    despuesPlay.querySelector('svg').innerHTML = playing ? svgPause : svgPlay;
+    despuesPlay.setAttribute('aria-label', playing ? 'Pausar vídeo' : 'Reproducir vídeo');
+    despuesPlay.classList.toggle('playing', playing);
+    despuesPlay.style.pointerEvents = 'all';
+  }
+
+  if (despuesVid && despuesPlay) {
+    // click: toggle
+    despuesPlay.addEventListener('click', () => {
+      if (despuesVid.paused) {
+        despuesVid.muted = false;
+        despuesVid.play();
+        setBtn(true);
+      } else {
+        despuesVid.pause();
+        setBtn(false);
+      }
+    });
+
+    // sync if video ends / stalls
+    despuesVid.addEventListener('pause', () => setBtn(false));
+    despuesVid.addEventListener('play',  () => setBtn(true));
+
+    // auto-pause when out of viewport (≥50% hidden)
+    const vidIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting && !despuesVid.paused) {
+          despuesVid.pause();
+        }
+      });
+    }, { threshold: 0.2 });
+    vidIO.observe(despuesVid);
+  }
+
+  /* ── Header scroll ───────────────────────────────── */
+  const hdr   = document.getElementById('hdr');
+  const float = document.getElementById('float');
+  window.addEventListener('scroll', () => {
+    hdr.classList.toggle('scrolled', window.scrollY > 60);
+    float.classList.toggle('vis', window.scrollY > window.innerHeight * 0.8);
+  }, { passive: true });
+
+  /* ── Mobile menu ─────────────────────────────────── */
+  const mob     = document.getElementById('mob');
+  const hbg     = document.getElementById('hbg');
+  const mobClose = document.getElementById('mob-close');
+  const open  = () => { mob.classList.add('open');  hbg.setAttribute('aria-expanded','true');  document.body.style.overflow = 'hidden'; };
+  const close = () => { mob.classList.remove('open'); hbg.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; };
+  hbg.addEventListener('click', open);
+  mobClose.addEventListener('click', close);
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+
+  /* ── Hero entrance animations ────────────────────── */
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.hero-cnt .fi').forEach((el, i) => {
+      setTimeout(() => el.classList.add('on'), 300 + i * 200);
+    });
+  });
+
+  /* ── Scroll fade-in (IntersectionObserver) ───────── */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const g  = el.closest('.cards') || el.closest('.casos-grid') || el.closest('.logos-row');
+      const delay = g ? Array.from(g.children).indexOf(el) * 90 : 0;
+      setTimeout(() => el.classList.add('on'), delay);
+      io.unobserve(el);
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fi:not(.hero-cnt .fi)').forEach(el => io.observe(el));
+
+  /* ── Smooth anchor scroll ────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      const t  = document.querySelector(id);
+      if (!t) return;
+      e.preventDefault();
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
+    });
+  });
+
+  /* ── Contact form ────────────────────────────────── */
+  document.getElementById('cform').addEventListener('submit', e => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target));
+    console.log('Yoruu form submission:', data);
+    const btn = e.target.querySelector('.cform-btn');
+    const orig = btn.textContent;
+    btn.textContent = 'ENVIADO — TE CONTACTAMOS EN 72H ✓';
+    btn.style.cssText = 'background:var(--navy-medium);color:var(--gold);border:1px solid var(--gold);';
+    setTimeout(() => { btn.textContent = orig; btn.style.cssText = ''; e.target.reset(); }, 4000);
+  });
+</script>
+</body>
+</html>
