@@ -146,7 +146,7 @@
     .mob-close { position: absolute; top: 24px; right: 28px; font-size: 30px; color: var(--white); line-height: 1; }
 
     /* ─── 6. HERO ────────────────────────────────────────────────── */
-    .hero { position: relative; min-height: 100vh; padding: 120px 24px 96px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy-deep); }
+    .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy-deep); }
     .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .hero-vid-mobile { display: none; }
     @media (max-width: 768px) {
@@ -159,11 +159,13 @@
     .hero-h1 { font-family: var(--font-serif); font-size: clamp(40px,5vw,72px); font-weight: 500; color: var(--white); line-height: 1.15; margin-bottom: 36px; }
     .hero-rule { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--gold); z-index: 2; }
 
-    .hero-benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 64px auto 0; max-width: 1040px; text-align: left; }
-    .hb { background: rgba(11,25,41,.55); border: 1px solid rgba(184,151,46,.45); padding: 22px 22px 24px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: var(--tr); }
+    /* ─── 6b. BENEFICIOS ─────────────────────────────────────────── */
+    .beneficios { background: var(--navy-deep); padding: 100px 80px; border-top: 1px solid rgba(184,151,46,.55); }
+    .hero-benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1200px; margin: 0 auto; text-align: left; }
+    .hb { background: rgba(11,25,41,.55); border: 1px solid rgba(184,151,46,.45); padding: 26px 24px 28px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: var(--tr); }
     .hb:hover { border-color: var(--gold); background: rgba(11,25,41,.7); }
-    .hb-h { font-family: var(--font-serif); font-size: 19px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 10px; text-decoration: none; }
-    .hb-p { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--white); line-height: 1.55; text-decoration: none; }
+    .hb-h { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 12px; text-decoration: none; }
+    .hb-p { font-family: var(--font-sans); font-size: 14px; font-weight: 300; color: var(--white); line-height: 1.6; text-decoration: none; }
 
     /* ─── 7. SERVICIOS ───────────────────────────────────────────── */
     .servicios { background: var(--navy-deep); padding: 120px 80px; border-top: 1px solid rgba(184,151,46,.55); }
@@ -267,6 +269,7 @@
     @media (max-width: 1024px) {
       .hdr { padding: 0 48px; }
       .servicios, .casos, .contacto { padding: 100px 48px; }
+      .beneficios { padding: 80px 48px; }
       .social { padding: 80px 48px; }
       .footer { padding: 40px 48px; }
       .hero-benefits { grid-template-columns: repeat(2,1fr); }
@@ -276,14 +279,14 @@
       .hdr { height: 64px; padding: 0 24px; }
       .hdr-nav { display: none; }
       .hamburger { display: flex; }
-      .hero { padding: 100px 20px 72px; }
       .hero-super { font-size: 10px; letter-spacing: .2em; margin-bottom: 20px; }
       .hero-h1 { font-size: 28px; margin-bottom: 24px; }
-      .hero-benefits { grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 40px; }
-      .hb { padding: 16px 14px 18px; }
-      .hb-h { font-size: 15px; margin-bottom: 6px; }
-      .hb-p { font-size: 12px; }
+      .hero-benefits { grid-template-columns: repeat(2,1fr); gap: 12px; }
+      .hb { padding: 18px 16px 20px; }
+      .hb-h { font-size: 16px; margin-bottom: 8px; }
+      .hb-p { font-size: 13px; }
       .servicios, .casos, .contacto { padding: 80px 24px; }
+      .beneficios { padding: 64px 24px; }
       .social { padding: 60px 24px; }
       .footer { padding: 32px 24px; }
       .serv-layout { grid-template-columns: 1fr; gap: 32px; }
@@ -349,40 +352,45 @@
   <div class="hero-ov" aria-hidden="true"></div>
   <div class="hero-cnt">
     <p class="hero-super fi">PARA AGENCIAS Y ARQUITECTOS QUE YA INVIERTEN EN MARKETING.</p>
-    <h1 class="hero-h1 fi">Más viviendas en exclusiva, más compradores,
-con contenido creado por IA.</h1>
+    <h1 class="hero-h1 fi">Vídeo profesional con IA que capta más exclusivas y vende más rápido.</h1>
     <a href="#contacto" class="btn-outline fi">QUIERO IMPULSAR MI NEGOCIO &rarr;</a>
-    <div class="hero-benefits fi">
-      <div class="hb">
+  </div>
+  <div class="hero-rule" aria-hidden="true"></div>
+</section>
+
+<!-- ═══ 2 · BENEFICIOS ══════════════════════════════════════════════ -->
+<section class="beneficios" aria-label="Beneficios">
+  <div class="container">
+    <div class="hero-benefits">
+      <div class="hb fi">
         <h4 class="hb-h">Capta más exclusivas</h4>
         <p class="hb-p">El propietario elige al agente que mejor presenta su vivienda. Llega con vídeo.</p>
       </div>
-      <div class="hb">
+      <div class="hb fi">
         <h4 class="hb-h">Vende más rápido</h4>
         <p class="hb-p">El comprador que ve un vídeo decide antes. Menos tiempo en cartera, más rotación.</p>
       </div>
-      <div class="hb">
+      <div class="hb fi">
         <h4 class="hb-h">Comprador internacional</h4>
         <p class="hb-p">Nórdico, alemán, inglés. Tu propiedad en su idioma, con su presentador.</p>
       </div>
-      <div class="hb">
+      <div class="hb fi">
         <h4 class="hb-h">Sin rodaje, en 72 horas</h4>
         <p class="hb-p">Solo envías fotos desde el móvil. Sin fotógrafo, sin equipo, sin esperas.</p>
       </div>
-      <div class="hb">
+      <div class="hb fi">
         <h4 class="hb-h">Compite con las grandes</h4>
         <p class="hb-p">Producción de nivel enterprise. Precio de autónomo.</p>
       </div>
-      <div class="hb">
+      <div class="hb fi">
         <h4 class="hb-h">Multiplica tu archivo muerto</h4>
         <p class="hb-p">Esas fotos que tienes guardadas ya son vídeos. Solo falta activarlas.</p>
       </div>
     </div>
   </div>
-  <div class="hero-rule" aria-hidden="true"></div>
 </section>
 
-<!-- ═══ 2 · SERVICIOS ═══════════════════════════════════════════════ -->
+<!-- ═══ 3 · SERVICIOS ═══════════════════════════════════════════════ -->
 <section id="servicios" class="servicios" aria-labelledby="serv-h">
   <div class="container">
     <div class="servicios-inner">
