@@ -280,11 +280,14 @@
     .footer-logo .logo__w { font-size: 18px; }
     .footer-logo .logo__s { font-size: 8px; }
     .footer-copy { font-family: var(--font-sans); font-size: 12px; font-weight: 300; color: var(--grey-medium); text-align: center; line-height: 1.75; font-style: normal; }
+    .footer-copy a { color: inherit; transition: color .3s; }
     .footer-copy a:hover { color: var(--gold); }
+    .footer-legal { display: inline-block; margin-top: 4px; font-size: 11px; letter-spacing: .04em; }
     .footer-right { display: flex; align-items: center; justify-content: flex-end; gap: 20px; }
     .footer-li { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border: 1px solid var(--gold); transition: background .3s; }
     .footer-li:hover { background: var(--gold); }
-    .footer-li:hover svg path, .footer-li:hover svg circle { stroke: var(--navy-deep); }
+    .footer-li:hover svg path, .footer-li:hover svg circle, .footer-li:hover svg rect { stroke: var(--navy-deep); }
+    .footer-li:hover svg circle[fill] { fill: var(--navy-deep); }
     .footer-li svg { width: 16px; height: 16px; }
 
     /* ─── 13. FLOATING ───────────────────────────────────────────── */
@@ -295,6 +298,37 @@
     .f-wa svg { width: 30px; height: 30px; }
     .f-cta { background: var(--navy-medium); color: var(--gold); border: 1px solid var(--gold); font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .2em; text-transform: uppercase; padding: 14px 18px; box-shadow: 0 4px 12px rgba(0,0,0,.2); transition: var(--tr); white-space: nowrap; }
     .f-cta:hover { background: var(--gold); color: var(--navy-deep); }
+
+    /* ─── COOKIE BANNER ─────────────────────────────────────────── */
+    .cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(11,25,41,.97); border-top: 1px solid var(--gold);
+      padding: 22px 32px;
+      transform: translateY(100%); transition: transform .4s ease;
+      backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    }
+    .cookie-banner.visible { transform: translateY(0); }
+    .cookie-banner__inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; gap: 32px; flex-wrap: wrap; justify-content: space-between; }
+    .cookie-banner__text { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--white); line-height: 1.6; flex: 1; min-width: 280px; margin: 0; }
+    .cookie-banner__text a { color: var(--gold); text-decoration: underline; }
+    .cookie-banner__text a:hover { color: var(--gold-hover); }
+    .cookie-banner__actions { display: flex; gap: 12px; flex-shrink: 0; }
+    .cookie-btn {
+      font-family: var(--font-sans); font-size: 11px; font-weight: 400;
+      letter-spacing: .18em; text-transform: uppercase;
+      padding: 12px 22px; cursor: pointer; transition: var(--tr);
+    }
+    .cookie-btn--reject { background: transparent; color: var(--white); border: 1px solid var(--gold); }
+    .cookie-btn--reject:hover { background: var(--gold); color: var(--navy-deep); }
+    .cookie-btn--accept { background: var(--gold); color: var(--navy-deep); border: 1px solid var(--gold); }
+    .cookie-btn--accept:hover { background: var(--gold-hover); }
+    @media (max-width: 768px) {
+      .cookie-banner { padding: 16px 20px; }
+      .cookie-banner__inner { gap: 14px; }
+      .cookie-banner__text { font-size: 12px; min-width: 100%; }
+      .cookie-banner__actions { width: 100%; }
+      .cookie-btn { flex: 1; padding: 12px 14px; font-size: 10px; }
+    }
 
     /* ─── 14. RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1024px) {
@@ -655,15 +689,18 @@
       </a>
       <address class="footer-copy" itemscope itemtype="https://schema.org/Organization">
         <span itemprop="name">&copy; 2025 Yoruu AI Studio.</span><br>
-        <a href="tel:+34633619117" itemprop="telephone" style="color:inherit">+34 633 619 117</a><br>
-        <span>Todos los derechos reservados.</span>
+        <a href="tel:+34633619117" itemprop="telephone">+34 633 619 117</a><br>
+        <span class="footer-legal">
+          <a href="legal/privacidad.html">Privacidad</a> ·
+          <a href="legal/cookies.html">Cookies</a>
+        </span>
       </address>
       <div class="footer-right">
-        <a href="#" class="footer-li" target="_blank" rel="noopener" aria-label="LinkedIn de Yoruu AI Studio">
+        <a href="https://www.instagram.com/yoruu.ia.studio" class="footer-li" target="_blank" rel="noopener" aria-label="Instagram de Yoruu AI Studio">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" stroke="#B8972E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="2" y="9" width="4" height="12" stroke="#B8972E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="4" cy="4" r="2" stroke="#B8972E" stroke-width="1.5"/>
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="#B8972E" stroke-width="1.5"/>
+            <circle cx="12" cy="12" r="4" stroke="#B8972E" stroke-width="1.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="#B8972E"/>
           </svg>
         </a>
       </div>
@@ -680,6 +717,19 @@
     </svg>
   </a>
   <a href="#contacto" class="f-cta">QUIERO IMPULSAR MI NEGOCIO &rarr;</a>
+</div>
+
+<!-- ═══ COOKIE BANNER ═══════════════════════════════════════════════ -->
+<div class="cookie-banner" id="cookie-banner" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+  <div class="cookie-banner__inner">
+    <p class="cookie-banner__text">
+      Usamos cookies técnicas necesarias para el funcionamiento de la web y, con tu consentimiento, cookies analíticas para mejorar la experiencia. Puedes aceptar, rechazar o consultar nuestra <a href="legal/cookies.html">política de cookies</a>.
+    </p>
+    <div class="cookie-banner__actions">
+      <button type="button" class="cookie-btn cookie-btn--reject" id="cookie-reject">RECHAZAR</button>
+      <button type="button" class="cookie-btn cookie-btn--accept" id="cookie-accept">ACEPTAR</button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -769,6 +819,26 @@
       window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 72, behavior: 'smooth' });
     });
   });
+
+  /* ── Cookie consent banner ───────────────────────── */
+  (function() {
+    const banner = document.getElementById('cookie-banner');
+    const KEY = 'yoruu-cookie-consent';
+    if (!banner) return;
+    if (!localStorage.getItem(KEY)) {
+      setTimeout(() => banner.classList.add('visible'), 800);
+    }
+    function setConsent(value) {
+      try {
+        localStorage.setItem(KEY, value);
+        localStorage.setItem(KEY + '-date', new Date().toISOString());
+      } catch (_) {}
+      banner.classList.remove('visible');
+      window.dispatchEvent(new CustomEvent('cookie-consent', { detail: value }));
+    }
+    document.getElementById('cookie-accept').addEventListener('click', () => setConsent('accepted'));
+    document.getElementById('cookie-reject').addEventListener('click', () => setConsent('rejected'));
+  })();
 
   /* ── Contact form — Formspree ────────────────────── */
   document.getElementById('cform').addEventListener('submit', async e => {
