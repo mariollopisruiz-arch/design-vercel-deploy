@@ -162,8 +162,8 @@
     .hero-benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 64px auto 0; max-width: 1040px; text-align: left; }
     .hb { background: rgba(11,25,41,.55); border: 1px solid rgba(184,151,46,.45); padding: 22px 22px 24px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: var(--tr); }
     .hb:hover { border-color: var(--gold); background: rgba(11,25,41,.7); }
-    .hb-h { font-family: var(--font-serif); font-size: 19px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 10px; }
-    .hb-p { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--white); line-height: 1.55; }
+    .hb-h { font-family: var(--font-serif); font-size: 19px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 10px; text-decoration: none; }
+    .hb-p { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--white); line-height: 1.55; text-decoration: none; }
 
     /* ─── 7. SERVICIOS ───────────────────────────────────────────── */
     .servicios { background: var(--navy-deep); padding: 120px 80px; border-top: 1px solid rgba(184,151,46,.55); }
@@ -172,19 +172,29 @@
     .serv-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
     .serv-sub { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--grey-light); line-height: 1.65; max-width: 600px; margin: 0 auto; }
 
-    .serv-layout { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: stretch; width: 100%; }
-    .serv-demo { width: 320px; border: 1px solid rgba(184,151,46,.45); overflow: hidden; }
+    .serv-layout { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; width: 100%; }
+    .serv-demo { position: relative; border: 1px solid rgba(184,151,46,.45); border-radius: 18px; overflow: hidden; aspect-ratio: 9/16; }
     .serv-demo video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .serv-play {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(11,25,41,.3); border: none; cursor: pointer; z-index: 2;
+      transition: opacity .3s, background .3s;
+    }
+    .serv-play.playing { opacity: 0; background: transparent; }
+    .serv-play.playing:hover { opacity: 1; background: rgba(11,25,41,.2); }
+    .serv-play svg { width: 64px; height: 64px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); transition: transform .25s; }
+    .serv-play:hover svg { transform: scale(1.08); }
 
-    .cards { display: flex; flex-direction: column; gap: 18px; }
-    .card-svc { border: 1px solid rgba(184,151,46,.4); background: rgba(26,47,69,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; flex-direction: column; overflow: hidden; transition: var(--tr); padding: 28px 28px 30px; flex: 1; }
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .card-svc { border: 1px solid rgba(184,151,46,.4); background: rgba(26,47,69,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; flex-direction: column; overflow: hidden; transition: var(--tr); padding: 28px 24px 30px; }
     .card-svc:hover { border-color: var(--gold); background: rgba(26,47,69,.85); }
     .card-svc--featured { border: 2px solid var(--gold); background: rgba(26,47,69,.8); position: relative; }
     .card-svc--featured::before { content: "MÁS POPULAR"; position: absolute; top: 0; right: 0; background: var(--gold); color: var(--navy-deep); font-family: var(--font-sans); font-size: 9px; font-weight: 500; letter-spacing: .18em; padding: 6px 14px; }
-    .card-svc__title { font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 14px; }
-    .card-svc__list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0 24px; }
-    .card-svc__list li { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--white); padding: 6px 0; display: flex; align-items: center; gap: 8px; line-height: 1.4; }
+    .card-svc__title { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 16px; }
+    .card-svc__list { list-style: none; padding: 0; margin: 0; }
+    .card-svc__list li { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--white); padding: 7px 0; border-bottom: 1px solid rgba(184,151,46,.12); display: flex; align-items: center; gap: 10px; line-height: 1.4; }
     .card-svc__list li::before { content: "✓"; color: var(--gold); font-weight: 500; flex-shrink: 0; font-size: 13px; }
+    .card-svc__list li:last-child { border-bottom: none; }
     .serv-cta { text-align: center; margin-top: 56px; }
 
     /* ─── 8. CASOS ───────────────────────────────────────────────── */
@@ -261,8 +271,7 @@
       .social { padding: 80px 48px; }
       .footer { padding: 40px 48px; }
       .hero-benefits { grid-template-columns: repeat(2,1fr); }
-      .serv-layout { gap: 32px; }
-      .serv-demo { width: 260px; }
+      .serv-layout { grid-template-columns: 240px 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
       .hdr { height: 64px; padding: 0 24px; }
@@ -279,10 +288,12 @@
       .social { padding: 60px 24px; }
       .footer { padding: 32px 24px; }
       .serv-layout { grid-template-columns: 1fr; gap: 32px; }
-      .serv-demo { width: 100%; aspect-ratio: 9/16; max-height: 480px; }
+      .serv-demo { aspect-ratio: 9/16; max-width: 280px; margin: 0 auto; }
+      .cards { grid-template-columns: 1fr; }
       .card-svc { padding: 24px 20px 26px; }
       .card-svc__title { font-size: 20px; }
       .card-svc__list li { font-size: 12px; }
+      .serv-play svg { width: 52px; height: 52px; }
       .casos-grid { grid-template-columns: 1fr; gap: 24px; }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .logos-row { gap: 36px; }
@@ -386,7 +397,10 @@ con contenido creado por IA.</h1>
       <div class="serv-layout fi">
 
       <div class="serv-demo">
-        <video src="assets/video/despues.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Demo del servicio Yoruu AI"></video>
+        <video id="serv-vid" src="assets/video/despues.mp4" loop playsinline preload="metadata" aria-label="Demo del servicio Yoruu AI"></video>
+        <button class="serv-play" id="serv-play" aria-label="Reproducir vídeo">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><polygon points="10,8 17,12 10,16" fill="#B8972E"/></svg>
+        </button>
       </div>
 
       <div class="cards">
@@ -551,6 +565,41 @@ con contenido creado por IA.</h1>
   }
   mq.addEventListener('change', syncVideos);
   syncVideos(mq); // run on load
+
+  /* ── Service demo video — toggle play/pause ────────── */
+  const servVid  = document.getElementById('serv-vid');
+  const servPlay = document.getElementById('serv-play');
+  const servSvgPlay  = '<circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><polygon points="10,8 17,12 10,16" fill="#B8972E"/>';
+  const servSvgPause = '<circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><rect x="8" y="8" width="3" height="8" fill="#B8972E" rx=".5"/><rect x="13" y="8" width="3" height="8" fill="#B8972E" rx=".5"/>';
+
+  if (servVid && servPlay) {
+    servPlay.addEventListener('click', () => {
+      if (servVid.paused) {
+        servVid.muted = false;
+        servVid.play();
+        servPlay.querySelector('svg').innerHTML = servSvgPause;
+        servPlay.setAttribute('aria-label', 'Pausar vídeo');
+        servPlay.classList.add('playing');
+      } else {
+        servVid.pause();
+        servPlay.querySelector('svg').innerHTML = servSvgPlay;
+        servPlay.setAttribute('aria-label', 'Reproducir vídeo');
+        servPlay.classList.remove('playing');
+      }
+    });
+    servVid.addEventListener('pause', () => {
+      servPlay.querySelector('svg').innerHTML = servSvgPlay;
+      servPlay.classList.remove('playing');
+    });
+    servVid.addEventListener('play', () => {
+      servPlay.querySelector('svg').innerHTML = servSvgPause;
+      servPlay.classList.add('playing');
+    });
+    const servIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (!e.isIntersecting && !servVid.paused) servVid.pause(); });
+    }, { threshold: 0.2 });
+    servIO.observe(servVid);
+  }
 
   /* ── Header scroll ───────────────────────────────── */
   const hdr   = document.getElementById('hdr');
