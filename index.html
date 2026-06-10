@@ -147,7 +147,7 @@
 
     /* ─── 6. HERO ────────────────────────────────────────────────── */
     .hero { position: relative; min-height: 100vh; padding: 120px 24px 96px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy-deep); }
-    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .hero-vid-mobile { display: none; }
     @media (max-width: 768px) {
       .hero-vid-desktop { display: none; }
@@ -155,7 +155,7 @@
     }
     .hero-ov { position: absolute; inset: 0; background: rgba(11,25,41,.65); }
     .hero-cnt { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 1080px; }
-    .hero-super { font-family: var(--font-sans); font-size: 12px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; line-height: 1.9; }
+    .hero-super { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; line-height: 1.7; }
     .hero-h1 { font-family: var(--font-serif); font-size: clamp(40px,5vw,72px); font-weight: 500; color: var(--white); line-height: 1.15; margin-bottom: 36px; }
     .hero-rule { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--gold); z-index: 2; }
 
@@ -166,63 +166,28 @@
     .hb-p { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--white); line-height: 1.55; }
 
     /* ─── 7. SERVICIOS ───────────────────────────────────────────── */
-    .servicios { background: var(--white); padding: 120px 80px; }
-    .servicios-inner { display: grid; grid-template-columns: 30% 1fr; gap: 60px; align-items: start; }
-    .servicios-left { position: sticky; top: 100px; }
-    .serv-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--navy-deep); line-height: 1.1; margin-bottom: 20px; }
-    .serv-sub { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--grey-medium); line-height: 1.65; }
+    .servicios { background: var(--navy-deep); padding: 120px 80px; border-top: 1px solid rgba(184,151,46,.55); }
+    .servicios-inner { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .servicios-hdr { text-align: center; margin-bottom: 56px; }
+    .serv-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
+    .serv-sub { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--grey-light); line-height: 1.65; max-width: 600px; margin: 0 auto; }
 
-    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: stretch; }
-    .card-svc { border: 1px solid var(--gold); background: var(--white); display: flex; flex-direction: column; overflow: hidden; transition: transform .35s, box-shadow .35s; }
-    .card-svc:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(11,25,41,.12); }
-    .card-svc--featured { border-width: 2px; box-shadow: 0 8px 28px rgba(184,151,46,.18); position: relative; }
-    .card-svc--featured::before { content: "MÁS POPULAR"; position: absolute; top: 14px; right: 14px; background: var(--gold); color: var(--navy-deep); font-family: var(--font-sans); font-size: 10px; font-weight: 500; letter-spacing: .18em; padding: 6px 12px; z-index: 2; }
-    .card-svc__video { width: 100%; aspect-ratio: 16/10; background: var(--navy-deep); overflow: hidden; }
-    .card-svc__video video { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .card-svc__body { padding: 32px 28px 36px; display: flex; flex-direction: column; flex: 1; }
-    .card-svc__title { font-family: var(--font-serif); font-size: 26px; font-weight: 600; color: var(--navy-deep); line-height: 1.2; margin-bottom: 22px; }
+    .serv-demo { width: 100%; max-width: 800px; aspect-ratio: 16/9; border: 1px solid rgba(184,151,46,.45); overflow: hidden; margin-bottom: 64px; }
+    .serv-demo video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: stretch; width: 100%; }
+    .card-svc { border: 1px solid rgba(184,151,46,.4); background: rgba(26,47,69,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; flex-direction: column; overflow: hidden; transition: var(--tr); padding: 36px 28px 40px; }
+    .card-svc:hover { border-color: var(--gold); background: rgba(26,47,69,.85); transform: translateY(-4px); }
+    .card-svc--featured { border: 2px solid var(--gold); background: rgba(26,47,69,.8); position: relative; }
+    .card-svc--featured::before { content: "MÁS POPULAR"; position: absolute; top: 0; right: 0; background: var(--gold); color: var(--navy-deep); font-family: var(--font-sans); font-size: 9px; font-weight: 500; letter-spacing: .18em; padding: 6px 14px; }
+    .card-svc__title { font-family: var(--font-serif); font-size: 26px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 24px; }
     .card-svc__list { list-style: none; padding: 0; margin: 0; }
-    .card-svc__list li { font-family: var(--font-sans); font-size: 14px; font-weight: 300; color: var(--grey-medium); padding: 11px 0; border-bottom: 1px solid rgba(184,151,46,.18); display: flex; align-items: flex-start; gap: 12px; line-height: 1.45; }
+    .card-svc__list li { font-family: var(--font-sans); font-size: 14px; font-weight: 300; color: var(--white); padding: 10px 0; border-bottom: 1px solid rgba(184,151,46,.15); display: flex; align-items: flex-start; gap: 12px; line-height: 1.45; }
     .card-svc__list li::before { content: "✓"; color: var(--gold); font-weight: 500; flex-shrink: 0; font-size: 14px; }
     .card-svc__list li:last-child { border-bottom: none; }
-    .serv-cta { text-align: center; margin-top: 72px; }
+    .serv-cta { text-align: center; margin-top: 64px; }
 
-    /* ─── 8. RESULTADOS ──────────────────────────────────────────── */
-    .resultados {
-      background: var(--navy-deep);
-      padding: 120px 80px;
-      border-top: 1px solid rgba(184,151,46,.55);
-      border-bottom: 1px solid rgba(184,151,46,.55);
-    }
-    .res-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-    .res-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 400; color: var(--white); line-height: 1.12; margin-bottom: 48px; }
-    .res-sub-h { font-family: var(--font-serif); font-size: clamp(28px,3vw,44px); font-weight: 400; color: var(--white); line-height: 1.15; margin-bottom: 20px; }
-    .res-desc { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--grey-light); line-height: 1.65; margin-bottom: 32px; }
-
-    .phones-wr { display: flex; align-items: flex-start; justify-content: center; }
-    .phone-col { display: flex; flex-direction: column; align-items: center; }
-    .phone-tag { font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-    .phone-frame {
-      width: 200px; aspect-ratio: 9/16;
-      border-radius: 26px; border: 1.5px solid #1e3650;
-      background: #091320; overflow: hidden;
-    }
-    .phone-frame .ph { width: 100%; height: 100%; }
-    .phones-div { width: 1px; background: var(--gold); opacity: .45; align-self: stretch; margin: 34px 28px 0; }
-    .phones-cap { font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .25em; text-transform: uppercase; color: var(--grey-light); text-align: center; margin-top: 22px; }
-    .phone-frame--video { position: relative; }
-    .phone-play {
-      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-      background: rgba(11,25,41,.35); border: none; cursor: pointer;
-      opacity: 1; transition: opacity .3s, background .3s;
-    }
-    /* playing state: fully hidden unless hovering */
-    .phone-play.playing       { opacity: 0; background: transparent; }
-    .phone-play.playing:hover { opacity: 1; background: rgba(11,25,41,.25); }
-    .phone-play svg { width: 56px; height: 56px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); transition: transform .25s; }
-    .phone-play:hover svg { transform: scale(1.08); }
-
-    /* ─── 9. CASOS ───────────────────────────────────────────────── */
+    /* ─── 8. CASOS ───────────────────────────────────────────────── */
     .casos { background: var(--white); padding: 120px 80px; }
     .sec-hdr { text-align: center; margin-bottom: 80px; }
     .sec-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--navy-deep); line-height: 1.15; margin-top: 8px; }
@@ -295,9 +260,6 @@
       .servicios, .casos, .contacto { padding: 100px 48px; }
       .social { padding: 80px 48px; }
       .footer { padding: 40px 48px; }
-      .servicios-inner { grid-template-columns: 1fr; gap: 48px; }
-      .servicios-left { position: static; }
-      .cards { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
       .hero-benefits { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
@@ -305,13 +267,20 @@
       .hdr-nav { display: none; }
       .hamburger { display: flex; }
       .hero { padding: 100px 20px 72px; }
+      .hero-super { font-size: 10px; letter-spacing: .2em; margin-bottom: 20px; }
+      .hero-h1 { font-size: 36px; margin-bottom: 28px; }
+      .hero-benefits { grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 40px; }
+      .hb { padding: 16px 14px 18px; }
+      .hb-h { font-size: 15px; margin-bottom: 6px; }
+      .hb-p { font-size: 12px; }
       .servicios, .casos, .contacto { padding: 80px 24px; }
       .social { padding: 60px 24px; }
       .footer { padding: 32px 24px; }
       .cards { grid-template-columns: 1fr; gap: 18px; }
-      .card-svc__body { padding: 26px 22px 30px; }
+      .card-svc { padding: 28px 22px 32px; }
       .card-svc__title { font-size: 22px; }
-      .hero-benefits { grid-template-columns: 1fr; gap: 12px; margin-top: 48px; }
+      .card-svc__list li { font-size: 13px; }
+      .serv-demo { margin-bottom: 48px; }
       .casos-grid { grid-template-columns: 1fr; gap: 24px; }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .logos-row { gap: 36px; }
@@ -367,7 +336,7 @@
   </video>
   <div class="hero-ov" aria-hidden="true"></div>
   <div class="hero-cnt">
-    <p class="hero-super fi" style="line-height: 1.5; font-weight: 600; font-size: 18px">PARA AGENCIAS Y ARQUITECTOS QUE YA INVIERTEN EN MARKETING<br>Y QUIEREN QUE RINDA MÁS.</p>
+    <p class="hero-super fi">PARA AGENCIAS Y ARQUITECTOS QUE YA INVIERTEN EN MARKETING.</p>
     <h1 class="hero-h1 fi">Más viviendas en exclusiva, más compradores,
 con contenido creado por IA.</h1>
     <a href="#contacto" class="btn-outline fi">QUIERO IMPULSAR MI NEGOCIO &rarr;</a>
@@ -406,59 +375,47 @@ con contenido creado por IA.</h1>
   <div class="container">
     <div class="servicios-inner">
 
-      <div class="servicios-left fi">
-        <span class="lbl">SERVICIOS</span>
+      <div class="servicios-hdr fi">
+        <span class="lbl" style="text-align:center;">SERVICIOS</span>
         <h2 class="serv-h2" id="serv-h">¿Qué hacemos?</h2>
         <p class="serv-sub">Todo lo que necesitas para que tu contenido capture exclusivas, acelere ventas y llegue al comprador internacional.</p>
       </div>
 
-      <div>
-        <div class="cards">
-          <article class="card-svc fi">
-            <div class="card-svc__video">
-              <video src="assets/video/despues.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Demo Essential Look"></video>
-            </div>
-            <div class="card-svc__body">
-              <h3 class="card-svc__title">Essential Look</h3>
-              <ul class="card-svc__list">
-                <li>Retoque premium de imágenes</li>
-                <li>Música cinematográfica</li>
-                <li>Entrega en 72h</li>
-                <li>Formato Reels + Story</li>
-              </ul>
-            </div>
-          </article>
-          <article class="card-svc card-svc--featured fi">
-            <div class="card-svc__video">
-              <video src="assets/video/despues.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Demo Voice & Story"></video>
-            </div>
-            <div class="card-svc__body">
-              <h3 class="card-svc__title">Voice &amp; Story</h3>
-              <ul class="card-svc__list">
-                <li>Todo lo de Essential Look</li>
-                <li>Guión de venta personalizado</li>
-                <li>Voz IA profesional</li>
-                <li>Versión bilingüe incluida</li>
-              </ul>
-            </div>
-          </article>
-          <article class="card-svc fi">
-            <div class="card-svc__video">
-              <video src="assets/video/despues.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Demo AI Avatar Hook"></video>
-            </div>
-            <div class="card-svc__body">
-              <h3 class="card-svc__title">AI Avatar Hook</h3>
-              <ul class="card-svc__list">
-                <li>Todo lo de Voice &amp; Story</li>
-                <li>Presentador IA multilingüe</li>
-                <li>ES · EN · DE · NL</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-        <div class="serv-cta fi">
-          <a href="#contacto" class="btn-solid">HABLEMOS DE TU PROYECTO →</a>
-        </div>
+      <div class="serv-demo fi">
+        <video src="assets/video/despues.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Demo del servicio Yoruu AI"></video>
+      </div>
+
+      <div class="cards">
+        <article class="card-svc fi">
+          <h3 class="card-svc__title">Essential Look</h3>
+          <ul class="card-svc__list">
+            <li>Retoque premium de imágenes</li>
+            <li>Música cinematográfica</li>
+            <li>Entrega en 72h</li>
+            <li>Formato Reels + Story</li>
+          </ul>
+        </article>
+        <article class="card-svc card-svc--featured fi">
+          <h3 class="card-svc__title">Voice &amp; Story</h3>
+          <ul class="card-svc__list">
+            <li>Todo lo de Essential Look</li>
+            <li>Guión de venta personalizado</li>
+            <li>Voz IA profesional</li>
+            <li>Versión bilingüe incluida</li>
+          </ul>
+        </article>
+        <article class="card-svc fi">
+          <h3 class="card-svc__title">AI Avatar Hook</h3>
+          <ul class="card-svc__list">
+            <li>Todo lo de Voice &amp; Story</li>
+            <li>Presentador IA multilingüe</li>
+            <li>ES · EN · DE · NL</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="serv-cta fi">
+        <a href="#contacto" class="btn-outline">HABLEMOS DE TU PROYECTO →</a>
       </div>
 
     </div>
@@ -589,48 +546,6 @@ con contenido creado por IA.</h1>
   }
   mq.addEventListener('change', syncVideos);
   syncVideos(mq); // run on load
-
-  /* ── Después video — toggle play/pause + auto-pause on scroll ── */
-  const despuesVid  = document.getElementById('despues-vid');
-  const despuesPlay = document.getElementById('despues-play');
-
-  const svgPlay  = '<circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><polygon points="10,8 17,12 10,16" fill="#B8972E"/>';
-  const svgPause = '<circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><rect x="8" y="8" width="3" height="8" fill="#B8972E" rx=".5"/><rect x="13" y="8" width="3" height="8" fill="#B8972E" rx=".5"/>';
-
-  function setBtn(playing) {
-    despuesPlay.querySelector('svg').innerHTML = playing ? svgPause : svgPlay;
-    despuesPlay.setAttribute('aria-label', playing ? 'Pausar vídeo' : 'Reproducir vídeo');
-    despuesPlay.classList.toggle('playing', playing);
-    despuesPlay.style.pointerEvents = 'all';
-  }
-
-  if (despuesVid && despuesPlay) {
-    // click: toggle
-    despuesPlay.addEventListener('click', () => {
-      if (despuesVid.paused) {
-        despuesVid.muted = false;
-        despuesVid.play();
-        setBtn(true);
-      } else {
-        despuesVid.pause();
-        setBtn(false);
-      }
-    });
-
-    // sync if video ends / stalls
-    despuesVid.addEventListener('pause', () => setBtn(false));
-    despuesVid.addEventListener('play',  () => setBtn(true));
-
-    // auto-pause when out of viewport (≥50% hidden)
-    const vidIO = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting && !despuesVid.paused) {
-          despuesVid.pause();
-        }
-      });
-    }, { threshold: 0.2 });
-    vidIO.observe(despuesVid);
-  }
 
   /* ── Header scroll ───────────────────────────────── */
   const hdr   = document.getElementById('hdr');
