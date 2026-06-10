@@ -167,25 +167,25 @@
 
     /* ─── 7. SERVICIOS ───────────────────────────────────────────── */
     .servicios { background: var(--navy-deep); padding: 120px 80px; border-top: 1px solid rgba(184,151,46,.55); }
-    .servicios-inner { display: flex; flex-direction: column; align-items: center; gap: 0; }
+    .servicios-inner { display: flex; flex-direction: column; align-items: center; }
     .servicios-hdr { text-align: center; margin-bottom: 56px; }
     .serv-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
     .serv-sub { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--grey-light); line-height: 1.65; max-width: 600px; margin: 0 auto; }
 
-    .serv-demo { width: 100%; max-width: 800px; aspect-ratio: 16/9; border: 1px solid rgba(184,151,46,.45); overflow: hidden; margin-bottom: 64px; }
+    .serv-layout { display: grid; grid-template-columns: auto 1fr; gap: 48px; align-items: stretch; width: 100%; }
+    .serv-demo { width: 320px; border: 1px solid rgba(184,151,46,.45); overflow: hidden; }
     .serv-demo video { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: stretch; width: 100%; }
-    .card-svc { border: 1px solid rgba(184,151,46,.4); background: rgba(26,47,69,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; flex-direction: column; overflow: hidden; transition: var(--tr); padding: 36px 28px 40px; }
-    .card-svc:hover { border-color: var(--gold); background: rgba(26,47,69,.85); transform: translateY(-4px); }
+    .cards { display: flex; flex-direction: column; gap: 18px; }
+    .card-svc { border: 1px solid rgba(184,151,46,.4); background: rgba(26,47,69,.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); display: flex; flex-direction: column; overflow: hidden; transition: var(--tr); padding: 28px 28px 30px; flex: 1; }
+    .card-svc:hover { border-color: var(--gold); background: rgba(26,47,69,.85); }
     .card-svc--featured { border: 2px solid var(--gold); background: rgba(26,47,69,.8); position: relative; }
     .card-svc--featured::before { content: "MÁS POPULAR"; position: absolute; top: 0; right: 0; background: var(--gold); color: var(--navy-deep); font-family: var(--font-sans); font-size: 9px; font-weight: 500; letter-spacing: .18em; padding: 6px 14px; }
-    .card-svc__title { font-family: var(--font-serif); font-size: 26px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 24px; }
-    .card-svc__list { list-style: none; padding: 0; margin: 0; }
-    .card-svc__list li { font-family: var(--font-sans); font-size: 14px; font-weight: 300; color: var(--white); padding: 10px 0; border-bottom: 1px solid rgba(184,151,46,.15); display: flex; align-items: flex-start; gap: 12px; line-height: 1.45; }
-    .card-svc__list li::before { content: "✓"; color: var(--gold); font-weight: 500; flex-shrink: 0; font-size: 14px; }
-    .card-svc__list li:last-child { border-bottom: none; }
-    .serv-cta { text-align: center; margin-top: 64px; }
+    .card-svc__title { font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 14px; }
+    .card-svc__list { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0 24px; }
+    .card-svc__list li { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--white); padding: 6px 0; display: flex; align-items: center; gap: 8px; line-height: 1.4; }
+    .card-svc__list li::before { content: "✓"; color: var(--gold); font-weight: 500; flex-shrink: 0; font-size: 13px; }
+    .serv-cta { text-align: center; margin-top: 56px; }
 
     /* ─── 8. CASOS ───────────────────────────────────────────────── */
     .casos { background: var(--white); padding: 120px 80px; }
@@ -261,6 +261,8 @@
       .social { padding: 80px 48px; }
       .footer { padding: 40px 48px; }
       .hero-benefits { grid-template-columns: repeat(2,1fr); }
+      .serv-layout { gap: 32px; }
+      .serv-demo { width: 260px; }
     }
     @media (max-width: 768px) {
       .hdr { height: 64px; padding: 0 24px; }
@@ -268,7 +270,7 @@
       .hamburger { display: flex; }
       .hero { padding: 100px 20px 72px; }
       .hero-super { font-size: 10px; letter-spacing: .2em; margin-bottom: 20px; }
-      .hero-h1 { font-size: 36px; margin-bottom: 28px; }
+      .hero-h1 { font-size: 28px; margin-bottom: 24px; }
       .hero-benefits { grid-template-columns: repeat(2,1fr); gap: 10px; margin-top: 40px; }
       .hb { padding: 16px 14px 18px; }
       .hb-h { font-size: 15px; margin-bottom: 6px; }
@@ -276,11 +278,11 @@
       .servicios, .casos, .contacto { padding: 80px 24px; }
       .social { padding: 60px 24px; }
       .footer { padding: 32px 24px; }
-      .cards { grid-template-columns: 1fr; gap: 18px; }
-      .card-svc { padding: 28px 22px 32px; }
-      .card-svc__title { font-size: 22px; }
-      .card-svc__list li { font-size: 13px; }
-      .serv-demo { margin-bottom: 48px; }
+      .serv-layout { grid-template-columns: 1fr; gap: 32px; }
+      .serv-demo { width: 100%; aspect-ratio: 9/16; max-height: 480px; }
+      .card-svc { padding: 24px 20px 26px; }
+      .card-svc__title { font-size: 20px; }
+      .card-svc__list li { font-size: 12px; }
       .casos-grid { grid-template-columns: 1fr; gap: 24px; }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .logos-row { gap: 36px; }
@@ -381,7 +383,9 @@ con contenido creado por IA.</h1>
         <p class="serv-sub">Todo lo que necesitas para que tu contenido capture exclusivas, acelere ventas y llegue al comprador internacional.</p>
       </div>
 
-      <div class="serv-demo fi">
+      <div class="serv-layout fi">
+
+      <div class="serv-demo">
         <video src="assets/video/despues.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Demo del servicio Yoruu AI"></video>
       </div>
 
@@ -412,6 +416,7 @@ con contenido creado por IA.</h1>
             <li>ES · EN · DE · NL</li>
           </ul>
         </article>
+      </div>
       </div>
 
       <div class="serv-cta fi">
