@@ -172,16 +172,15 @@
     .serv-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
     .serv-sub { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--grey-light); line-height: 1.65; max-width: 600px; margin: 0 auto; }
 
-    .serv-layout { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; width: 100%; }
+    .serv-layout { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: center; width: 100%; }
     .serv-demo { position: relative; border: 1px solid rgba(184,151,46,.45); border-radius: 18px; overflow: hidden; aspect-ratio: 9/16; }
-    .serv-demo video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .serv-demo video { width: 100%; height: 100%; object-fit: cover; display: block; cursor: pointer; }
     .serv-play {
       position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
       background: rgba(11,25,41,.3); border: none; cursor: pointer; z-index: 2;
       transition: opacity .3s, background .3s;
     }
-    .serv-play.playing { opacity: 0; background: transparent; }
-    .serv-play.playing:hover { opacity: 1; background: rgba(11,25,41,.2); }
+    .serv-play.hidden { opacity: 0; pointer-events: none; background: transparent; }
     .serv-play svg { width: 64px; height: 64px; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); transition: transform .25s; }
     .serv-play:hover svg { transform: scale(1.08); }
 
@@ -271,7 +270,7 @@
       .social { padding: 80px 48px; }
       .footer { padding: 40px 48px; }
       .hero-benefits { grid-template-columns: repeat(2,1fr); }
-      .serv-layout { grid-template-columns: 240px 1fr; gap: 32px; }
+      .serv-layout { grid-template-columns: 220px 1fr; gap: 32px; }
     }
     @media (max-width: 768px) {
       .hdr { height: 64px; padding: 0 24px; }
@@ -569,31 +568,22 @@ con contenido creado por IA.</h1>
   /* ── Service demo video — toggle play/pause ────────── */
   const servVid  = document.getElementById('serv-vid');
   const servPlay = document.getElementById('serv-play');
-  const servSvgPlay  = '<circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><polygon points="10,8 17,12 10,16" fill="#B8972E"/>';
-  const servSvgPause = '<circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><rect x="8" y="8" width="3" height="8" fill="#B8972E" rx=".5"/><rect x="13" y="8" width="3" height="8" fill="#B8972E" rx=".5"/>';
 
   if (servVid && servPlay) {
     servPlay.addEventListener('click', () => {
-      if (servVid.paused) {
-        servVid.muted = false;
-        servVid.play();
-        servPlay.querySelector('svg').innerHTML = servSvgPause;
-        servPlay.setAttribute('aria-label', 'Pausar vídeo');
-        servPlay.classList.add('playing');
-      } else {
-        servVid.pause();
-        servPlay.querySelector('svg').innerHTML = servSvgPlay;
-        servPlay.setAttribute('aria-label', 'Reproducir vídeo');
-        servPlay.classList.remove('playing');
-      }
+      servVid.muted = false;
+      servVid.play();
     });
-    servVid.addEventListener('pause', () => {
-      servPlay.querySelector('svg').innerHTML = servSvgPlay;
-      servPlay.classList.remove('playing');
+    servVid.addEventListener('click', () => {
+      if (!servVid.paused) servVid.pause();
     });
     servVid.addEventListener('play', () => {
-      servPlay.querySelector('svg').innerHTML = servSvgPause;
-      servPlay.classList.add('playing');
+      servPlay.classList.add('hidden');
+      servPlay.setAttribute('aria-label', 'Pausar vídeo');
+    });
+    servVid.addEventListener('pause', () => {
+      servPlay.classList.remove('hidden');
+      servPlay.setAttribute('aria-label', 'Reproducir vídeo');
     });
     const servIO = new IntersectionObserver((entries) => {
       entries.forEach(e => { if (!e.isIntersecting && !servVid.paused) servVid.pause(); });
