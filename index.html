@@ -146,7 +146,7 @@
     .mob-close { position: absolute; top: 24px; right: 28px; font-size: 30px; color: var(--white); line-height: 1; }
 
     /* ─── 6. HERO ────────────────────────────────────────────────── */
-    .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy-deep); }
+    .hero { position: relative; min-height: 100vh; padding: 120px 24px 96px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy-deep); }
     .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .hero-vid-mobile { display: none; }
     @media (max-width: 768px) {
@@ -154,11 +154,16 @@
       .hero-vid-mobile  { display: block; }
     }
     .hero-ov { position: absolute; inset: 0; background: rgba(11,25,41,.65); }
-    .hero-cnt { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 920px; }
+    .hero-cnt { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 1080px; }
     .hero-super { font-family: var(--font-sans); font-size: 12px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; line-height: 1.9; }
-    .hero-h1 { font-family: var(--font-serif); font-size: clamp(40px,5vw,72px); font-weight: 500; color: var(--white); line-height: 1.15; margin-bottom: 28px; }
-    .hero-sub { font-family: var(--font-sans); font-size: clamp(15px,1.2vw,18px); font-weight: 300; color: var(--grey-light); line-height: 1.65; max-width: 700px; margin: 0 auto 44px; }
+    .hero-h1 { font-family: var(--font-serif); font-size: clamp(40px,5vw,72px); font-weight: 500; color: var(--white); line-height: 1.15; margin-bottom: 36px; }
     .hero-rule { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--gold); z-index: 2; }
+
+    .hero-benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 64px auto 0; max-width: 1040px; text-align: left; }
+    .hb { background: rgba(11,25,41,.55); border: 1px solid rgba(184,151,46,.45); padding: 22px 22px 24px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: var(--tr); }
+    .hb:hover { border-color: var(--gold); background: rgba(11,25,41,.7); }
+    .hb-h { font-family: var(--font-serif); font-size: 19px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 10px; }
+    .hb-p { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--white); line-height: 1.55; }
 
     /* ─── 7. SERVICIOS ───────────────────────────────────────────── */
     .servicios { background: var(--white); padding: 120px 80px; }
@@ -167,11 +172,19 @@
     .serv-h2 { font-family: var(--font-serif); font-size: clamp(36px,4vw,56px); font-weight: 500; color: var(--navy-deep); line-height: 1.1; margin-bottom: 20px; }
     .serv-sub { font-family: var(--font-sans); font-size: 15px; font-weight: 300; color: var(--grey-medium); line-height: 1.65; }
 
-    .cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
-    .card { border: 1px solid var(--gold); padding: 32px 24px; background: var(--white); transition: background .3s; }
-    .card:hover { background: var(--off-white); }
-    .card-h { font-family: var(--font-serif); font-size: 20px; font-weight: 600; color: var(--navy-deep); line-height: 1.2; margin-bottom: 14px; }
-    .card-p { font-family: var(--font-sans); font-size: 13px; font-weight: 300; color: var(--grey-medium); line-height: 1.5; }
+    .cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: stretch; }
+    .card-svc { border: 1px solid var(--gold); background: var(--white); display: flex; flex-direction: column; overflow: hidden; transition: transform .35s, box-shadow .35s; }
+    .card-svc:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(11,25,41,.12); }
+    .card-svc--featured { border-width: 2px; box-shadow: 0 8px 28px rgba(184,151,46,.18); position: relative; }
+    .card-svc--featured::before { content: "MÁS POPULAR"; position: absolute; top: 14px; right: 14px; background: var(--gold); color: var(--navy-deep); font-family: var(--font-sans); font-size: 10px; font-weight: 500; letter-spacing: .18em; padding: 6px 12px; z-index: 2; }
+    .card-svc__video { width: 100%; aspect-ratio: 16/10; background: var(--navy-deep); overflow: hidden; }
+    .card-svc__video video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .card-svc__body { padding: 32px 28px 36px; display: flex; flex-direction: column; flex: 1; }
+    .card-svc__title { font-family: var(--font-serif); font-size: 26px; font-weight: 600; color: var(--navy-deep); line-height: 1.2; margin-bottom: 22px; }
+    .card-svc__list { list-style: none; padding: 0; margin: 0; }
+    .card-svc__list li { font-family: var(--font-sans); font-size: 14px; font-weight: 300; color: var(--grey-medium); padding: 11px 0; border-bottom: 1px solid rgba(184,151,46,.18); display: flex; align-items: flex-start; gap: 12px; line-height: 1.45; }
+    .card-svc__list li::before { content: "✓"; color: var(--gold); font-weight: 500; flex-shrink: 0; font-size: 14px; }
+    .card-svc__list li:last-child { border-bottom: none; }
     .serv-cta { text-align: center; margin-top: 72px; }
 
     /* ─── 8. RESULTADOS ──────────────────────────────────────────── */
@@ -279,38 +292,34 @@
     /* ─── 14. RESPONSIVE ─────────────────────────────────────────── */
     @media (max-width: 1024px) {
       .hdr { padding: 0 48px; }
-      .servicios, .casos, .resultados, .contacto { padding: 100px 48px; }
+      .servicios, .casos, .contacto { padding: 100px 48px; }
       .social { padding: 80px 48px; }
       .footer { padding: 40px 48px; }
       .servicios-inner { grid-template-columns: 1fr; gap: 48px; }
       .servicios-left { position: static; }
-      .cards { grid-template-columns: repeat(2,1fr); }
+      .cards { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+      .hero-benefits { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 768px) {
       .hdr { height: 64px; padding: 0 24px; }
       .hdr-nav { display: none; }
       .hamburger { display: flex; }
-      .servicios, .casos, .resultados, .contacto { padding: 80px 24px; }
+      .hero { padding: 100px 20px 72px; }
+      .servicios, .casos, .contacto { padding: 80px 24px; }
       .social { padding: 60px 24px; }
       .footer { padding: 32px 24px; }
-      .cards { grid-template-columns: repeat(2,1fr); gap: 12px; }
-      .card { padding: 22px 16px; }
-      .res-inner { grid-template-columns: 1fr; gap: 56px; }
+      .cards { grid-template-columns: 1fr; gap: 18px; }
+      .card-svc__body { padding: 26px 22px 30px; }
+      .card-svc__title { font-size: 22px; }
+      .hero-benefits { grid-template-columns: 1fr; gap: 12px; margin-top: 48px; }
       .casos-grid { grid-template-columns: 1fr; gap: 24px; }
       .contact-inner { grid-template-columns: 1fr; gap: 48px; }
       .logos-row { gap: 36px; }
-      .phone-frame { width: 160px; }
       .footer-inner { grid-template-columns: 1fr; gap: 20px; text-align: center; }
       .footer-right { justify-content: center; }
       .float-wrap { bottom: 20px; right: 20px; }
       .f-wa { width: 52px; height: 52px; }
       .f-cta { font-size: 10px; padding: 12px 14px; }
-    }
-    @media (max-width: 480px) {
-      .cards { grid-template-columns: 1fr; }
-      .phones-wr { flex-direction: column; align-items: center; gap: 32px; }
-      .phones-div { display: none; }
-      .phone-frame { width: 185px; }
     }
   </style>
 <template id="__bundler_thumbnail">
@@ -331,7 +340,6 @@
   </a>
   <nav class="hdr-nav" aria-label="Navegación principal">
     <a href="#servicios">SERVICIOS</a>
-    <a href="#resultados">RESULTADOS</a>
     <a href="#casos">CASOS</a>
     <a href="#contacto" class="nav-cta">CONTACTO</a>
   </nav>
@@ -343,7 +351,6 @@
 <div class="mob-menu" id="mob" role="dialog" aria-modal="true" aria-label="Menú móvil">
   <button class="mob-close" id="mob-close" aria-label="Cerrar menú">&#x2715;</button>
   <a href="#servicios">SERVICIOS</a>
-  <a href="#resultados">RESULTADOS</a>
   <a href="#casos">CASOS</a>
   <a href="#contacto" class="nav-cta">CONTACTO</a>
 </div>
@@ -360,11 +367,36 @@
   </video>
   <div class="hero-ov" aria-hidden="true"></div>
   <div class="hero-cnt">
-    <p class="hero-super fi" style="line-height: 1.5; font-weight: 600; font-size: 18px">PARA LOS QUE YA INVIERTEN EN MARKETING<br>Y QUIEREN QUE RINDA MÁS.</p>
+    <p class="hero-super fi" style="line-height: 1.5; font-weight: 600; font-size: 18px">PARA AGENCIAS Y ARQUITECTOS QUE YA INVIERTEN EN MARKETING<br>Y QUIEREN QUE RINDA MÁS.</p>
     <h1 class="hero-h1 fi">Más viviendas en exclusiva, más compradores,
 con contenido creado por IA.</h1>
-    <p class="hero-sub fi">Impulsamos el negocio de empresas del sector inmobiliario y arquitectónico con vídeo IA que capta exclusivas, acelera ventas y llega al comprador internacional.</p>
     <a href="#contacto" class="btn-outline fi">QUIERO IMPULSAR MI NEGOCIO &rarr;</a>
+    <div class="hero-benefits fi">
+      <div class="hb">
+        <h4 class="hb-h">Capta más exclusivas</h4>
+        <p class="hb-p">El propietario elige al agente que mejor presenta su vivienda. Llega con vídeo.</p>
+      </div>
+      <div class="hb">
+        <h4 class="hb-h">Vende más rápido</h4>
+        <p class="hb-p">El comprador que ve un vídeo decide antes. Menos tiempo en cartera, más rotación.</p>
+      </div>
+      <div class="hb">
+        <h4 class="hb-h">Comprador internacional</h4>
+        <p class="hb-p">Nórdico, alemán, inglés. Tu propiedad en su idioma, con su presentador.</p>
+      </div>
+      <div class="hb">
+        <h4 class="hb-h">Sin rodaje, en 72 horas</h4>
+        <p class="hb-p">Solo envías fotos desde el móvil. Sin fotógrafo, sin equipo, sin esperas.</p>
+      </div>
+      <div class="hb">
+        <h4 class="hb-h">Compite con las grandes</h4>
+        <p class="hb-p">Producción de nivel enterprise. Precio de autónomo.</p>
+      </div>
+      <div class="hb">
+        <h4 class="hb-h">Multiplica tu archivo muerto</h4>
+        <p class="hb-p">Esas fotos que tienes guardadas ya son vídeos. Solo falta activarlas.</p>
+      </div>
+    </div>
   </div>
   <div class="hero-rule" aria-hidden="true"></div>
 </section>
@@ -382,14 +414,47 @@ con contenido creado por IA.</h1>
 
       <div>
         <div class="cards">
-          <article class="card fi"><h3 class="card-h">Transforma tu archivo visual</h3><p class="card-p">Tus imágenes profesionales convertidas en vídeos de alto impacto.</p></article>
-          <article class="card fi"><h3 class="card-h">Virtual Staging</h3><p class="card-p">Presenta inmuebles terminados antes de que existan físicamente.</p></article>
-          <article class="card fi"><h3 class="card-h">Contenido por buyer persona</h3><p class="card-p">Piezas distintas para cada perfil sin volver a rodar.</p></article>
-          <article class="card fi"><h3 class="card-h">Guiones de venta</h3><p class="card-p">Cada vídeo diseñado para generar deseo y convertir.</p></article>
-          <article class="card fi"><h3 class="card-h">Guiones y vídeos en cualquier idioma</h3><p class="card-p">Llega al comprador internacional en su idioma.</p></article>
-          <article class="card fi"><h3 class="card-h">Avatares IA</h3><p class="card-p">Presentador de IA con tu identidad de marca. Sin actores ni rodajes.</p></article>
-          <article class="card fi"><h3 class="card-h">A/B Testing de guiones y hooks</h3><p class="card-p">Dos versiones, datos reales, decisiones basadas en resultados.</p></article>
-          <article class="card fi"><h3 class="card-h">Convierte tus renders en vídeo</h3><p class="card-p">Transforma renders arquitectónicos en vídeos de presentación de alto impacto.</p></article>
+          <article class="card-svc fi">
+            <div class="card-svc__video">
+              <video src="assets/video/despues.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Demo Essential Look"></video>
+            </div>
+            <div class="card-svc__body">
+              <h3 class="card-svc__title">Essential Look</h3>
+              <ul class="card-svc__list">
+                <li>Retoque premium de imágenes</li>
+                <li>Música cinematográfica</li>
+                <li>Entrega en 72h</li>
+                <li>Formato Reels + Story</li>
+              </ul>
+            </div>
+          </article>
+          <article class="card-svc card-svc--featured fi">
+            <div class="card-svc__video">
+              <video src="assets/video/despues.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Demo Voice & Story"></video>
+            </div>
+            <div class="card-svc__body">
+              <h3 class="card-svc__title">Voice &amp; Story</h3>
+              <ul class="card-svc__list">
+                <li>Todo lo de Essential Look</li>
+                <li>Guión de venta personalizado</li>
+                <li>Voz IA profesional</li>
+                <li>Versión bilingüe incluida</li>
+              </ul>
+            </div>
+          </article>
+          <article class="card-svc fi">
+            <div class="card-svc__video">
+              <video src="assets/video/despues.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Demo AI Avatar Hook"></video>
+            </div>
+            <div class="card-svc__body">
+              <h3 class="card-svc__title">AI Avatar Hook</h3>
+              <ul class="card-svc__list">
+                <li>Todo lo de Voice &amp; Story</li>
+                <li>Presentador IA multilingüe</li>
+                <li>ES · EN · DE · NL</li>
+              </ul>
+            </div>
+          </article>
         </div>
         <div class="serv-cta fi">
           <a href="#contacto" class="btn-solid">HABLEMOS DE TU PROYECTO →</a>
@@ -400,47 +465,7 @@ con contenido creado por IA.</h1>
   </div>
 </section>
 
-<!-- ═══ 3 · RESULTADOS ══════════════════════════════════════════════ -->
-<section id="resultados" class="resultados" aria-labelledby="res-h">
-  <div class="container">
-    <div class="res-inner">
-
-      <div class="res-left">
-        <span class="lbl fi">RESULTADOS</span>
-        <h2 class="res-h2 fi" id="res-h">Transformamos espacios.<br>Generamos negocio.</h2>
-        <span class="lbl fi">CONTACTO</span>
-        <h3 class="res-sub-h fi">¿Listo para<br>impulsar tu<br>negocio?</h3>
-        <p class="res-desc fi">Cuéntanos tu proyecto y te presentamos una propuesta a medida en 72 horas.</p>
-        <a href="#contacto" class="btn-gold fi">QUIERO ESTOS RESULTADOS →</a>
-      </div>
-
-      <div class="fi" style="display:flex;flex-direction:column;align-items:center;">
-        <div class="phones-wr">
-          <div class="phone-col">
-            <span class="phone-tag">ANTES</span>
-            <div class="phone-frame">
-              <img src="assets/img/before.jpg" alt="Propiedad antes del vídeo IA — villa mediterránea" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;">
-            </div>
-          </div>
-          <div class="phones-div" aria-hidden="true"></div>
-          <div class="phone-col">
-            <span class="phone-tag">DESPUÉS</span>
-            <div class="phone-frame phone-frame--video" id="despues-frame">
-              <video id="despues-vid" src="assets/video/despues.mp4" loop playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block;" aria-label="Vídeo IA — resultado después del virtual staging"></video>
-              <button class="phone-play" id="despues-play" aria-label="Reproducir vídeo">
-                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="11" stroke="#B8972E" stroke-width="1.2"/><polygon points="10,8 17,12 10,16" fill="#B8972E"/></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        <p class="phones-cap">VIRTUAL STAGING · AVATARES IA · RRSS</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 4 · CASOS DE ÉXITO ══════════════════════════════════════════ -->
+<!-- ═══ 3 · CASOS DE ÉXITO ══════════════════════════════════════════ -->
 <section id="casos" class="casos" aria-labelledby="casos-h">
   <div class="container">
     <div class="sec-hdr fi">
