@@ -5,29 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO base -->
-  <title>Yoruu AI Studio · Vídeo IA para Real Estate y Arquitectura</title>
-  <meta name="description" content="Vídeo profesional con IA para inmobiliarias y estudios de arquitectura. Capta más exclusivas, acelera ventas y llega al comprador internacional. Sin rodaje, en 72 horas.">
+  <title>Vídeo IA para Inmobiliarias y Real Estate · Yoruu AI Studio</title>
+  <meta name="description" content="Agencia de vídeo con IA para inmobiliarias y estudios de arquitectura. Capta exclusivas, vende más rápido y atrae comprador internacional. Sin rodaje, entrega en 72h. Pide presupuesto.">
+  <meta name="keywords" content="vídeo IA inmobiliario, vídeo IA real estate, agencia vídeo IA, contratar vídeo IA, virtual staging IA, marketing inmobiliario con IA, vídeo IA arquitectura, presentación inmuebles IA, avatar IA inmobiliario, vídeo IA para inmobiliarias, productora vídeo IA, vídeo IA costa blanca, marketing real estate IA">
   <meta name="author" content="Yoruu AI Studio">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
   <meta name="theme-color" content="#0B1929">
+  <meta name="geo.region" content="ES">
+  <meta name="geo.placename" content="España">
   <link rel="canonical" href="https://yoruuia.com/">
+
+  <!-- Google Search Console verification (rellenar con el código de GSC) -->
+  <meta name="google-site-verification" content="REEMPLAZAR_CON_CODIGO_GSC">
+
+  <!-- Google Analytics 4 (carga condicional al consentimiento de cookies) -->
+  <script>
+    // GA4 Measurement ID — reemplazar con el tuyo (formato G-XXXXXXXXXX)
+    window.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+
+    function loadGoogleAnalytics() {
+      if (window.GA_MEASUREMENT_ID === 'G-XXXXXXXXXX' || !window.GA_MEASUREMENT_ID) return;
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_MEASUREMENT_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', window.GA_MEASUREMENT_ID, { anonymize_ip: true });
+    }
+
+    // Cargar GA solo si el usuario ya aceptó cookies
+    try {
+      if (localStorage.getItem('yoruu-cookie-consent') === 'accepted') {
+        loadGoogleAnalytics();
+      }
+    } catch(_) {}
+
+    // Y escuchar el evento de aceptación para cargarlo al momento
+    window.addEventListener('cookie-consent', (e) => {
+      if (e.detail === 'accepted') loadGoogleAnalytics();
+    });
+  </script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Yoruu AI Studio">
   <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="nl_NL">
   <meta property="og:url" content="https://yoruuia.com/">
-  <meta property="og:title" content="Yoruu AI Studio · Vídeo IA para Real Estate y Arquitectura">
-  <meta property="og:description" content="Vídeo profesional con IA que capta más exclusivas y vende más rápido. Sin rodaje, en 72 horas.">
+  <meta property="og:title" content="Vídeo IA para Inmobiliarias · Capta exclusivas y vende más rápido">
+  <meta property="og:description" content="Agencia de vídeo con IA para Real Estate y arquitectura. Sin rodaje, entrega en 72h. Pide presupuesto sin compromiso.">
   <meta property="og:image" content="https://yoruuia.com/assets/img/case-1.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1920">
+  <meta property="og:image:height" content="1440">
   <meta property="og:image:alt" content="Yoruu AI Studio — Vídeo IA para el sector inmobiliario y arquitectónico">
 
   <!-- Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Yoruu AI Studio · Vídeo IA para Real Estate y Arquitectura">
-  <meta name="twitter:description" content="Vídeo profesional con IA que capta más exclusivas y vende más rápido. Sin rodaje, en 72 horas.">
+  <meta name="twitter:title" content="Vídeo IA para Inmobiliarias · Yoruu AI Studio">
+  <meta name="twitter:description" content="Vídeo profesional con IA que capta exclusivas y vende más rápido. Sin rodaje, en 72 horas.">
   <meta name="twitter:image" content="https://yoruuia.com/assets/img/case-1.jpg">
   <meta name="twitter:image:alt" content="Yoruu AI Studio — Vídeo IA inmobiliario">
 
@@ -501,6 +545,69 @@
   "name": "Yoruu AI Studio",
   "inLanguage": "es-ES",
   "publisher": { "@id": "https://yoruuia.com/#organization" }
+}
+</script>
+
+<!-- Schema.org · FAQPage (rich snippets para Google) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cuánto cuesta un vídeo con IA para una inmobiliaria?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "El precio depende del paquete elegido (Essential Look, Voice & Story o AI Avatar Hook) y del volumen de inmuebles. Pide un presupuesto personalizado sin compromiso a través del formulario o por WhatsApp al +34 633 619 117."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuánto tarda en entregarse el vídeo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entregamos el vídeo terminado en 72 horas desde que recibimos el material. No necesitas rodaje ni equipo: trabajamos directamente desde tus fotos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Para qué tipo de inmobiliaria es adecuado el servicio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabajamos con agencias inmobiliarias y estudios de arquitectura que ya invierten en marketing y quieren diferenciarse: agencias de lujo, costa, prime, y promotoras que necesitan presentar inmuebles a comprador internacional."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿En qué idiomas pueden hacer los vídeos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Producimos vídeos con avatares y voces IA en español, inglés, alemán y neerlandés, ideales para llegar al comprador internacional del mercado europeo."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Es necesario hacer un rodaje físico?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Todo el proceso se realiza con inteligencia artificial a partir de tus fotos del inmueble. Te ahorras desplazamientos, equipo de grabación y semanas de producción."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Schema.org · BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://yoruuia.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Servicios", "item": "https://yoruuia.com/#servicios" },
+    { "@type": "ListItem", "position": 3, "name": "Contacto", "item": "https://yoruuia.com/#contacto" }
+  ]
 }
 </script>
 </head>

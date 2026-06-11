@@ -3,12 +3,37 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
   <url>
     <loc>https://yoruuia.com/</loc>
-    <lastmod>2026-06-10</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://yoruuia.com/assets/img/case-1.jpg</image:loc>
       <image:title>Yoruu AI Studio — Vídeo IA para Real Estate</image:title>
+      <image:caption>Agencia de vídeo con inteligencia artificial para inmobiliarias y arquitectura</image:caption>
     </image:image>
+  </url>
+  <url>
+    <loc>https://yoruuia.com/#servicios</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yoruuia.com/#contacto</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yoruuia.com/legal/privacidad.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://yoruuia.com/legal/cookies.html</loc>
+    <lastmod>2026-06-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>
