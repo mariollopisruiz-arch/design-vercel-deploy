@@ -38,7 +38,8 @@
   <!-- Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
   <style>
     /* ─── 1. VARIABLES ───────────────────────────────────────────── */
     :root {
@@ -104,6 +105,17 @@
     /* Scroll fade-in */
     .fi { opacity: 0; transform: translateY(28px); transition: opacity .6s ease-out, transform .6s ease-out; }
     .fi.on { opacity: 1; transform: none; }
+
+    /* Hero: animate immediately on page load (no JS wait) */
+    .hero-cnt .fi { animation: heroIn .6s ease-out forwards; }
+    .hero-cnt .fi:nth-child(1) { animation-delay: .05s; }
+    .hero-cnt .fi:nth-child(2) { animation-delay: .15s; }
+    .hero-cnt .fi:nth-child(3) { animation-delay: .25s; }
+    .hero-cnt .fi:nth-child(4) { animation-delay: .35s; }
+    @keyframes heroIn { to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-cnt .fi { animation: none; opacity: 1; transform: none; }
+    }
 
     /* ─── 4. BUTTONS ─────────────────────────────────────────────── */
     .btn-outline {
@@ -176,11 +188,6 @@
     /* ─── 6. HERO ────────────────────────────────────────────────── */
     .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy-deep); }
     .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-    .hero-vid-mobile { display: none; }
-    @media (max-width: 768px) {
-      .hero-vid-desktop { display: none; }
-      .hero-vid-mobile  { display: block; }
-    }
     .hero-ov { position: absolute; inset: 0; background: rgba(11,25,41,.65); }
     .hero-cnt { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 1080px; }
     .hero-super { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; line-height: 1.7; }
@@ -515,11 +522,9 @@
 
 <!-- ═══ 1 · HERO ════════════════════════════════════════════════════ -->
 <section id="inicio" class="hero" aria-label="Portada">
-  <video class="hero-vid-desktop" autoplay muted loop playsinline preload="metadata" poster="assets/img/case-1.jpg" aria-hidden="true">
+  <video class="hero-vid" autoplay muted loop playsinline preload="metadata" poster="assets/img/case-1.jpg" aria-hidden="true">
+    <source src="assets/video/hero-loop-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
     <source src="assets/video/hero-loop.mp4" type="video/mp4">
-  </video>
-  <video class="hero-vid-mobile" autoplay muted loop playsinline preload="metadata" poster="assets/img/case-1.jpg" aria-hidden="true">
-    <source src="assets/video/hero-loop-mobile.mp4" type="video/mp4">
   </video>
   <div class="hero-ov" aria-hidden="true"></div>
   <div class="hero-cnt">
@@ -738,17 +743,6 @@
 </div>
 
 <script>
-  /* ── Hero video swap (mobile/desktop) ───────────── */
-  const vidDesktop = document.querySelector('.hero-vid-desktop');
-  const vidMobile  = document.querySelector('.hero-vid-mobile');
-  const mq = window.matchMedia('(max-width: 768px)');
-  function syncVideos(e) {
-    if (e.matches) { vidDesktop.pause(); vidMobile.play(); }
-    else           { vidMobile.pause();  vidDesktop.play(); }
-  }
-  mq.addEventListener('change', syncVideos);
-  syncVideos(mq); // run on load
-
   /* ── Service demo video — toggle play/pause ────────── */
   const servVid  = document.getElementById('serv-vid');
   const servPlay = document.getElementById('serv-play');
@@ -793,12 +787,7 @@
   mobClose.addEventListener('click', close);
   mob.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
 
-  /* ── Hero entrance animations ────────────────────── */
-  window.addEventListener('load', () => {
-    document.querySelectorAll('.hero-cnt .fi').forEach((el, i) => {
-      setTimeout(() => el.classList.add('on'), 300 + i * 200);
-    });
-  });
+  /* ── Hero animations now driven by CSS (no JS wait) ── */
 
   /* ── Scroll fade-in (IntersectionObserver) ───────── */
   const io = new IntersectionObserver((entries) => {
