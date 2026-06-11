@@ -241,9 +241,10 @@
 
     /* ─── 10. SOCIAL PROOF ───────────────────────────────────────── */
     .social { background: var(--off-white); padding: 100px 80px; }
-    .logos-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 64px; margin-top: 40px; }
-    .logo-brand { font-family: var(--font-serif); font-size: 14px; font-weight: 500; color: var(--grey-medium); filter: grayscale(1) brightness(.7); text-align: center; line-height: 1.4; letter-spacing: .04em; white-space: nowrap; }
-    .logo-brand small { display: block; font-size: 9px; letter-spacing: .06em; font-family: var(--font-sans); font-weight: 300; }
+    .logos-row { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 72px; margin-top: 48px; }
+    .logo-brand { display: inline-flex; align-items: center; justify-content: center; height: 90px; opacity: .75; filter: grayscale(1); transition: opacity .35s, filter .35s, transform .35s; }
+    .logo-brand:hover { opacity: 1; filter: grayscale(0); transform: translateY(-2px); }
+    .logo-brand img { max-height: 100%; max-width: 220px; width: auto; height: auto; display: block; object-fit: contain; }
     .gold-rule-wrap { display: flex; justify-content: center; margin: 56px 0; }
     .gold-rule { width: 80px; height: 1px; background: var(--gold); }
     .testimonial { max-width: 580px; margin: 0 auto; border-left: 2px solid var(--gold); padding-left: 32px; }
@@ -444,7 +445,19 @@
     "contactType": "sales",
     "areaServed": ["ES", "EU"],
     "availableLanguage": ["Spanish", "English", "German", "Dutch"]
-  }
+  },
+  "knowsAbout": [
+    {
+      "@type": "Organization",
+      "name": "cunatweber",
+      "url": "https://www.cunatweber.com"
+    },
+    {
+      "@type": "Organization",
+      "name": "Deluxe Sweet Homes",
+      "url": "https://www.deluxesweethomes.com"
+    }
+  ]
 }
 </script>
 
@@ -638,9 +651,14 @@
 <!-- ═══ 5 · SOCIAL PROOF ════════════════════════════════════════════ -->
 <section class="social" aria-labelledby="social-h">
   <div class="container">
-    <span class="lbl lbl--dark fi" style="text-align:center;display:block;" id="social-h">CONFÍAN EN NOSOTROS</span>
+    <span class="lbl lbl--dark fi" style="text-align:center;display:block;" id="social-h">YA CONFÍAN EN NOSOTROS</span>
     <div class="logos-row" role="list">
-      <span class="logo-brand fi" role="listitem">DELUXE SWEET HOMES</span>
+      <a href="https://www.cunatweber.com" class="logo-brand fi" role="listitem" target="_blank" rel="noopener" aria-label="cunatweber — Inmobiliaria · visitar web">
+        <img src="assets/img/clients/cunatweber.jpg" alt="cunatweber" width="220" height="90" loading="lazy">
+      </a>
+      <a href="https://www.deluxesweethomes.com" class="logo-brand fi" role="listitem" target="_blank" rel="noopener" aria-label="Deluxe Sweet Homes Real Estate & Building Company — visitar web">
+        <img src="assets/img/clients/deluxe-sweet-homes.png" alt="Deluxe Sweet Homes — Real Estate & Building Company" width="160" height="90" loading="lazy">
+      </a>
     </div>
     <div class="gold-rule-wrap fi"><div class="gold-rule"></div></div>
     <blockquote class="testimonial fi">
