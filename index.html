@@ -187,6 +187,19 @@
     .hero-h1 { font-family: var(--font-serif); font-size: clamp(40px,5vw,72px); font-weight: 500; color: var(--white); line-height: 1.15; margin-bottom: 36px; }
     .hero-rule { position: absolute; bottom: 0; left: 0; right: 0; height: 1px; background: var(--gold); z-index: 2; }
 
+    .hero-trust { margin-top: 56px; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+    .hero-trust__label { font-family: var(--font-sans); font-size: 10px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: rgba(255,255,255,.65); }
+    .hero-trust__logos { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; justify-content: center; }
+    .hero-trust__logo { display: inline-flex; align-items: center; height: 34px; opacity: .7; filter: brightness(0) invert(1); transition: opacity .3s, transform .3s; }
+    .hero-trust__logo:hover { opacity: 1; transform: translateY(-1px); }
+    .hero-trust__logo img { max-height: 100%; width: auto; display: block; }
+    @media (max-width: 768px) {
+      .hero-trust { margin-top: 36px; gap: 12px; }
+      .hero-trust__label { font-size: 9px; letter-spacing: .25em; }
+      .hero-trust__logos { gap: 28px; }
+      .hero-trust__logo { height: 26px; }
+    }
+
     /* ─── 6b. BENEFICIOS ─────────────────────────────────────────── */
     .beneficios { background: var(--navy-deep); padding: 100px 80px; border-top: 1px solid rgba(184,151,46,.55); }
     .bene-hdr { text-align: center; margin-bottom: 56px; }
@@ -450,7 +463,7 @@
     {
       "@type": "Organization",
       "name": "cunatweber",
-      "url": "https://www.cunatweber.com"
+      "url": "https://www.immomoraira.com"
     },
     {
       "@type": "Organization",
@@ -514,6 +527,17 @@
     <p class="hero-super fi">PARA AGENCIAS Y ARQUITECTOS QUE YA INVIERTEN EN MARKETING.</p>
     <h1 class="hero-h1 fi">Vídeo profesional con IA que capta más exclusivas y vende más rápido.</h1>
     <a href="#contacto" class="btn-outline fi">QUIERO IMPULSAR MI NEGOCIO &rarr;</a>
+    <div class="hero-trust fi">
+      <span class="hero-trust__label">Ya confían en nosotros</span>
+      <div class="hero-trust__logos">
+        <a href="https://www.immomoraira.com/" class="hero-trust__logo" target="_blank" rel="noopener" aria-label="Immo Moraira (cunatweber) — visitar web">
+          <img src="assets/img/clients/cunatweber.jpg" alt="cunatweber" loading="lazy">
+        </a>
+        <a href="https://www.deluxesweethomes.com/" class="hero-trust__logo" target="_blank" rel="noopener" aria-label="Deluxe Sweet Homes — visitar web">
+          <img src="assets/img/clients/deluxe-sweet-homes.png" alt="Deluxe Sweet Homes" loading="lazy">
+        </a>
+      </div>
+    </div>
   </div>
   <div class="hero-rule" aria-hidden="true"></div>
 </section>
@@ -653,7 +677,7 @@
   <div class="container">
     <span class="lbl lbl--dark fi" style="text-align:center;display:block;" id="social-h">YA CONFÍAN EN NOSOTROS</span>
     <div class="logos-row" role="list">
-      <a href="https://www.cunatweber.com" class="logo-brand fi" role="listitem" target="_blank" rel="noopener" aria-label="cunatweber — Inmobiliaria · visitar web">
+      <a href="https://www.immomoraira.com" class="logo-brand fi" role="listitem" target="_blank" rel="noopener" aria-label="cunatweber — Inmobiliaria · visitar web">
         <img src="assets/img/clients/cunatweber.jpg" alt="cunatweber" width="220" height="90" loading="lazy">
       </a>
       <a href="https://www.deluxesweethomes.com" class="logo-brand fi" role="listitem" target="_blank" rel="noopener" aria-label="Deluxe Sweet Homes Real Estate & Building Company — visitar web">
