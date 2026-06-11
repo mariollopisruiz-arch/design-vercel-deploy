@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/0.9">
   <url>
-    <loc>https://TU-DOMINIO.com/</loc>
+    <loc>https://yoruuia.com/</loc>
     <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://TU-DOMINIO.com/assets/img/case-1.jpg</image:loc>
+      <image:loc>https://yoruuia.com/assets/img/case-1.jpg</image:loc>
       <image:title>Yoruu AI Studio — Vídeo IA para Real Estate</image:title>
     </image:image>
   </url>
