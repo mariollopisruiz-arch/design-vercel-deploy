@@ -38,6 +38,8 @@
   <!-- Performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="assets/img/case-1-mobile.jpg" media="(max-width: 768px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/img/case-1.jpg" media="(min-width: 769px)" fetchpriority="high">
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"></noscript>
   <style>
@@ -106,12 +108,12 @@
     .fi { opacity: 0; transform: translateY(28px); transition: opacity .6s ease-out, transform .6s ease-out; }
     .fi.on { opacity: 1; transform: none; }
 
-    /* Hero: animate immediately on page load (no JS wait) */
-    .hero-cnt .fi { animation: heroIn .6s ease-out forwards; }
-    .hero-cnt .fi:nth-child(1) { animation-delay: .05s; }
-    .hero-cnt .fi:nth-child(2) { animation-delay: .15s; }
-    .hero-cnt .fi:nth-child(3) { animation-delay: .25s; }
-    .hero-cnt .fi:nth-child(4) { animation-delay: .35s; }
+    /* Hero: animate after the background/video shows (~200ms) */
+    .hero-cnt .fi { animation: heroIn .55s ease-out forwards; }
+    .hero-cnt .fi:nth-child(1) { animation-delay: .20s; }
+    .hero-cnt .fi:nth-child(2) { animation-delay: .35s; }
+    .hero-cnt .fi:nth-child(3) { animation-delay: .50s; }
+    .hero-cnt .fi:nth-child(4) { animation-delay: .65s; }
     @keyframes heroIn { to { opacity: 1; transform: none; } }
     @media (prefers-reduced-motion: reduce) {
       .hero-cnt .fi { animation: none; opacity: 1; transform: none; }
@@ -186,7 +188,14 @@
     .mob-close { position: absolute; top: 24px; right: 28px; font-size: 30px; color: var(--white); line-height: 1; }
 
     /* ─── 6. HERO ────────────────────────────────────────────────── */
-    .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: var(--navy-deep); }
+    .hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      background: var(--navy-deep) url('assets/img/case-1.jpg') center/cover no-repeat;
+    }
+    @media (max-width: 768px) {
+      .hero { background-image: url('assets/img/case-1-mobile.jpg'); }
+    }
     .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .hero-ov { position: absolute; inset: 0; background: rgba(11,25,41,.65); }
     .hero-cnt { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 1080px; }
@@ -522,7 +531,7 @@
 
 <!-- ═══ 1 · HERO ════════════════════════════════════════════════════ -->
 <section id="inicio" class="hero" aria-label="Portada">
-  <video class="hero-vid" autoplay muted loop playsinline preload="metadata" poster="assets/img/case-1.jpg" aria-hidden="true">
+  <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="assets/img/case-1.jpg" aria-hidden="true">
     <source src="assets/video/hero-loop-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
     <source src="assets/video/hero-loop.mp4" type="video/mp4">
   </video>
