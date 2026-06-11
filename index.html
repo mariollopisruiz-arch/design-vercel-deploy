@@ -164,7 +164,7 @@
 
     /* Mobile overlay */
     .mob-menu {
-      position: fixed; inset: 0; background: var(--navy-deep); z-index: 99;
+      position: fixed; inset: 0; background: var(--navy-deep); z-index: 200;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 40px;
       opacity: 0; pointer-events: none; transition: opacity .35s ease;
     }
@@ -202,14 +202,14 @@
     }
 
     /* ─── 6b. BENEFICIOS ─────────────────────────────────────────── */
-    .beneficios { background: var(--navy-deep); padding: 100px 80px; border-top: 1px solid rgba(184,151,46,.55); }
+    .beneficios { background: var(--white); padding: 100px 80px; }
     .bene-hdr { text-align: center; margin-bottom: 56px; }
-    .bene-h2 { font-family: var(--font-serif); font-size: clamp(32px,3.5vw,48px); font-weight: 500; color: var(--white); line-height: 1.15; max-width: 760px; margin: 0 auto; }
+    .bene-h2 { font-family: var(--font-serif); font-size: clamp(32px,3.5vw,48px); font-weight: 500; color: var(--navy-deep); line-height: 1.15; max-width: 760px; margin: 0 auto; }
     .hero-benefits { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; max-width: 1200px; margin: 0 auto; text-align: left; }
-    .hb { background: rgba(11,25,41,.55); border: 1px solid rgba(184,151,46,.45); padding: 26px 24px 28px; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: var(--tr); }
-    .hb:hover { border-color: var(--gold); background: rgba(11,25,41,.7); }
+    .hb { background: var(--white); border: 1px solid rgba(184,151,46,.35); padding: 26px 24px 28px; transition: var(--tr); }
+    .hb:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 10px 24px rgba(11,25,41,.08); }
     .hb-h { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: var(--gold); line-height: 1.2; margin-bottom: 12px; text-decoration: none; }
-    .hb-p { font-family: var(--font-sans); font-size: 14px; font-weight: 300; color: var(--white); line-height: 1.6; text-decoration: none; }
+    .hb-p { font-family: var(--font-sans); font-size: 14px; font-weight: 300; color: var(--grey-medium); line-height: 1.6; text-decoration: none; }
 
     /* ─── 7. SERVICIOS ───────────────────────────────────────────── */
     .servicios { background: var(--navy-deep); padding: 120px 80px; border-top: 1px solid rgba(184,151,46,.55); }
@@ -498,7 +498,6 @@
   </a>
   <nav class="hdr-nav" aria-label="Navegación principal">
     <a href="#servicios">SERVICIOS</a>
-    <a href="#casos">CASOS</a>
     <a href="#contacto" class="nav-cta">CONTACTO</a>
   </nav>
   <button class="hamburger" id="hbg" aria-label="Abrir menú" aria-expanded="false">
@@ -509,7 +508,6 @@
 <div class="mob-menu" id="mob" role="dialog" aria-modal="true" aria-label="Menú móvil">
   <button class="mob-close" id="mob-close" aria-label="Cerrar menú">&#x2715;</button>
   <a href="#servicios">SERVICIOS</a>
-  <a href="#casos">CASOS</a>
   <a href="#contacto" class="nav-cta">CONTACTO</a>
 </div>
 
@@ -633,42 +631,6 @@
         <a href="#contacto" class="btn-outline">HABLEMOS DE TU PROYECTO →</a>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- ═══ 3 · CASOS DE ÉXITO ══════════════════════════════════════════ -->
-<section id="casos" class="casos" aria-labelledby="casos-h">
-  <div class="container">
-    <div class="sec-hdr fi">
-      <span class="lbl" style="text-align:center;">CASOS DE ÉXITO</span>
-      <h2 class="sec-h2" id="casos-h">Proyectos que generan resultados.</h2>
-    </div>
-    <div class="casos-grid">
-      <article class="caso-card fi">
-        <div class="caso-img" aria-label="Proyecto Inmobiliario — propiedad de lujo"><img src="assets/img/case-1.jpg" alt="Villa mediterránea de lujo con piscina infinity" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-        <div class="caso-body">
-          <span class="lbl">INMOBILIARIA</span>
-          <h3 class="caso-h">Proyecto Inmobiliario</h3>
-          <p class="caso-p">Estrategia de contenido IA para captación de exclusivas y compradores internacionales.</p>
-        </div>
-      </article>
-      <article class="caso-card fi">
-        <div class="caso-img" aria-label="Proyecto Hotelero — resort vacacional"><img src="assets/img/case-2.jpg" alt="Boutique hotel de lujo con piscina y terraza mediterránea — Proyecto Hotelero" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-        <div class="caso-body">
-          <span class="lbl">SECTOR VACACIONAL</span>
-          <h3 class="caso-h">Proyecto Hotelero</h3>
-          <p class="caso-p">Transformación de archivo fotográfico en contenido activo para Booking y RRSS.</p>
-        </div>
-      </article>
-      <article class="caso-card fi">
-        <div class="caso-img" aria-label="Estudio de Arquitectura — diseño contemporáneo"><img src="assets/img/case-3.jpg" alt="Interior contemporáneo de arquitectura de lujo con vistas al mar — Estudio de Arquitectura" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-        <div class="caso-body">
-          <span class="lbl">ARQUITECTURA</span>
-          <h3 class="caso-h">Estudio de Arquitectura</h3>
-          <p class="caso-p">Renders arquitectónicos convertidos en vídeos de presentación para clientes y concursos.</p>
-        </div>
-      </article>
     </div>
   </div>
 </section>
@@ -827,7 +789,7 @@
   const mobClose = document.getElementById('mob-close');
   const open  = () => { mob.classList.add('open');  hbg.setAttribute('aria-expanded','true');  document.body.style.overflow = 'hidden'; };
   const close = () => { mob.classList.remove('open'); hbg.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; };
-  hbg.addEventListener('click', open);
+  hbg.addEventListener('click', () => mob.classList.contains('open') ? close() : open());
   mobClose.addEventListener('click', close);
   mob.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
 
