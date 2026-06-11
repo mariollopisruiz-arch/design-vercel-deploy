@@ -191,6 +191,7 @@
     .hero-trust__label { font-family: var(--font-sans); font-size: 10px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: rgba(255,255,255,.65); }
     .hero-trust__logos { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; justify-content: center; }
     .hero-trust__logo { display: inline-flex; align-items: center; height: 34px; opacity: .7; filter: brightness(0) invert(1); transition: opacity .3s, transform .3s; }
+    .hero-trust__logo--negative { filter: none; }
     .hero-trust__logo:hover { opacity: 1; transform: translateY(-1px); }
     .hero-trust__logo img { max-height: 100%; width: auto; display: block; }
     @media (max-width: 768px) {
@@ -530,8 +531,8 @@
     <div class="hero-trust fi">
       <span class="hero-trust__label">Ya confían en nosotros</span>
       <div class="hero-trust__logos">
-        <a href="https://www.immomoraira.com/" class="hero-trust__logo" target="_blank" rel="noopener" aria-label="Immo Moraira (cunatweber) — visitar web">
-          <img src="assets/img/clients/cunatweber.jpg" alt="cunatweber" loading="lazy">
+        <a href="https://www.immomoraira.com/" class="hero-trust__logo hero-trust__logo--negative" target="_blank" rel="noopener" aria-label="cuñatweber — visitar web">
+          <img src="assets/img/clients/cunatweber-white.png" alt="cuñatweber" loading="lazy">
         </a>
         <a href="https://www.deluxesweethomes.com/" class="hero-trust__logo" target="_blank" rel="noopener" aria-label="Deluxe Sweet Homes — visitar web">
           <img src="assets/img/clients/deluxe-sweet-homes.png" alt="Deluxe Sweet Homes" loading="lazy">
