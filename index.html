@@ -240,7 +240,13 @@
     @media (max-width: 768px) {
       .hero { background-image: url('assets/img/case-1-mobile.jpg'); }
     }
-    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .hero video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; pointer-events: none; }
+    /* Hide iOS / Safari native play button overlay on autoplay-blocked videos */
+    .hero video::-webkit-media-controls,
+    .hero video::-webkit-media-controls-enclosure,
+    .hero video::-webkit-media-controls-panel,
+    .hero video::-webkit-media-controls-start-playback-button,
+    .hero video::-webkit-media-controls-overlay-play-button { display: none !important; -webkit-appearance: none !important; opacity: 0 !important; }
     .hero-ov { position: absolute; inset: 0; background: rgba(11,25,41,.65); }
     .hero-cnt { position: relative; z-index: 2; text-align: center; padding: 0 24px; max-width: 1080px; }
     .hero-super { font-family: var(--font-sans); font-size: 13px; font-weight: 500; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; line-height: 1.7; }
@@ -638,7 +644,7 @@
 
 <!-- ═══ 1 · HERO ════════════════════════════════════════════════════ -->
 <section id="inicio" class="hero" aria-label="Portada">
-  <video class="hero-vid" autoplay muted loop playsinline preload="auto" poster="assets/img/case-1.jpg" aria-hidden="true">
+  <video class="hero-vid" autoplay muted loop playsinline webkit-playsinline x5-playsinline preload="auto" poster="assets/img/case-1.jpg" aria-hidden="true" disablepictureinpicture disableremoteplayback>
     <source src="assets/video/hero-loop-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
     <source src="assets/video/hero-loop.mp4" type="video/mp4">
   </video>
@@ -903,7 +909,23 @@
   mobClose.addEventListener('click', close);
   mob.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
 
-  /* ── Hero animations now driven by CSS (no JS wait) ── */
+  /* ── Hero video: force autoplay loop, retry on iOS Low Power Mode ── */
+  (function() {
+    const v = document.querySelector('.hero-vid');
+    if (!v) return;
+    v.muted = true;
+    v.playsInline = true;
+    v.loop = true;
+    const tryPlay = () => {
+      const p = v.play();
+      if (p && typeof p.then === 'function') p.catch(() => {});
+    };
+    tryPlay();
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) tryPlay(); });
+    ['touchstart','click','scroll','keydown'].forEach(evt =>
+      window.addEventListener(evt, tryPlay, { once: true, passive: true })
+    );
+  })();
 
   /* ── Scroll fade-in (IntersectionObserver) ───────── */
   const io = new IntersectionObserver((entries) => {
