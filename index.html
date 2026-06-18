@@ -21,17 +21,18 @@
 
   <!-- Google Analytics 4 (carga condicional al consentimiento de cookies) -->
   <script>
-    // GA4 Measurement ID — reemplazar con el tuyo (formato G-XXXXXXXXXX)
-    window.GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+    // GA4 Measurement ID
+    window.GA_MEASUREMENT_ID = 'G-0FBJLGEZS4';
 
     function loadGoogleAnalytics() {
-      if (window.GA_MEASUREMENT_ID === 'G-XXXXXXXXXX' || !window.GA_MEASUREMENT_ID) return;
       if (window.__gaLoaded) return;
       window.__gaLoaded = true;
-      const s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_MEASUREMENT_ID;
-      document.head.appendChild(s);
+
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_MEASUREMENT_ID;
+      document.head.appendChild(script);
+
       window.dataLayer = window.dataLayer || [];
       function gtag(){ dataLayer.push(arguments); }
       window.gtag = gtag;
@@ -46,7 +47,7 @@
       }
     } catch(_) {}
 
-    // Y escuchar el evento de aceptación para cargarlo al momento
+    // Escuchar evento de aceptación de cookies
     window.addEventListener('cookie-consent', (e) => {
       if (e.detail === 'accepted') loadGoogleAnalytics();
     });
