@@ -2,7 +2,11 @@
 
 Este repositorio es la web de Yoruu AI Studio y el blog SEO asociado.
 
-**Contexto maestro completo:** ver `.claude/product-marketing.md`. Las skills `programmatic-seo` y `lead-magnets` lo leen automáticamente antes de cualquier tarea de contenido.
+**Lee SIEMPRE estos dos archivos antes de cualquier tarea de contenido o diseño:**
+- `.claude/product-marketing.md` — contexto maestro (empresa, buyer persona, posicionamiento, tono, precios)
+- `.claude/blog-design-system.md` — sistema de diseño obligatorio para blogs (paleta, componentes, reglas de contraste)
+
+Las skills `programmatic-seo` y `lead-magnets` cargan el primero automáticamente.
 
 ## Resumen ejecutivo
 
