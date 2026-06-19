@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Blog · Estrategia y vídeo IA para inmobiliarias de lujo | Yoruu AI Studio</title>
+  <meta name="description" content="Estrategia, casos y tendencias de marketing inmobiliario premium con inteligencia artificial. Para directores y agencias de lujo en toda España.">
+  <meta name="keywords" content="blog vídeo IA inmobiliario, marketing inmobiliario de lujo, captación exclusivas, virtual staging, comprador internacional inmobiliario">
+  <meta name="author" content="Yoruu AI Studio">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0B1929">
+  <link rel="canonical" href="https://yoruuia.com/blog/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Yoruu AI Studio">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:url" content="https://yoruuia.com/blog/">
+  <meta property="og:title" content="Blog · Yoruu AI Studio">
+  <meta property="og:description" content="Estrategia y vídeo IA para inmobiliarias de lujo en España.">
+  <meta property="og:image" content="https://yoruuia.com/assets/img/case-1.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230B1929'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23B8972E'%3EY%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- GA4 (consent-gated) -->
+  <script>
+    window.GA_MEASUREMENT_ID = 'G-0FBJLGEZS4';
+    function loadGoogleAnalytics() {
+      if (window.__gaLoaded) return;
+      window.__gaLoaded = true;
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_MEASUREMENT_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', window.GA_MEASUREMENT_ID, { anonymize_ip: true });
+    }
+    try { if (localStorage.getItem('yoruu-cookie-consent') === 'accepted') loadGoogleAnalytics(); } catch(_) {}
+    window.addEventListener('cookie-consent', (e) => { if (e.detail === 'accepted') loadGoogleAnalytics(); });
+  </script>
+
+  <style>
+    :root {
+      --navy-deep: #0B1929; --navy-medium: #1A2F45; --gold: #B8972E; --gold-hover: #D4AE3A;
+      --white: #FFFFFF; --off-white: #F5F5F0; --grey-light: #C8C8C8; --grey-medium: #6B6B6B;
+      --font-serif: 'Cormorant Garamond', Didot, Bodoni, serif;
+      --font-sans: 'Inter', -apple-system, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body { font-family: var(--font-sans); background: var(--white); color: var(--navy-deep); line-height: 1.7; font-weight: 300; }
+    a { color: var(--gold); text-decoration: none; transition: color .3s; }
+
+    /* Header */
+    .hdr {
+      background: var(--navy-deep); padding: 22px 80px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid rgba(184,151,46,.4);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .logo { display: flex; flex-direction: column; gap: 3px; align-items: center; color: var(--gold); }
+    .logo__w { font-family: var(--font-serif); font-size: 24px; font-weight: 700; letter-spacing: .06em; line-height: 1; }
+    .logo__s { font-family: var(--font-sans); font-size: 10px; font-weight: 300; letter-spacing: .25em; text-transform: uppercase; line-height: 1; }
+    .back { font-family: var(--font-sans); font-size: 12px; font-weight: 300; letter-spacing: .2em; text-transform: uppercase; color: var(--white); }
+    .back:hover { color: var(--gold); }
+
+    /* Hero */
+    .blog-hero { background: var(--navy-deep); padding: 100px 32px 90px; text-align: center; border-bottom: 1px solid rgba(184,151,46,.2); }
+    .blog-hero__lbl { font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 28px; display: inline-block; }
+    .blog-hero__h1 { font-family: var(--font-serif); font-size: clamp(40px, 5vw, 64px); font-weight: 500; color: var(--white); line-height: 1.1; max-width: 880px; margin: 0 auto 28px; }
+    .blog-hero__sub { font-family: var(--font-serif); font-style: italic; font-size: clamp(17px, 1.6vw, 22px); color: rgba(255,255,255,.78); max-width: 680px; margin: 0 auto; font-weight: 400; }
+
+    /* Posts grid */
+    .posts { max-width: 1180px; margin: 0 auto; padding: 100px 32px; }
+    .posts__lbl { font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; text-align: center; }
+    .posts__title { font-family: var(--font-serif); font-size: clamp(28px, 3vw, 38px); font-weight: 500; color: var(--navy-deep); text-align: center; margin-bottom: 60px; }
+
+    .posts__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+
+    .post-card {
+      background: var(--off-white);
+      border: 1px solid rgba(184,151,46,.25);
+      padding: 48px 40px;
+      display: flex; flex-direction: column;
+      transition: all .35s ease;
+      position: relative;
+    }
+    .post-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .post-card__lbl { font-family: var(--font-sans); font-size: 10px; font-weight: 400; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+    .post-card__h { font-family: var(--font-serif); font-size: 26px; font-weight: 600; color: var(--navy-deep); line-height: 1.25; margin-bottom: 16px; }
+    .post-card__p { font-size: 15px; color: #2a2a2a; font-weight: 300; line-height: 1.65; margin-bottom: 28px; flex-grow: 1; }
+    .post-card__meta { font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .2em; text-transform: uppercase; color: var(--grey-medium); margin-bottom: 24px; }
+    .post-card__meta span { color: var(--gold); margin: 0 10px; }
+    .post-card__cta { font-family: var(--font-sans); font-size: 11px; font-weight: 400; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); align-self: flex-start; padding-top: 16px; border-top: 1px solid rgba(184,151,46,.3); width: 100%; }
+    .post-card__cta::after { content: " →"; transition: transform .3s; display: inline-block; }
+    .post-card:hover .post-card__cta::after { transform: translateX(4px); }
+
+    /* Coming soon */
+    .post-card--soon { opacity: .55; pointer-events: none; }
+    .post-card--soon .post-card__cta { color: var(--grey-medium); }
+    .post-card--soon .post-card__cta::after { content: ""; }
+
+    /* CTA */
+    .cta-box { background: var(--navy-deep); text-align: center; padding: 90px 32px; border-top: 1px solid rgba(184,151,46,.2); }
+    .cta-box__lbl { font-family: var(--font-sans); font-size: 11px; font-weight: 300; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+    .cta-box__h { font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 42px); font-weight: 500; color: var(--white); margin-bottom: 20px; line-height: 1.2; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .cta-box__p { font-family: var(--font-serif); font-style: italic; font-size: 18px; color: rgba(255,255,255,.7); margin-bottom: 36px; max-width: 560px; margin-left: auto; margin-right: auto; font-weight: 400; }
+    .cta-box__btn { display: inline-block; background: transparent; color: var(--gold); border: 1px solid var(--gold); padding: 20px 48px; font-family: var(--font-sans); font-size: 11px; font-weight: 400; letter-spacing: .25em; text-transform: uppercase; transition: all .3s; }
+    .cta-box__btn:hover { background: var(--gold); color: var(--navy-deep); }
+
+    /* Footer */
+    .ftr { background: var(--navy-deep); color: var(--grey-medium); padding: 36px 80px; text-align: center; font-size: 11px; font-weight: 300; letter-spacing: .15em; text-transform: uppercase; border-top: 1px solid rgba(184,151,46,.4); }
+    .ftr a { color: var(--grey-medium); }
+    .ftr a:hover { color: var(--gold); }
+
+    @media (max-width: 768px) {
+      .hdr { padding: 16px 24px; }
+      .blog-hero { padding: 60px 24px 56px; }
+      .blog-hero__h1 { font-size: 30px; }
+      .posts { padding: 60px 20px; }
+      .posts__grid { grid-template-columns: 1fr; gap: 22px; }
+      .post-card { padding: 36px 28px; }
+      .post-card__h { font-size: 22px; }
+      .cta-box { padding: 60px 24px; }
+      .ftr { padding: 24px; }
+    }
+  </style>
+
+  <!-- Schema.org · Blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Yoruu AI Studio Blog",
+    "description": "Estrategia y vídeo IA para inmobiliarias de lujo en España.",
+    "url": "https://yoruuia.com/blog/",
+    "publisher": { "@type": "Organization", "name": "Yoruu AI Studio", "url": "https://yoruuia.com" }
+  }
+  </script>
+
+  <!-- Schema.org · BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://yoruuia.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://yoruuia.com/blog/" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="../index.html" class="logo" aria-label="Yoruu AI Studio — Inicio">
+    <span class="logo__w">YORUU</span>
+    <span class="logo__s">AI&nbsp;STUDIO</span>
+  </a>
+  <a href="../index.html" class="back">&larr; INICIO</a>
+</header>
+
+<section class="blog-hero">
+  <span class="blog-hero__lbl">Yoruu Journal</span>
+  <h1 class="blog-hero__h1">Estrategia y vídeo IA para inmobiliarias de lujo</h1>
+  <p class="blog-hero__sub">Cómo las agencias premium en España están usando inteligencia artificial para captar más exclusivas, vender más rápido y llegar al comprador internacional.</p>
+</section>
+
+<section class="posts">
+  <p class="posts__lbl">Últimas publicaciones</p>
+  <h2 class="posts__title">Artículos del mes</h2>
+
+  <div class="posts__grid">
+
+    <a href="captar-viviendas-exclusiva-video-ia.html" class="post-card">
+      <span class="post-card__lbl">Captación · Inmobiliaria de lujo</span>
+      <h3 class="post-card__h">Cómo captar viviendas de lujo en exclusiva con vídeo IA</h3>
+      <p class="post-card__p">El sistema que usan las agencias top en España para cerrar mandatos exclusivos antes que la competencia — sin rodajes, sin cámaras, sin esperas.</p>
+      <p class="post-card__meta">18 Junio 2026 <span>·</span> 10 min</p>
+      <span class="post-card__cta">Leer artículo</span>
+    </a>
+
+    <div class="post-card post-card--soon">
+      <span class="post-card__lbl">Próximamente · Semana 2</span>
+      <h3 class="post-card__h">Vídeo inmobiliario con IA: qué es y por qué tu agencia lo necesita en 2026</h3>
+      <p class="post-card__p">Cómo funciona el vídeo IA, qué diferencia hay con el vídeo tradicional y qué resultados puede esperar una agencia de lujo en su primer trimestre.</p>
+      <p class="post-card__meta">25 Junio 2026 <span>·</span> 12 min</p>
+      <span class="post-card__cta">Próximamente</span>
+    </div>
+
+    <div class="post-card post-card--soon">
+      <span class="post-card__lbl">Próximamente · Semana 3</span>
+      <h3 class="post-card__h">Virtual Staging: vende propiedades vacías como si estuvieran amuebladas</h3>
+      <p class="post-card__p">La técnica que permite a promotoras y agencias acelerar la venta de obra nueva sin invertir en decoración real.</p>
+      <p class="post-card__meta">02 Julio 2026 <span>·</span> 8 min</p>
+      <span class="post-card__cta">Próximamente</span>
+    </div>
+
+    <div class="post-card post-card--soon">
+      <span class="post-card__lbl">Próximamente · Semana 4</span>
+      <h3 class="post-card__h">Cómo vender inmuebles a compradores internacionales desde España</h3>
+      <p class="post-card__p">Estrategia multilingüe con avatares IA para llegar a escandinavos, alemanes, británicos y holandeses antes de que pisen el inmueble.</p>
+      <p class="post-card__meta">09 Julio 2026 <span>·</span> 9 min</p>
+      <span class="post-card__cta">Próximamente</span>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-box">
+  <p class="cta-box__lbl">El siguiente paso</p>
+  <h2 class="cta-box__h">Hablemos del sistema que cambiará tu próxima captación</h2>
+  <p class="cta-box__p">Una llamada de 20 minutos. Te enseñamos, con propiedades reales como las tuyas, cómo se construye el vídeo y cómo se integra en tu proceso comercial.</p>
+  <a href="../index.html#contacto" class="cta-box__btn">Agenda tu llamada estratégica</a>
+</div>
+
+<footer class="ftr">
+  <p>&copy; 2026 Yoruu AI Studio &middot; <a href="../index.html">Inicio</a> &middot; <a href="../legal/privacidad.html">Privacidad</a> &middot; <a href="../legal/cookies.html">Cookies</a></p>
+</footer>
+
+</body>
+</html>
