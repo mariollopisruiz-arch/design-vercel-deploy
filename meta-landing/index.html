@@ -31,8 +31,6 @@ window.META_PIXEL_ID = '1061614056464511';
   document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', window.META_PIXEL_ID); fbq('track', 'PageView');
 })();
-window.trackLead = function() { if (window.fbq) fbq('track', 'Lead'); };
-window.trackWhatsApp = function() { if (window.fbq) fbq('track', 'Contact'); };
 </script>
 <noscript><img height="1" width="1" style="display:none"
   src="https://www.facebook.com/tr?id=1061614056464511&ev=PageView&noscript=1" alt=""></noscript>
@@ -169,6 +167,9 @@ img{max-width:100%;display:block}
 .consent a:hover{color:var(--gold-hover)}
 .cform-btn{width:100%;background:var(--gold);color:var(--navy);border:none;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:19px;transition:background .3s;margin-top:6px}
 .cform-btn:hover{background:var(--gold-hover)}
+.form-msg{margin-top:14px;font-size:13px;font-weight:400;text-align:center;min-height:18px}
+.form-msg--error{color:#B23B3B}
+.form-msg--success{color:var(--navy);font-weight:500}
 
 /* ── FOOTER ── */
 .footer{background:var(--navy);border-top:1px solid var(--gold);padding:28px 24px;text-align:center}
@@ -223,7 +224,7 @@ img{max-width:100%;display:block}
     <div class="hero-logo fi"><span class="lg-main">YORUU</span><span class="lg-sub">AI STUDIO</span></div>
     <h1 class="hero-h1 fi">Vídeo con IA para vender propiedades de lujo</h1>
     <p class="hero-sub fi">Contenido y campañas en Meta Ads a partir de las fotos que ya tienes. Sin rodajes, sin editor, sin esperas.</p>
-    <a href="#contacto" class="hero-bridge fi" style="font-weight:600;display:inline-block;border:1px solid var(--gold);padding:14px 28px;letter-spacing:.16em" onclick="if(window.trackLead)trackLead();">QUIERO HABLAR</a>
+    <a href="#contacto" class="hero-bridge fi" style="font-weight:600;display:inline-block;border:1px solid var(--gold);padding:14px 28px;letter-spacing:.16em">QUIERO HABLAR</a>
   </div>
 </section>
 
@@ -344,6 +345,7 @@ img{max-width:100%;display:block}
         <label for="consent">He leído y acepto la <a href="../legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> de Yoruu AI Studio.</label>
       </div>
       <button type="submit" class="cform-btn">QUIERO HABLAR</button>
+      <p class="form-msg" id="formMsg" role="alert" aria-live="polite"></p>
     </form>
   </div>
 </section>
@@ -377,16 +379,70 @@ window.addEventListener('scroll',()=>{
 
 document.getElementById('stickyBtn').addEventListener('click',()=>{
   formEl.scrollIntoView({behavior:'smooth',block:'start'});
-  if(window.trackLead) window.trackLead();
 });
+
+/* ── Meta CAPI helpers ──────────────────────────────── */
+function genEventId(){
+  return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'ev_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+}
+function getCookie(name){
+  const m=document.cookie.match(new RegExp('(?:^|; )'+name+'=([^;]*)'));
+  return m ? decodeURIComponent(m[1]) : undefined;
+}
+function sendCapiEvent(eventName,eventId,extra){
+  try{
+    fetch('/api/lead',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(Object.assign({
+        event_name:eventName,
+        event_id:eventId,
+        event_source_url:window.location.href,
+        fbc:getCookie('_fbc'),
+        fbp:getCookie('_fbp')
+      },extra||{})),
+      keepalive:true
+    }).catch(()=>{});
+  }catch(_){}
+}
+
+/* ── Validación del formulario ──────────────────────── */
+const formMsg=document.getElementById('formMsg');
+function setFormMsg(text,type){
+  formMsg.textContent=text;
+  formMsg.className='form-msg'+(type?' form-msg--'+type:'');
+}
+function validarFormulario(form){
+  const errores=[];
+  const nombre=form.nombre.value.trim();
+  const inmobiliaria=form.inmobiliaria.value.trim();
+  const email=form.email.value.trim();
+  const telefono=form.telefono.value.trim();
+  if(!nombre) errores.push('Indica tu nombre.');
+  if(!inmobiliaria) errores.push('Indica el nombre de tu inmobiliaria.');
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errores.push('Introduce un email válido.');
+  if(!telefono || !/^[+\d][\d\s().-]{6,}$/.test(telefono)) errores.push('Introduce un teléfono válido.');
+  if(!form.consent.checked) errores.push('Debes aceptar la política de privacidad.');
+  return errores;
+}
 
 document.getElementById('leadform').addEventListener('submit',async e=>{
   e.preventDefault();
   const form=e.target;
   const btn=form.querySelector('.cform-btn');
-  const orig=btn.textContent;
+
+  const errores=validarFormulario(form);
+  if(errores.length){
+    setFormMsg(errores[0],'error');
+    return;
+  }
+
   btn.disabled=true;
   btn.textContent='ENVIANDO…';
+  setFormMsg('','');
+
+  const eventId=genEventId();
+
   try{
     const fd=new FormData(form);
     fd.append('_source','meta-landing');
@@ -396,13 +452,24 @@ document.getElementById('leadform').addEventListener('submit',async e=>{
       headers:{Accept:'application/json'}
     });
     if(!res.ok) throw new Error('Formspree '+res.status);
+
+    // Solo se dispara el evento Lead si el formulario se validó y envió con éxito.
+    // Mismo event_id en Pixel (navegador) y CAPI (servidor) para que Meta deduplique.
+    if(window.fbq) fbq('track','Lead',{},{eventID:eventId});
+    sendCapiEvent('Lead',eventId,{
+      nombre:form.nombre.value.trim(),
+      email:form.email.value.trim(),
+      telefono:form.telefono.value.trim()
+    });
+
     btn.textContent='ENVIADO — TE CONTACTAMOS PRONTO ✓';
     btn.style.cssText='background:var(--navy);color:var(--gold);border:1px solid var(--gold);';
+    setFormMsg('Gracias, hemos recibido tus datos. Te contactamos en menos de 24h.','success');
     form.reset();
-    if(window.trackLead) window.trackLead();
   }catch(err){
     btn.textContent='ERROR — INTÉNTALO DE NUEVO';
     btn.style.cssText='background:transparent;color:var(--gold);border:1px solid var(--gold);';
+    setFormMsg('Ha habido un error al enviar el formulario. Inténtalo de nuevo o escríbenos por WhatsApp.','error');
   }finally{
     setTimeout(()=>{btn.disabled=false;},3000);
   }
@@ -415,6 +482,15 @@ document.querySelectorAll('.hero video').forEach(v=>{
   document.addEventListener('touchstart',tryPlay,{once:true});
   document.addEventListener('click',tryPlay,{once:true});
 });
+
+/* ── WhatsApp: Pixel + CAPI con event_id compartido ───
+   Delegación en document: el botón se define más abajo en el DOM. */
+document.addEventListener('click',e=>{
+  if(!e.target.closest('.wa-float')) return;
+  const eventId=genEventId();
+  if(window.fbq) fbq('track','Contact',{},{eventID:eventId});
+  sendCapiEvent('Contact',eventId,{});
+});
 </script>
 
 
@@ -422,8 +498,7 @@ document.querySelectorAll('.hero video').forEach(v=>{
 <!-- WhatsApp flotante -->
 <a href="https://wa.me/34633619117?text=Hola%2C%20he%20visto%20vuestros%20an%C3%BAncios%20y%20quer%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20v%C3%ADdeo%20IA%20para%20mi%20inmobiliaria."
    class="wa-float" target="_blank" rel="noopener"
-   aria-label="Contactar por WhatsApp"
-   onclick="if(window.trackWhatsApp)trackWhatsApp();">
+   aria-label="Contactar por WhatsApp">
   <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M16 3C9 3 3 8.9 3 16c0 2.4.7 4.6 1.9 6.5L3 29l6.7-1.8c1.9 1 4 1.6 6.3 1.6C23 28.8 29 22.9 29 15.8 29 8.7 23 3 16 3zm7.5 18.2c-.3.9-1.8 1.7-2.5 1.8-.6.1-1.5.1-2.4-.2-.6-.2-1.3-.4-2.3-.8-4-1.7-6.6-5.7-6.8-6-.2-.3-1.6-2.2-1.6-4.1 0-2 1-3 1.4-3.4.4-.4.8-.5 1.1-.5.3 0 .5 0 .8.01.2.01.5-.1.8.6.3.7 1 2.4 1.1 2.6.1.2.1.4 0 .6-.1.2-.2.4-.3.6-.2.2-.3.4-.5.6-.2.2-.4.5-.2.8.2.3.9 1.5 2 2.4 1.4 1.2 2.5 1.6 2.8 1.7.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.3.7-.2.3.1 1.9.9 2.3 1.1.4.2.6.3.7.4.1.2.1.9-.2 1.9z" fill="#fff"/>
   </svg>
