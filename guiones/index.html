@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generador de guiones para captar propietarios · Yoruu AI Studio</title>
+<meta name="description" content="Genera guiones de vídeo para captar propietarios en minutos. Generador para Claude + guía de instalación. Gratis.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://yoruuia.com/guiones">
+<meta name="theme-color" content="#0B1929">
+
+<!-- Open Graph (vista previa del enlace en los DM de Instagram) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yoruu AI Studio">
+<meta property="og:locale" content="es_ES">
+<meta property="og:url" content="https://yoruuia.com/guiones">
+<meta property="og:title" content="Generador de guiones para captar propietarios">
+<meta property="og:description" content="Ángulos y guiones de vídeo corto para captar propietarios vendedores, en minutos. Gratis.">
+<meta property="og:image" content="https://yoruuia.com/assets/img/case-1.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230B1929'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23B8972E'%3EY%3C/text%3E%3C/svg%3E">
+
+<!-- La página siempre carga arriba del todo: sin restaurar scroll y sin ancla en la URL -->
+<script>
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+window.scrollTo(0, 0);
+window.addEventListener('pageshow', function () { window.scrollTo(0, 0); });
+window.addEventListener('load', function () { window.scrollTo(0, 0); });
+</script>
+
+<!-- Meta Pixel -->
+<script>
+window.META_PIXEL_ID = '1061614056464511';
+(function() {
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', window.META_PIXEL_ID); fbq('track', 'PageView');
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1061614056464511&ev=PageView&noscript=1" alt=""></noscript>
+
+<!-- GA4 con consent-gate -->
+<script>
+window.GA_MEASUREMENT_ID = 'G-0FBJLGEZS4';
+function loadGoogleAnalytics() {
+  if (window.__gaLoaded) return;
+  window.__gaLoaded = true;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = 'https://www.googletagmanager.com/gtag/js?id=' + window.GA_MEASUREMENT_ID;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', window.GA_MEASUREMENT_ID, { anonymize_ip: true });
+}
+try { if (localStorage.getItem('yoruu-cookie-consent') === 'accepted') loadGoogleAnalytics(); } catch(_) {}
+window.addEventListener('cookie-consent', (e) => { if (e.detail === 'accepted') loadGoogleAnalytics(); });
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B1929;--cream:#FBF9F5;--gold:#B8972E;--gold-hover:#D4AE3A;
+  --grey-oncream:#6B6B63;--error:#B23B3B;
+  --font-serif:'Cormorant Garamond',Didot,Bodoni,serif;
+  --font-sans:'Inter',-apple-system,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-sans);background:var(--cream);color:var(--navy);overflow-x:hidden}
+a{color:inherit}
+button{cursor:pointer;font-family:inherit}
+[hidden]{display:none!important}
+.wrap{max-width:480px;margin:0 auto;padding:22px 20px 36px}
+
+/* ── Marca ── */
+.brand{display:flex;flex-direction:column;align-items:center;gap:3px;margin-bottom:22px}
+.brand .lg-main{font-family:var(--font-serif);font-weight:700;font-size:22px;color:var(--gold);letter-spacing:.1em;line-height:1}
+.brand .lg-sub{font-weight:300;font-size:9px;color:var(--gold);letter-spacing:.35em;line-height:1}
+
+/* ── Intro ── */
+.intro{text-align:center;margin-bottom:22px}
+.lbl{display:block;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.h1{font-family:var(--font-serif);font-weight:600;font-size:clamp(28px,7.6vw,38px);line-height:1.15;color:var(--navy);margin-bottom:12px;text-wrap:balance}
+.sub{font-size:15px;font-weight:300;line-height:1.55;color:var(--grey-oncream)}
+
+/* ── Formulario ── */
+.cform{display:flex;flex-direction:column;gap:10px}
+.cform input[type=text],.cform input[type=tel],.cform select{
+  width:100%;background:#fff;border:1px solid rgba(184,151,46,.6);color:var(--navy);
+  padding:14px 16px;font-family:var(--font-sans);font-size:16px;font-weight:400;
+  border-radius:0;outline:none;transition:border-color .2s;-webkit-appearance:none;appearance:none}
+.cform input::placeholder{color:#9A9890}
+.cform select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23B8972E' stroke-width='1.5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:12px 8px;padding-right:40px}
+.cform select:invalid{color:#9A9890}
+.cform input:focus,.cform select:focus{border-color:var(--gold-hover)}
+.cform [aria-invalid="true"]{border-color:var(--error)}
+.consent{display:flex;gap:10px;align-items:flex-start;margin-top:4px}
+.consent input{width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--gold)}
+.consent label{font-size:12px;font-weight:300;line-height:1.5;color:var(--grey-oncream)}
+.consent a{color:var(--gold);text-decoration:underline}
+.cform-btn{width:100%;background:var(--gold);color:var(--navy);border:none;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:18px;margin-top:4px;transition:background .2s}
+.cform-btn:hover{background:var(--gold-hover)}
+.cform-btn:disabled{opacity:.7;cursor:default}
+.form-msg{font-size:13px;line-height:1.45;text-align:center;min-height:18px}
+.form-msg--error{color:var(--error)}
+
+/* ── Vista de gracias ── */
+.gracias{background:var(--navy);color:#fff;padding:28px 22px;text-align:center;border-top:3px solid var(--gold)}
+.gracias-h{font-family:var(--font-serif);font-weight:600;font-size:28px;line-height:1.2;margin-bottom:20px}
+.dl{display:block;width:100%;padding:16px;font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;margin-bottom:10px}
+.dl--main{background:var(--gold);color:var(--navy)}
+.dl--main:hover{background:var(--gold-hover)}
+.dl--alt{border:1px solid var(--gold);color:var(--gold)}
+.pasos{text-align:left;margin-top:18px;padding-top:18px;border-top:1px solid rgba(184,151,46,.35);list-style:none;counter-reset:p}
+.pasos li{counter-increment:p;position:relative;padding-left:30px;font-size:14px;font-weight:300;line-height:1.5;color:#E8E6E0;margin-bottom:10px}
+.pasos li::before{content:counter(p);position:absolute;left:0;top:0;width:20px;height:20px;border:1px solid var(--gold);border-radius:50%;font-size:11px;line-height:18px;text-align:center;color:var(--gold)}
+.pasos strong{color:#fff;font-weight:500}
+.nota{font-size:12px;font-weight:300;line-height:1.5;color:#C8C4BC;margin-top:6px}
+
+/* ── Qué incluye ── */
+.incluye{margin-top:34px;padding-top:26px;border-top:1px solid rgba(184,151,46,.4)}
+.incluye .lbl{text-align:center;margin-bottom:16px}
+.incluye ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.incluye li{display:flex;gap:12px;align-items:flex-start;font-size:15px;font-weight:300;line-height:1.5}
+.incluye li strong{font-weight:500}
+.check{flex-shrink:0;width:20px;height:20px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.check svg{width:10px;height:10px}
+
+/* ── Marca final ── */
+.pie{margin-top:34px;text-align:center;font-size:12px;font-weight:300;color:var(--grey-oncream);letter-spacing:.04em}
+.pie strong{font-family:var(--font-serif);font-size:15px;font-weight:700;color:var(--gold);letter-spacing:.1em}
+
+@media (min-width:768px){
+  .wrap{padding-top:48px}
+  .h1{font-size:40px}
+}
+</style>
+</head>
+
+<body>
+<main class="wrap">
+
+  <div class="brand"><span class="lg-main">YORUU</span><span class="lg-sub">AI STUDIO</span></div>
+
+  <header class="intro">
+    <span class="lbl">Recurso gratuito</span>
+    <h1 class="h1">Genera guiones para captar propietarios en minutos</h1>
+    <p class="sub">Un generador de guiones para Claude y la guía para instalarlo en 5 minutos. Gratis.</p>
+  </header>
+
+  <section id="bloque-form" aria-label="Formulario">
+    <form class="cform" id="leadform" novalidate>
+      <input type="text" name="nombre" placeholder="Nombre" autocomplete="name" required aria-label="Nombre">
+      <input type="tel" name="telefono" placeholder="Teléfono móvil" autocomplete="tel" inputmode="tel" required aria-label="Teléfono móvil">
+      <input type="text" name="inmobiliaria" placeholder="Nombre de la inmobiliaria" autocomplete="organization" required aria-label="Nombre de la inmobiliaria">
+      <select name="rol" required aria-label="Rol">
+        <option value="" disabled selected>¿Cuál es tu rol?</option>
+        <option value="Dueño/a">Soy dueño/a</option>
+        <option value="Asesor/a">Soy asesor/a</option>
+      </select>
+      <div class="consent">
+        <input type="checkbox" id="consent" name="consentimiento" value="aceptado" required>
+        <label for="consent">He leído y acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu AI Studio me contacte en relación con este recurso.</label>
+      </div>
+      <input type="hidden" name="origen" value="guiones">
+      <input type="hidden" name="_subject" value="Nuevo lead — Generador de guiones">
+      <button type="submit" class="cform-btn">Quiero el generador</button>
+      <p class="form-msg" id="formMsg" role="alert" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section class="gracias" id="gracias" hidden tabindex="-1" aria-labelledby="gracias-h">
+    <h2 class="gracias-h" id="gracias-h">Listo. Aquí tienes tu generador.</h2>
+    <a class="dl dl--main" href="/guiones/descargas/guiones-captacion-propietarios.zip" download>Descargar el generador (.zip)</a>
+    <a class="dl dl--alt" href="/guiones/descargas/Guia_instalacion_skill_Yoruu.pdf" target="_blank" rel="noopener">Guía de instalación (PDF)</a>
+    <ol class="pasos">
+      <li>Descarga el <strong>.zip</strong> y guárdalo tal cual, <strong>sin descomprimirlo</strong>.</li>
+      <li>En Claude, entra en <strong>Ajustes &gt; Capacidades</strong> y activa <strong>Ejecutar código en la nube</strong>.</li>
+      <li>Ve a <strong>Ajustes &gt; Skills &gt; + Añadir &gt; Subir Skill</strong> y sube el .zip.</li>
+      <li>Abre un chat nuevo y escribe: <strong>"Quiero ideas de ángulos para captar propietarios en [tu zona]"</strong>.</li>
+    </ol>
+    <p class="nota">La instalación se hace desde Claude en el ordenador (web o app de escritorio). Si estás en el móvil, guarda los archivos y termina desde el ordenador.</p>
+  </section>
+
+  <section class="incluye" aria-labelledby="incluye-h">
+    <span class="lbl" id="incluye-h">Qué incluye</span>
+    <ul>
+      <li><span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#B8972E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><strong>Ángulos de captación</strong> adaptados a tu zona, al tipo de propiedad y a la objeción que más frena al propietario.</span></li>
+      <li><span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#B8972E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><strong>Guion completo</strong> con 3 ganchos, desarrollo y cierre, texto en pantalla y pie del post.</span></li>
+      <li><span class="check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#B8972E" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><strong>Guía de instalación</strong> paso a paso: lo tienes funcionando en 5 minutos.</span></li>
+    </ul>
+  </section>
+
+  <p class="pie"><strong>YORUU</strong> &nbsp;AI Studio · Transformamos espacios. Generamos negocio.</p>
+
+</main>
+
+<script>
+/* ── Meta CAPI (deduplicado con el Pixel mediante event_id) ── */
+function genEventId(){
+  return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'ev_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+}
+function getCookie(name){
+  const m=document.cookie.match(new RegExp('(?:^|; )'+name+'=([^;]*)'));
+  return m ? decodeURIComponent(m[1]) : undefined;
+}
+function sendCapiEvent(eventName,eventId,extra){
+  try{
+    fetch('/api/lead',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(Object.assign({
+        event_name:eventName,
+        event_id:eventId,
+        event_source_url:window.location.href,
+        fbc:getCookie('_fbc'),
+        fbp:getCookie('_fbp')
+      },extra||{})),
+      keepalive:true
+    }).catch(()=>{});
+  }catch(_){}
+}
+
+/* ── Validación ── */
+const form=document.getElementById('leadform');
+const formMsg=document.getElementById('formMsg');
+const btn=form.querySelector('.cform-btn');
+
+function setFormMsg(text,type){
+  formMsg.textContent=text;
+  formMsg.className='form-msg'+(type?' form-msg--'+type:'');
+}
+// Móvil español: 9 dígitos empezando por 6 o 7, con o sin prefijo +34 / 0034
+function telefonoValido(v){
+  const n=v.replace(/[\s.\-()]/g,'');
+  return /^(?:\+34|0034|34)?[67]\d{8}$/.test(n);
+}
+function validar(){
+  const checks=[
+    [form.nombre, form.nombre.value.trim()!=='', 'Indica tu nombre.'],
+    [form.telefono, telefonoValido(form.telefono.value), 'Introduce un móvil español válido (ej. 612 345 678).'],
+    [form.inmobiliaria, form.inmobiliaria.value.trim()!=='', 'Indica el nombre de tu inmobiliaria.'],
+    [form.rol, form.rol.value!=='', 'Elige si eres dueño/a o asesor/a.'],
+    [form.consentimiento, form.consentimiento.checked, 'Debes aceptar la política de privacidad.']
+  ];
+  let primerError=null;
+  checks.forEach(([el,ok,msg])=>{
+    el.setAttribute('aria-invalid', ok ? 'false' : 'true');
+    if(!ok && !primerError) primerError={el,msg};
+  });
+  return primerError;
+}
+form.addEventListener('input',e=>{ if(e.target.getAttribute('aria-invalid')==='true') e.target.setAttribute('aria-invalid','false'); });
+form.addEventListener('change',e=>{ if(e.target.getAttribute('aria-invalid')==='true') e.target.setAttribute('aria-invalid','false'); });
+
+/* ── Envío a Formspree (AJAX) y vista de gracias en la misma página ── */
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const error=validar();
+  if(error){ setFormMsg(error.msg,'error'); error.el.focus({preventScroll:true}); return; }
+
+  btn.disabled=true;
+  btn.textContent='Enviando…';
+  setFormMsg('','');
+  const eventId=genEventId();
+
+  try{
+    const res=await fetch('https://formspree.io/f/mqejvrkj',{
+      method:'POST',
+      body:new FormData(form),
+      headers:{Accept:'application/json'}
+    });
+    if(!res.ok) throw new Error('Formspree '+res.status);
+
+    // Lead solo tras envío correcto: mismo event_id en Pixel y CAPI para deduplicar
+    if(window.fbq) fbq('track','Lead',{content_name:'generador-guiones'},{eventID:eventId});
+    sendCapiEvent('Lead',eventId,{
+      nombre:form.nombre.value.trim(),
+      telefono:form.telefono.value.trim()
+    });
+    if(window.gtag) gtag('event','generate_lead',{lead_source:'guiones'});
+
+    document.getElementById('bloque-form').hidden=true;
+    const gracias=document.getElementById('gracias');
+    gracias.hidden=false;
+    gracias.focus({preventScroll:true});
+    gracias.scrollIntoView({behavior:'smooth',block:'start'});
+  }catch(err){
+    btn.disabled=false;
+    btn.textContent='Quiero el generador';
+    setFormMsg('No se ha podido enviar. Revisa tu conexión e inténtalo de nuevo.','error');
+  }
+});
+</script>
+</body></html>
