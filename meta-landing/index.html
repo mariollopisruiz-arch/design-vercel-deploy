@@ -96,7 +96,7 @@ a{color:inherit}
 .logo b{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:.1em;color:var(--gold);line-height:1}
 .logo small{font-size:9px;font-weight:300;letter-spacing:.32em;color:var(--gold);line-height:1}
 .top-right{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:12px}
-.mario{display:block;width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 6px 16px rgba(0,0,0,.35);object-fit:cover;animation:flota 4s ease-in-out infinite}
+.mario{display:block;width:80px;height:80px;margin:0 auto 12px;border-radius:50%;border:2px solid var(--gold);background:#E9E7E2;box-shadow:0 10px 28px rgba(0,0,0,.45);object-fit:cover;animation:flota 4s ease-in-out infinite}
 @keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @media (prefers-reduced-motion:reduce){.mario{animation:none}}
 
@@ -105,17 +105,18 @@ a{color:inherit}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% center}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,25,41,.45) 0%,rgba(11,25,41,.62) 30%,rgba(11,25,41,.80) 58%,rgba(11,25,41,.92) 100%)}
-.hero-in{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:6px 20px 26px;display:grid;gap:0}
+.hero-text{text-align:center}
+.hero-in{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:0 20px 24px;display:grid;gap:0}
 
 /* Oferta (H1 y H2 final) en tres líneas */
-.oferta{text-shadow:0 2px 18px rgba(11,25,41,.55);font-family:var(--serif);font-weight:600;font-size:clamp(32px,9vw,36px);line-height:1.04;margin:0 0 12px;letter-spacing:-.005em}
+.oferta{text-shadow:0 2px 18px rgba(11,25,41,.55);font-family:var(--serif);font-weight:600;font-size:clamp(32px,9vw,36px);line-height:1.04;margin:0 0 10px;letter-spacing:-.005em}
 .oferta>span{display:block}
 .of-1{font-weight:500;font-size:.8em;color:#fff}
 .of-2{font-weight:700;font-size:1.06em;color:var(--gold-h);white-space:nowrap}
 .of-3{font-weight:500;font-size:.8em;color:#fff}
 .of-3 em{font-style:italic;color:var(--on-navy)}
-.oferta::after{content:'';display:block;width:44px;height:1px;margin-top:12px;background:var(--gold)}
-.hero-sub{text-shadow:0 1px 10px rgba(11,25,41,.7);font-size:15px;font-weight:300;line-height:1.5;color:var(--on-navy);margin:0 0 16px}
+.oferta::after{content:'';display:block;width:44px;height:1px;margin:10px auto 0;background:var(--gold)}
+.hero-sub{text-shadow:0 1px 10px rgba(11,25,41,.7);font-size:15px;font-weight:300;line-height:1.5;color:var(--on-navy);margin:0 0 14px}
 .hero-sub strong{font-weight:500;color:#fff}
 
 /* ── Formulario (un solo paso) ── */
@@ -139,7 +140,7 @@ a{color:inherit}
 .lead-ok p{margin:0;font-size:15px;font-weight:300;line-height:1.5;color:var(--on-navy)}
 
 /* ── Clientes ── */
-.trust{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+.trust{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin-top:12px}
 .trust span{font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--on-navy)}
 .trust img{width:auto;opacity:.9}
 .trust .t-dsh{height:30px}
@@ -163,7 +164,6 @@ a{color:inherit}
 .caso-txt{max-width:480px;margin:0 auto;text-align:center;font-size:15px;font-weight:300;line-height:1.55;color:var(--muted)}
 .caso-txt strong{font-weight:500;color:var(--ink)}
 .oferta--c{text-align:center}
-.oferta--c::after{margin-left:auto;margin-right:auto}
 .cta-final .trust{margin-top:18px}
 .cta-final .intro{color:var(--on-navy)}
 .cta-box{max-width:480px;margin:0 auto}
@@ -182,13 +182,13 @@ a{color:inherit}
 @media (min-width:900px){
   .top{height:76px;padding:0 32px}
   .top-right{right:32px}
-  .mario{width:52px;height:52px}
+  .mario{width:108px;height:108px}
   .hero-in{max-width:1080px;grid-template-columns:minmax(0,1fr) 400px;grid-template-areas:"texto form" "trust form";column-gap:72px;align-items:center;padding:28px 32px 88px}
   .hero-text{grid-area:texto}
   .hero .lead-wrap{grid-area:form;padding:28px;background:rgba(11,25,41,.72);border:1px solid rgba(184,151,46,.45)}
-  .hero .trust{grid-area:trust;justify-content:flex-start;align-self:start;margin-top:8px}
+  .hero .trust{grid-area:trust;align-self:start;margin-top:8px}
   .oferta{font-size:54px}
-  .hero-sub{font-size:17px;max-width:520px}
+  .hero-sub{font-size:17px;max-width:480px;margin-left:auto;margin-right:auto}
   .sec{padding:88px 0}
   .wrap{max-width:760px}
   .pasos{grid-template-columns:1fr 1fr;gap:36px 48px}
@@ -204,11 +204,12 @@ a{color:inherit}
     <source media="(min-width: 900px)" srcset="/assets/img/hero-villa-desktop.webp">
     <img src="/assets/img/hero-villa-mobile.webp" width="828" height="1108" alt="" fetchpriority="high" decoding="async">
   </picture>
-  <header class="top"><a href="/" class="logo" aria-label="Yoruu AI Studio — inicio"><b>YORUU</b><small>AI STUDIO</small></a><div class="top-right"><img class="mario" src="/assets/img/mario-160.webp" width="42" height="42" alt="Mario, fundador de Yoruu AI Studio" decoding="async"></div></header>
+  <header class="top"><a href="/" class="logo" aria-label="Yoruu AI Studio — inicio"><b>YORUU</b><small>AI STUDIO</small></a></header>
   <div class="hero-in">
     <div class="hero-text">
+      <img class="mario" src="/assets/img/mario-240.webp" width="80" height="80" alt="Mario, fundador de Yoruu AI Studio" decoding="async">
       <h1 class="oferta" id="hero-h"><span class="of-1">Consigue</span><span class="of-2">de 1 a 2 exclusivas</span><span class="of-3">al mes, <em>sin grabarte</em></span></h1>
-      <p class="hero-sub">Instalamos en tu inmobiliaria un sistema de captación de propietarios con vídeo IA. <strong>Tú no grabas nada:</strong> nosotros producimos el contenido y lo ponemos a trabajar para que los propietarios te encuentren a ti.</p>
+      <p class="hero-sub">Instalamos en tu inmobiliaria un sistema de captación de propietarios con vídeo IA. <strong>Tú no grabas nada.</strong></p>
     </div>
     <div class="lead-wrap">
       <form class="lead" id="f1" novalidate>
