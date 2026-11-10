@@ -115,7 +115,7 @@ a{color:inherit}
 /* ── Formulario (un solo paso) ── */
 .lead{display:flex;flex-direction:column;gap:10px;margin:0}
 .lead[hidden],.lead-ok[hidden]{display:none}
-.lead input[type=text],.lead input[type=tel]{width:100%;min-height:48px;margin:0;padding:11px 16px;font:400 16px/1.25 var(--sans);color:var(--ink);background:#fff;border:1px solid #fff;border-radius:2px;-webkit-appearance:none;appearance:none}
+.lead input[type=text],.lead input[type=tel],.lead input[type=email]{width:100%;min-height:48px;margin:0;padding:11px 16px;font:400 16px/1.25 var(--sans);color:var(--ink);background:#fff;border:1px solid #fff;border-radius:2px;-webkit-appearance:none;appearance:none}
 .lead input::placeholder{color:#7A786F;opacity:1}
 .lead input:focus{outline:2px solid var(--gold-h);outline-offset:1px}
 .lead input[aria-invalid=true]{border-color:var(--err-light);box-shadow:0 0 0 2px var(--err-light)}
@@ -360,9 +360,11 @@ a{color:inherit}
         <input id="f1-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
         <label class="sr" for="f1-inmo">Nombre de la inmobiliaria</label>
         <input id="f1-inmo" name="inmobiliaria" type="text" placeholder="Nombre de la inmobiliaria" autocomplete="organization" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f1-email">Email</label>
+        <input id="f1-email" name="email" type="email" inputmode="email" placeholder="Email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" required>
         <label class="sr" for="f1-tel">Teléfono (WhatsApp)</label>
         <input id="f1-tel" name="telefono" type="tel" inputmode="tel" placeholder="Teléfono (WhatsApp)" autocomplete="tel" enterkeyhint="send" required>
-        <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp o teléfono.</span></label>
+        <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp, teléfono o email.</span></label>
         <button type="submit" class="lead-btn">Quiero conseguir exclusivas</button>
         <input type="hidden" name="origen" value="web">
         <input type="hidden" name="_subject" value="Nuevo lead — Exclusivas sin grabarte (web)">
@@ -445,9 +447,11 @@ a{color:inherit}
         <input id="f2-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
         <label class="sr" for="f2-inmo">Nombre de la inmobiliaria</label>
         <input id="f2-inmo" name="inmobiliaria" type="text" placeholder="Nombre de la inmobiliaria" autocomplete="organization" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f2-email">Email</label>
+        <input id="f2-email" name="email" type="email" inputmode="email" placeholder="Email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" required>
         <label class="sr" for="f2-tel">Teléfono (WhatsApp)</label>
         <input id="f2-tel" name="telefono" type="tel" inputmode="tel" placeholder="Teléfono (WhatsApp)" autocomplete="tel" enterkeyhint="send" required>
-        <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp o teléfono.</span></label>
+        <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp, teléfono o email.</span></label>
         <button type="submit" class="lead-btn">Quiero conseguir exclusivas</button>
         <input type="hidden" name="origen" value="web">
         <input type="hidden" name="_subject" value="Nuevo lead — Exclusivas sin grabarte (web)">
@@ -526,10 +530,10 @@ a{color:inherit}
 
   forms.forEach(function(form){
     var msg=form.querySelector('.lead-msg');
-    var nombre=form.elements.nombre, inmo=form.elements.inmobiliaria, tel=form.elements.telefono, consent=form.elements.consentimiento;
+    var nombre=form.elements.nombre, inmo=form.elements.inmobiliaria, email=form.elements.email, tel=form.elements.telefono, consent=form.elements.consentimiento;
     var btn=form.querySelector('button[type=submit]');
     function error(campo,texto){
-      [nombre,inmo,tel].forEach(function(c){ c.removeAttribute('aria-invalid'); });
+      [nombre,inmo,email,tel].forEach(function(c){ c.removeAttribute('aria-invalid'); });
       if(campo) campo.setAttribute('aria-invalid','true');
       msg.textContent=texto||'';
       return false;
@@ -538,6 +542,7 @@ a{color:inherit}
       e.preventDefault();
       if(!nombre.value.trim()) return error(nombre,'Indica tu nombre.');
       if(!inmo.value.trim()) return error(inmo,'Indica el nombre de tu inmobiliaria.');
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) return error(email,'Introduce un email válido.');
       if(!telValido(tel.value)) return error(tel,'Introduce un teléfono válido (móvil o WhatsApp).');
       if(!consent.checked) return error(null,'Para continuar, acepta la política de privacidad.');
       error(null,'');
@@ -548,7 +553,7 @@ a{color:inherit}
           // Evento Lead solo tras un envío correcto. Mismo event_id en Pixel y CAPI para que Meta deduplique.
           var eventId=genEventId();
           if(typeof window.fbq==='function') window.fbq('track','Lead',{},{eventID:eventId});
-          sendCapiEvent('Lead',eventId,{nombre:nombre.value.trim(),telefono:tel.value.trim()});
+          sendCapiEvent('Lead',eventId,{nombre:nombre.value.trim(),email:email.value.trim(),telefono:tel.value.trim()});
           ga('generate_lead',{lead_source:form.elements.origen.value});
           exito(nombre.value.trim());
         })
