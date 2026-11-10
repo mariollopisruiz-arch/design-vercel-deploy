@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html lang="es"><head>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yoruu AI Studio · Vídeo y Marketing IA para Real Estate de Lujo</title>
-<meta name="description" content="Saca el máximo rendimiento de tus RRSS y anuncios en Meta con vídeo creado por IA para propiedades de 1M€+.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Consigue de 1 a 2 exclusivas al mes sin grabarte · Yoruu AI Studio</title>
+<meta name="description" content="Sistema de captación de propietarios con vídeo IA para inmobiliarias. Tú no grabas nada: producimos el contenido y lo ponemos a trabajar para que los propietarios te encuentren a ti.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://yoruuia.com/meta-landing/index.html">
 <meta name="theme-color" content="#0B1929">
-
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yoruu AI Studio">
 <meta property="og:locale" content="es_ES">
 <meta property="og:url" content="https://yoruuia.com/meta-landing/index.html">
-<meta property="og:title" content="Vídeo IA para inmobiliarias de lujo — Yoruu AI Studio">
-<meta property="og:description" content="Saca el máximo rendimiento de tus RRSS y anuncios en Meta con vídeo creado por IA para propiedades de 1M€+.">
+<meta property="og:title" content="Consigue de 1 a 2 exclusivas al mes sin grabarte">
+<meta property="og:description" content="Sistema de captación de propietarios con vídeo IA para inmobiliarias. Tú no grabas nada: producimos el contenido y lo ponemos a trabajar para que los propietarios te encuentren a ti.">
 <meta property="og:image" content="https://yoruuia.com/assets/img/landing-hero.jpg">
-
-<!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%230B1929'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23B8972E'%3EY%3C/text%3E%3C/svg%3E">
+<script>
+/* La página abre siempre arriba, en el H1: sin anclas, sin restauración de scroll. */
+(function(){
+  try{
+    if('scrollRestoration' in history) history.scrollRestoration='manual';
+    if(location.hash) history.replaceState(null,'',location.pathname+location.search);
+  }catch(_){}
+  var tocado=false;
+  ['touchstart','wheel','keydown','mousedown'].forEach(function(t){
+    addEventListener(t,function(){ tocado=true; },{once:true,passive:true});
+  });
+  function arriba(){ if(!tocado) window.scrollTo(0,0); }
+  addEventListener('DOMContentLoaded',arriba);
+  addEventListener('load',arriba);
+  addEventListener('pageshow',function(e){ if(e.persisted) window.scrollTo(0,0); });
+})();
+</script>
 
 <!-- Meta Pixel -->
 <script>
@@ -56,435 +70,358 @@ window.addEventListener('cookie-consent', (e) => { if (e.detail === 'accepted') 
 </script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link rel="preload" as="image" href="../assets/img/landing-hero.jpg" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="/assets/img/hero-villa-mobile.webp" media="(max-width: 899px)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/hero-villa-desktop.webp" media="(min-width: 900px)" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0B1929;--cream:#FBF9F5;--gold:#B8972E;--gold-hover:#D4AE3A;
-  --grey-onnavy:#C8C4BC;--grey-oncream:#6B6B63;
-  --font-serif:'Cormorant Garamond',Didot,Bodoni,serif;
-  --font-sans:'Inter',-apple-system,sans-serif;
-  --tr:all .35s cubic-bezier(.4,0,.2,1);
+  --navy:#0B1929;--navy-2:#13263D;--cream:#FBF9F5;--white:#FFFFFF;
+  --gold:#B8972E;--gold-h:#D4AE3A;--ink:#0B1929;--muted:#5C5B54;--on-navy:#D9D5CC;
+  --err-dark:#A8322A;--err-light:#FFB3A8;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-body{font-family:var(--font-sans);background:var(--cream);overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-button{cursor:pointer;font-family:inherit}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);font-variant-numeric:lining-nums;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
-.lbl{display:block;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
-.rule{width:100%;height:1px;background:var(--gold);opacity:.5}
-.container{max-width:640px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.wrap{max-width:640px;margin:0 auto;padding:0 20px}
 
-/* ── PH placeholder ── */
-.ph{background:repeating-linear-gradient(-45deg,#162436 0,#162436 4px,#0e1d2e 4px,#0e1d2e 9px);position:relative;overflow:hidden}
-.ph::after{content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(184,151,46,.6);font-family:monospace;font-size:10px;letter-spacing:.06em;text-align:center;text-transform:uppercase;line-height:1.6;padding:12px;white-space:pre-wrap}
+/* ── Cabecera ── */
+.top{position:relative;z-index:3;display:flex;align-items:center;justify-content:center;height:56px;padding:0 20px;max-width:1080px;margin:0 auto}
+.logo{display:inline-flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none}
+.logo b{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:.1em;color:var(--gold);line-height:1}
+.logo small{font-size:9px;font-weight:300;letter-spacing:.32em;color:var(--gold);line-height:1}
+.top-right{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:12px}
+.mario{display:block;width:80px;height:80px;margin:0 auto 8px;border-radius:50%;border:2px solid var(--gold);background:#E9E7E2;box-shadow:0 10px 28px rgba(0,0,0,.45);object-fit:cover;animation:flota 4s ease-in-out infinite}
+@keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.mario{animation:none}}
 
-/* ── fade-in ── */
-.fi{opacity:0;transform:translateY(22px);transition:opacity .6s ease-out,transform .6s ease-out}
-.fi.on{opacity:1;transform:none}
+/* ── Bloque superior ── */
+.hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% center}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,25,41,.45) 0%,rgba(11,25,41,.62) 30%,rgba(11,25,41,.80) 58%,rgba(11,25,41,.92) 100%)}
+.hero-text{text-align:center}
+.hero-in{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:0 20px 24px;display:grid;gap:0}
 
-/* ── HERO ── */
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;padding:100px 24px 48px}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-vid-mobile{display:block}
-.hero-vid-desktop{display:none}
-@media (min-width:768px){.hero-vid-mobile{display:none}.hero-vid-desktop{display:block}}
-.hero-scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,25,41,.75),rgba(11,25,41,.85) 60%,rgba(11,25,41,.95))}
-.hero-cnt{position:relative;z-index:2;text-align:center;max-width:520px}
-.hero-logo{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:36px}
-.hero-logo .lg-main{font-family:var(--font-serif);font-weight:700;font-size:26px;color:var(--gold);letter-spacing:.1em;line-height:1}
-.hero-logo .lg-sub{font-family:var(--font-sans);font-weight:300;font-size:10px;color:var(--gold);letter-spacing:.35em;line-height:1}
-.hero-h1{font-family:var(--font-serif);font-weight:600;font-size:clamp(26px,7vw,38px);line-height:1.25;color:#fff;margin-bottom:20px;text-wrap:pretty}
-.hero-sub{font-size:15px;font-weight:300;line-height:1.6;color:var(--grey-onnavy);margin-bottom:28px}
-.hero-bridge{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
-.hero-arrow{margin-top:8px;width:1px;height:36px;background:var(--gold);opacity:.6;position:relative}
-.hero-arrow::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:6px;height:6px;border-right:1px solid var(--gold);border-bottom:1px solid var(--gold);rotate:45deg}
+/* Oferta (H1 y H2 final) en tres líneas */
+.oferta{text-shadow:0 2px 18px rgba(11,25,41,.55);font-family:var(--serif);font-weight:600;font-size:clamp(32px,9vw,36px);line-height:1.04;margin:0 0 10px;letter-spacing:-.005em}
+.oferta>span{display:block}
+.of-1{font-weight:500;font-size:.8em;color:#fff}
+.of-2{font-weight:700;font-size:1.06em;color:var(--gold-h);white-space:nowrap}
+.of-3{font-weight:500;font-size:.8em;color:#fff}
+.of-3 em{font-style:italic;color:var(--on-navy)}
+.oferta::after{content:'';display:block;width:44px;height:1px;margin:10px auto 0;background:var(--gold)}
+.hero-sub{text-shadow:0 1px 10px rgba(11,25,41,.7);font-size:15px;font-weight:300;line-height:1.5;color:var(--on-navy);margin:0 0 14px}
+.hero-sub strong{font-weight:500;color:#fff}
 
-/* ── MOTIVOS (cream) ── */
-.motivos{background:var(--cream);padding:80px 0}
-.motivos .lbl{text-align:center;margin-bottom:14px}
-.motivos-h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,6vw,34px);color:var(--navy);text-align:center;line-height:1.2;margin-bottom:56px}
-.motivo{padding:32px 0}
-.motivo:first-of-type{padding-top:0}
-.motivo-n{font-family:var(--font-serif);font-size:13px;color:var(--gold);letter-spacing:.15em;margin-bottom:10px}
-.motivo-h3{font-family:var(--font-serif);font-weight:600;font-size:22px;color:var(--navy);line-height:1.25;margin-bottom:12px}
-.motivo-p{font-size:14px;font-weight:300;line-height:1.65;color:var(--grey-oncream)}
+/* ── Formulario (un solo paso) ── */
+.lead{display:flex;flex-direction:column;gap:10px;margin:0}
+.lead[hidden],.lead-ok[hidden]{display:none}
+.lead input[type=text],.lead input[type=tel]{width:100%;min-height:48px;margin:0;padding:11px 16px;font:400 16px/1.25 var(--sans);color:var(--ink);background:#fff;border:1px solid #fff;border-radius:2px;-webkit-appearance:none;appearance:none}
+.lead input::placeholder{color:#7A786F;opacity:1}
+.lead input:focus{outline:2px solid var(--gold-h);outline-offset:1px}
+.lead input[aria-invalid=true]{border-color:var(--err-light);box-shadow:0 0 0 2px var(--err-light)}
+.lead-btn{display:block;width:100%;min-height:52px;margin:0;padding:14px 16px;border:0;border-radius:2px;background:var(--gold);color:var(--navy);font:600 16px/1.2 var(--sans);letter-spacing:.02em;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s}
+.lead-btn:hover,.lead-btn:focus-visible{background:var(--gold-h)}
+.lead-btn:disabled{opacity:.7;cursor:default}
+.lead-consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;font-weight:300;line-height:1.4;color:var(--on-navy)}
+.lead-consent input{flex-shrink:0;width:20px;height:20px;margin:0;accent-color:var(--gold)}
+.lead-consent a{color:var(--gold-h)}
+.lead-msg{margin:0;font-size:14px;line-height:1.4;color:var(--err-light)}
+.lead-msg:empty{display:none}
+.lead-ok{padding:18px 18px 16px;border:1px solid var(--gold);border-left-width:3px;background:rgba(11,25,41,.6)}
+.lead-ok:focus{outline:none}
+.lead-ok .lead-ok-h{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.15;margin:0 0 8px;color:#fff}
+.lead-ok p{margin:0;font-size:15px;font-weight:300;line-height:1.5;color:var(--on-navy)}
 
-/* ── HISTORIA (cream) ── */
-.historia{background:var(--cream);padding:80px 0}
-.historia-photo{width:120px;height:120px;border-radius:50%;margin:0 auto 28px;border:1px solid var(--gold)}
-.historia-photo.ph::after{font-size:8px}
-.historia .lbl{text-align:center;margin-bottom:14px}
-.historia-h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(24px,6vw,30px);color:var(--navy);text-align:center;line-height:1.25;margin-bottom:36px}
-.historia-p{font-size:15px;font-weight:300;line-height:1.75;color:var(--grey-oncream);margin-bottom:20px}
-.historia-p:last-child{margin-bottom:0}
-.historia-p strong{color:var(--navy);font-weight:500}
-.historia-sign{margin-top:32px;text-align:center}
-.historia-sign .name{font-family:var(--font-serif);font-style:italic;font-size:18px;color:var(--navy)}
-.historia-sign .role{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:4px}
-.historia-goal{margin-top:48px;padding:32px 24px;border:1px solid var(--gold);border-left:3px solid var(--gold);background:var(--navy)}
-.historia-goal-p{font-family:var(--font-serif);font-size:clamp(18px,3.6vw,24px);font-weight:500;line-height:1.5;color:#fff;text-align:center}
-.historia-goal-p strong{color:var(--gold);font-weight:600}
+/* ── Fundador ── */
+.fundador{margin:22px 0 0;text-align:center}
+.fundador figcaption{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-navy)}
 
-/* ── SERVICIOS (navy) ── */
-.servicios{background:var(--navy);padding:80px 0}
-.servicios .lbl{text-align:center;margin-bottom:14px}
-.servicios-h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,6.5vw,34px);color:#fff;text-align:center;line-height:1.25;margin-bottom:24px}
-.servicios-p{font-size:14px;font-weight:300;line-height:1.7;color:var(--grey-onnavy);text-align:center;margin-bottom:40px}
-.servicios-p strong{color:var(--gold);font-weight:500}
-.servicios-line{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 18px;text-align:center}
-.servicios-line span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
-.servicios-line .dot{color:var(--gold);opacity:.6}
+/* ── Clientes ── */
+.trust{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px 22px;margin-top:14px}
+.trust span{flex-basis:100%;text-align:center;font-size:9px;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:rgba(217,213,204,.75)}
+.trust img{width:auto;opacity:.85}
+.trust .t-dsh{height:26px}
+.trust .t-cw{height:13px}
 
-/* ── BENEFICIOS (cream) ── */
-.beneficios{background:var(--cream);padding:80px 0}
-.beneficios .lbl{text-align:center;margin-bottom:14px}
-.beneficios-h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,6vw,34px);color:var(--navy);text-align:center;line-height:1.2;margin-bottom:44px}
-.beneficios-grid{display:flex;flex-direction:column;gap:0}
-.beneficio{display:flex;align-items:flex-start;gap:16px;padding:20px 0;border-bottom:1px solid rgba(184,151,46,.3)}
-.beneficio:first-child{padding-top:0}
-.beneficio:last-child{border-bottom:none}
-.beneficio-check{flex-shrink:0;width:22px;height:22px;border:1px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-top:2px}
-.beneficio-check svg{width:11px;height:11px}
-.beneficio-txt{font-size:15px;font-weight:300;line-height:1.55;color:var(--navy)}
-.beneficio-txt strong{font-weight:500}
+/* ── Secciones ── */
+.sec{padding:56px 0}
+.sec--white{background:var(--white)}
+.sec--navy{background:var(--navy);color:#fff}
+.lbl{display:block;margin:0 0 10px;font-size:11px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-align:center}
+.h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,7.5vw,38px);line-height:1.12;text-align:center;margin:0 0 28px;text-wrap:balance}
+.intro{font-size:16px;font-weight:300;line-height:1.55;color:var(--muted);text-align:center;margin:-12px 0 28px}
+.pasos{list-style:none;margin:0;padding:0;display:grid;gap:24px}
+.pasos li{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.pasos .n{font-family:var(--serif);font-weight:600;font-size:36px;line-height:.9;color:var(--gold)}
+.pasos h3{margin:2px 0 4px;font-size:17px;font-weight:600;line-height:1.3}
+.pasos p{margin:0;font-size:15px;font-weight:300;line-height:1.55;color:var(--muted)}
+.caso-media{max-width:300px;margin:0 auto 20px}
+.ph{position:relative;aspect-ratio:4/5;background:repeating-linear-gradient(-45deg,#EFEBE2 0 6px,#E6E1D6 6px 12px);border:1px dashed var(--gold);display:flex;align-items:center;justify-content:center;padding:20px;text-align:center}
+.ph span{font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.6;letter-spacing:.04em;text-transform:uppercase;color:#7A6418}
+.caso-txt{max-width:480px;margin:0 auto;text-align:center;font-size:15px;font-weight:300;line-height:1.55;color:var(--muted)}
+.caso-txt strong{font-weight:500;color:var(--ink)}
+.oferta--c{text-align:center}
+.cta-final .trust{margin-top:18px}
+.cta-final .intro{color:var(--on-navy)}
+.cta-box{max-width:480px;margin:0 auto}
 
-/* ── FORM (navy) ── */
-.formulario{background:var(--cream);padding:80px 0 100px;border-top:1px solid rgba(184,151,46,.4)}
-.formulario .lbl{text-align:center;margin-bottom:14px}
-.form-h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(26px,6.5vw,36px);color:var(--navy);text-align:center;line-height:1.2;margin-bottom:16px}
-.form-p{font-size:14px;font-weight:300;line-height:1.65;color:var(--grey-oncream);text-align:center;margin-bottom:40px}
-.cform{display:flex;flex-direction:column;gap:14px}
-.cform input{background:transparent;border:1px solid var(--gold);color:var(--navy);padding:17px 18px;font-size:15px;font-weight:300;outline:none;transition:border-color .3s;width:100%}
-.cform input::placeholder{color:var(--grey-oncream);letter-spacing:.1em;text-transform:uppercase;font-size:11px}
-.cform input:focus{border-color:var(--gold-hover)}
-.consent{display:flex;gap:10px;align-items:flex-start;margin-top:6px}
-.consent input{width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:var(--gold)}
-.consent label{font-size:11.5px;font-weight:300;line-height:1.5;color:var(--grey-oncream)}
-.consent a{color:var(--gold);text-decoration:underline}
-.consent a:hover{color:var(--gold-hover)}
-.cform-btn{width:100%;background:var(--gold);color:var(--navy);border:none;font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:19px;transition:background .3s;margin-top:6px}
-.cform-btn:hover{background:var(--gold-hover)}
-.form-msg{margin-top:14px;font-size:13px;font-weight:400;text-align:center;min-height:18px}
-.form-msg--error{color:#B23B3B}
-.form-msg--success{color:var(--navy);font-weight:500}
+/* ── Pie ── */
+.pie{background:var(--navy);border-top:1px solid var(--gold);padding:28px 20px calc(28px + env(safe-area-inset-bottom));text-align:center;color:#9C9A92;font-size:12px;font-weight:300;line-height:1.8}
+.pie .logo{margin-bottom:10px}
+.pie a{color:#B9B6AD}
+.pie a:hover{color:var(--gold-h)}
 
-/* ── FOOTER ── */
-.footer{background:var(--navy);border-top:1px solid var(--gold);padding:28px 24px;text-align:center}
-.footer-brand{display:flex;flex-direction:column;align-items:center;gap:3px}
-.footer-brand .lg-main{font-family:var(--font-serif);font-weight:700;font-size:18px;color:var(--gold);letter-spacing:.1em;line-height:1}
-.footer-brand .lg-sub{font-family:var(--font-sans);font-weight:300;font-size:8px;color:var(--gold);letter-spacing:.3em;line-height:1}
-.footer p{font-size:11px;font-weight:300;color:#6B6B6B;line-height:1.8;margin-top:6px}
-.footer a{color:#8a8a82;text-decoration:underline}
-.footer a:hover{color:var(--gold)}
+/* ── Botón fijo inferior (móvil) ── */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(11,25,41,.97);border-top:1px solid var(--gold);transform:translateY(110%);transition:transform .25s ease;visibility:hidden}
+.sticky.show{transform:none;visibility:visible}
 
-/* ── STICKY MOBILE CTA ── */
-.sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:999;background:var(--navy);border-top:1px solid var(--gold);padding:12px 16px;transform:translateY(100%);transition:transform .35s ease}
-.sticky-cta.show{transform:translateY(0)}
-.sticky-cta button{width:100%;background:var(--gold);color:var(--navy);border:none;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:15px}
-.sticky-cta button:hover{background:var(--gold-hover)}
-
-/* ── DESKTOP ── */
-@media (min-width:768px){
-  .container{max-width:760px;padding:0 32px}
-  .hero{padding:0 32px}
-  .hero-cnt{max-width:680px}
-  .motivos,.historia,.servicios{padding:120px 0}
-  .formulario{padding:120px 0 130px}
-  .motivos-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-  .motivo{padding:0 32px;border-left:1px solid rgba(184,151,46,.4)}
-  .motivo:first-child{border-left:none;padding-left:0}
-  .motivo:last-child{padding-right:0}
-  .historia-inner{display:grid;grid-template-columns:160px 1fr;gap:48px;align-items:start;text-align:left}
-  .historia-photo{margin:0;width:160px;height:160px}
-  .historia .lbl,.historia-h2{text-align:left}
-  .historia-sign{text-align:left}
-  .beneficios{padding:120px 0}
-  .beneficios-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 48px}
-  .cform-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .sticky-cta{display:none}
+/* ── Escritorio ── */
+@media (min-width:900px){
+  .top{height:76px;padding:0 32px}
+  .top-right{right:32px}
+  .mario{width:96px;height:96px}
+  .hero-in{max-width:1080px;grid-template-columns:minmax(0,1fr) 400px;grid-template-areas:"texto form" "trust fundador";column-gap:72px;align-items:center;padding:28px 32px 72px}
+  .hero-text{grid-area:texto}
+  .hero .lead-wrap{grid-area:form;padding:28px;background:rgba(11,25,41,.72);border:1px solid rgba(184,151,46,.45)}
+  .hero-foot{display:contents}
+  .hero .trust{grid-area:trust;align-self:start;margin-top:8px}
+  .fundador{grid-area:fundador;margin-top:24px}
+  .oferta{font-size:54px}
+  .hero-sub{font-size:17px;max-width:480px;margin-left:auto;margin-right:auto}
+  .sec{padding:88px 0}
+  .wrap{max-width:760px}
+  .pasos{grid-template-columns:1fr 1fr;gap:36px 48px}
+  .sticky{display:none}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
-<section class="hero" aria-label="Portada">
-  <video class="hero-vid-mobile" autoplay="" muted="" loop="" playsinline="" webkit-playsinline="" preload="auto" aria-hidden="true">
-    <source src="../assets/video/landing-hero.mp4" type="video/mp4">
-  </video>
-  <video class="hero-vid-desktop" autoplay="" muted="" loop="" playsinline="" webkit-playsinline="" preload="auto" aria-hidden="true">
-    <source src="../assets/video/landing-hero.mp4" type="video/mp4">
-  </video>
-  <div class="hero-scrim" aria-hidden="true"></div>
-  <div class="hero-cnt">
-    <div class="hero-logo fi"><span class="lg-main">YORUU</span><span class="lg-sub">AI STUDIO</span></div>
-    <h1 class="hero-h1 fi">Vídeo con IA para vender y captar propiedades de lujo</h1>
-    <p class="hero-sub fi">Contenido y campañas en Meta Ads a partir de las fotos que ya tienes. Sin rodajes, sin editor, sin esperas.</p>
-    <a href="#contacto" class="hero-bridge fi" style="font-weight:600;display:inline-block;border:1px solid var(--gold);padding:14px 28px;letter-spacing:.16em">RELLENAR EL FORMULARIO</a>
-  </div>
-</section>
-
-<!-- MOTIVOS -->
-<section class="motivos" aria-labelledby="motivos-h">
-  <div class="container">
-    <span class="lbl fi">LOS 4 MOTIVOS</span>
-    <h2 class="motivos-h2 fi" id="motivos-h">¿Por qué tu marketing no rinde?</h2>
-    <div class="motivos-row">
-      <div class="motivo fi">
-        <p class="motivo-n">01</p>
-        <h3 class="motivo-h3">Sin marketing propio</h3>
-        <p class="motivo-p">Tu equipo vende casas, no gestiona <strong>Meta Ads</strong> ni <strong>contenido</strong>.</p>
+<section class="hero" aria-labelledby="hero-h">
+  <picture class="hero-bg" aria-hidden="true">
+    <source media="(min-width: 900px)" srcset="/assets/img/hero-villa-desktop.webp">
+    <img src="/assets/img/hero-villa-mobile.webp" width="828" height="1108" alt="" fetchpriority="high" decoding="async">
+  </picture>
+  <header class="top"><a href="/" class="logo" aria-label="Yoruu AI Studio — inicio"><b>YORUU</b><small>AI STUDIO</small></a></header>
+  <div class="hero-in">
+    <div class="hero-text">
+      <h1 class="oferta" id="hero-h"><span class="of-1">Consigue</span><span class="of-2">de 1 a 2 exclusivas</span><span class="of-3">al mes, <em>sin grabarte</em></span></h1>
+      <p class="hero-sub">Instalamos en tu inmobiliaria un sistema de captación de propietarios con vídeo IA. <strong>Tú no grabas nada.</strong></p>
+    </div>
+    <div class="lead-wrap">
+      <form class="lead" id="f1" novalidate>
+        <label class="sr" for="f1-nombre">Tu nombre</label>
+        <input id="f1-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f1-inmo">Nombre de la inmobiliaria</label>
+        <input id="f1-inmo" name="inmobiliaria" type="text" placeholder="Nombre de la inmobiliaria" autocomplete="organization" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f1-tel">Teléfono (WhatsApp)</label>
+        <input id="f1-tel" name="telefono" type="tel" inputmode="tel" placeholder="Teléfono (WhatsApp)" autocomplete="tel" enterkeyhint="send" required>
+        <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp o teléfono.</span></label>
+        <button type="submit" class="lead-btn">Quiero mis exclusivas</button>
+        <input type="hidden" name="origen" value="meta-landing">
+        <input type="hidden" name="_subject" value="Nuevo lead — Exclusivas sin grabarte (meta-landing)">
+        <p class="lead-msg" role="alert" aria-live="polite"></p>
+      </form>
+      <div class="lead-ok" hidden tabindex="-1" role="status">
+        <p class="lead-ok-h">Recibido<span data-nombre></span>.</p>
+        <p>Te escribimos por WhatsApp para conocer tu inmobiliaria y tu zona, y empezar por el primer paso: analizar tu captación actual.</p>
       </div>
-      <div class="motivo fi">
-        <p class="motivo-n">02</p>
-        <h3 class="motivo-h3">Sin tiempo</h3>
-        <p class="motivo-p">Entre visitas y cierres, no queda tiempo para tus <strong>RRSS ni campañas</strong>.</p>
-      </div>
-      <div class="motivo fi">
-        <p class="motivo-n">03</p>
-        <h3 class="motivo-h3">Sin presupuesto</h3>
-        <p class="motivo-p">Un equipo propio o una <strong>agencia tradicional</strong> a tu nivel cuesta caro.</p>
-      </div>
-      <div class="motivo fi">
-        <p class="motivo-n">04</p>
-        <h3 class="motivo-h3">Contenido desaprovechado</h3>
-        <p class="motivo-p">Con IA convierto las <strong>fotos que ya tienes</strong> en vídeo, sin rodajes ni desplazamientos.</p>
-      </div>
+    </div>
+    <div class="hero-foot">
+      <div class="trust"><span>Trabajamos con</span><img class="t-dsh" src="/assets/img/clients/dsh-white.png" width="59" height="30" alt="Deluxe Sweet Homes" decoding="async"><img class="t-cw" src="/assets/img/clients/cunatweber-logo-white.png" width="95" height="15" alt="cuñatweber" decoding="async"></div>
+      <figure class="fundador"><img class="mario" src="/assets/img/mario-240.webp" width="80" height="80" alt="Mario, fundador de Yoruu AI Studio" decoding="async"><figcaption>Mario · Fundador de Yoruu</figcaption></figure>
     </div>
   </div>
 </section>
 
-<!-- HISTORIA -->
-<section class="historia" aria-labelledby="historia-h">
-  <div class="container">
-    <div class="historia-inner">
-      <img class="historia-photo fi" src="../assets/img/landing-hero.jpg" alt="Fotografía del fundador de Yoruu AI Studio" style="object-fit:cover">
-      <div>
-        <h2 class="historia-h2 fi" id="historia-h">Cómo te puedo ayudar</h2>
-        <p class="historia-p fi">Empecé en una agencia de marketing llevando clientes de <strong>Real Estate</strong> con vídeo hecho con <strong>IA</strong>. Ahí vi el potencial del sector y decidí montarlo por mi cuenta.</p>
-        <p class="historia-p fi">Lo difícil no fue conseguir clientes — fue dominar la IA. Un vídeo que se vea bien, y no un puzzle mal encajado, cuesta más de lo que parece. Me costó más de <strong>4.000€</strong> en cursos aprenderlo.</p>
-        <p class="historia-p fi">Por eso ahora trabajo solo con <strong>5 agencias a la vez</strong> — entre ellas <strong>cuñatweber</strong> y <strong>Deluxe Sweet Homes</strong>.</p>
-      </div>
-    </div>
-    <div class="historia-goal fi">
-      <p class="historia-goal-p"><strong>Mi único objetivo:<br><br>Sacar el máximo rendimiento de tus RRSS y anuncios en Meta.</strong></p>
-    </div>
+<section class="sec sec--white" id="como-funciona" aria-labelledby="como-h">
+  <div class="wrap">
+    <span class="lbl">El sistema</span>
+    <h2 class="h2" id="como-h">Cómo funciona</h2>
+    <ol class="pasos">
+      <li><span class="n">1</span><div><h3>Analizamos tu captación actual</h3><p>Qué haces hoy, qué zona trabajas y qué tipo de propietario quieres captar.</p></div></li>
+      <li><span class="n">2</span><div><h3>Producimos el contenido</h3><p>Vídeos con IA pensados para atraer propietarios. Tú no te grabas ni pones la cara.</p></div></li>
+      <li><span class="n">3</span><div><h3>Lo ponemos a trabajar</h3><p>Publicación y difusión para llegar a propietarios de tu zona.</p><!-- TODO Mario: confirmar si es con anuncios, orgánico o ambos --></div></li>
+      <li><span class="n">4</span><div><h3>Te llegan contactos</h3><p>Con el sistema en marcha, los propietarios interesados te escriben a ti. Tu tiempo se centra en reunirte con ellos y conseguir la exclusiva.</p></div></li>
+    </ol>
   </div>
 </section>
 
-<!-- SERVICIOS -->
-<section class="servicios" aria-labelledby="servicios-h">
-  <div class="container">
-    <span class="lbl fi">SERVICIOS</span>
-    <h2 class="servicios-h2 fi">Distintas formas de vender más</h2>
-    <p class="servicios-p fi">Vídeo, redes, Meta Ads o <strong>todo junto</strong> — cada pieza pensada para dar más visibilidad y más leads a tus propiedades. Lo vemos en una reunión y te digo qué encaja con tu agencia.</p>
-    <div class="servicios-line fi">
-      <span>VÍDEO Y EDICIÓN</span><span class="dot">·</span>
-      <span>GESTIÓN DE REDES</span><span class="dot">·</span>
-      <span>META ADS</span><span class="dot">·</span>
-      <span>PACK COMPLETO</span>
-    </div>
+<section class="sec" id="caso" aria-labelledby="caso-h">
+  <div class="wrap">
+    <span class="lbl">Caso</span>
+    <h2 class="h2" id="caso-h">Deluxe Sweet Homes</h2>
+    <!-- PENDIENTE: vídeo o imagen del caso DSH. Sustituir el bloque .ph por:
+         imagen: <img src="/assets/img/caso-dsh.webp" width="..." height="..." alt="..." loading="lazy">
+         vídeo:  <video src="/assets/video/caso-dsh.mp4" poster="..." controls playsinline preload="none"></video> -->
+    <div class="caso-media"><div class="ph"><span>Pendiente<br>Vídeo o imagen del caso<br>Deluxe Sweet Homes</span></div></div>
+    <!-- PENDIENTE: 2-3 líneas sobre qué hicimos con DSH y resultados reales (sin inventar cifras). -->
+    <p class="caso-txt">Trabajamos con <strong>Deluxe Sweet Homes</strong>, promotora inmobiliaria.</p>
   </div>
 </section>
 
-<!-- BENEFICIOS -->
-<section class="beneficios" aria-labelledby="beneficios-h">
-  <div class="container">
-    <span class="lbl fi">BENEFICIOS</span>
-    <h2 class="beneficios-h2 fi" id="beneficios-h">Lo que ganas trabajando conmigo</h2>
-    <div class="beneficios-grid">
-      <div class="beneficio fi">
-        <span class="beneficio-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#B8972E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-        <p class="beneficio-txt">Aprovechas <strong>las fotos que ya tienes</strong>, sin nuevas sesiones ni desplazamientos.</p>
+<section class="sec sec--navy cta-final" id="empezar" aria-labelledby="cta-h">
+  <div class="wrap">
+    <span class="lbl">Empezamos por tu zona</span>
+    <h2 class="oferta oferta--c" id="cta-h"><span class="of-1">Consigue</span><span class="of-2">de 1 a 2 exclusivas</span><span class="of-3">al mes, <em>sin grabarte</em></span></h2>
+    <p class="intro">Déjanos tus datos y empezamos por el primer paso: analizar tu captación actual.</p>
+    <div class="cta-box">
+      <div class="lead-wrap">
+      <form class="lead" id="f2" novalidate>
+        <label class="sr" for="f2-nombre">Tu nombre</label>
+        <input id="f2-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f2-inmo">Nombre de la inmobiliaria</label>
+        <input id="f2-inmo" name="inmobiliaria" type="text" placeholder="Nombre de la inmobiliaria" autocomplete="organization" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f2-tel">Teléfono (WhatsApp)</label>
+        <input id="f2-tel" name="telefono" type="tel" inputmode="tel" placeholder="Teléfono (WhatsApp)" autocomplete="tel" enterkeyhint="send" required>
+        <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp o teléfono.</span></label>
+        <button type="submit" class="lead-btn">Quiero mis exclusivas</button>
+        <input type="hidden" name="origen" value="meta-landing">
+        <input type="hidden" name="_subject" value="Nuevo lead — Exclusivas sin grabarte (meta-landing)">
+        <p class="lead-msg" role="alert" aria-live="polite"></p>
+      </form>
+      <div class="lead-ok" hidden tabindex="-1" role="status">
+        <p class="lead-ok-h">Recibido<span data-nombre></span>.</p>
+        <p>Te escribimos por WhatsApp para conocer tu inmobiliaria y tu zona, y empezar por el primer paso: analizar tu captación actual.</p>
       </div>
-      <div class="beneficio fi">
-        <span class="beneficio-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#B8972E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-        <p class="beneficio-txt">Sin coste de <strong>editor, filmmaker</strong> ni equipo de producción.</p>
-      </div>
-      <div class="beneficio fi">
-        <span class="beneficio-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#B8972E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-        <p class="beneficio-txt"><strong>Menos dependencia de producción</strong> — nada de coordinar rodajes ni esperar semanas.</p>
-      </div>
-      <div class="beneficio fi">
-        <span class="beneficio-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#B8972E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-        <p class="beneficio-txt">Estrategia y segmentación <strong>real en Meta Ads</strong>, no publicaciones al azar.</p>
-      </div>
-      <div class="beneficio fi">
-        <span class="beneficio-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#B8972E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-        <p class="beneficio-txt">Trabajo con <strong>máximo 5 agencias a la vez</strong> — atención directa, no una más en la cartera.</p>
-      </div>
-      <div class="beneficio fi">
-        <span class="beneficio-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l6 6L20 6" stroke="#B8972E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span>
-        <p class="beneficio-txt">Puedo ser tu <strong>departamento de marketing o audiovisual</strong>, sin que montes ninguno de los dos.</p>
-      </div>
+    </div>
+      <div class="trust"><span>Trabajamos con</span><img class="t-dsh" src="/assets/img/clients/dsh-white.png" width="59" height="30" alt="Deluxe Sweet Homes" decoding="async"><img class="t-cw" src="/assets/img/clients/cunatweber-logo-white.png" width="95" height="15" alt="cuñatweber" decoding="async"></div>
     </div>
   </div>
 </section>
 
-<!-- FORMULARIO -->
-<section class="formulario" id="contacto" aria-labelledby="form-h">
-  <div class="container">
-    <span class="lbl fi">CONTACTO</span>
-    <h2 class="form-h2 fi" id="form-h">Hablemos de tu agencia</h2>
-    <p class="form-p fi">Déjame tus datos y te contacto para ver cómo sacamos más rendimiento a tus RRSS y campañas.</p>
-    <form class="cform fi" id="leadform" novalidate="">
-      <div class="cform-row">
-        <input type="text" name="nombre" placeholder="NOMBRE" autocomplete="name" required="" aria-label="Tu nombre">
-        <input type="text" name="inmobiliaria" placeholder="NOMBRE DE LA INMOBILIARIA" autocomplete="organization" required="" aria-label="Nombre de tu inmobiliaria">
-      </div>
-      <div class="cform-row">
-        <input type="email" name="email" placeholder="EMAIL" autocomplete="email" required="" aria-label="Tu email">
-        <input type="tel" name="telefono" placeholder="TELÉFONO O WHATSAPP" autocomplete="tel" required="" aria-label="Tu teléfono o WhatsApp">
-      </div>
-      <div class="consent">
-        <input type="checkbox" id="consent" name="consent" required="">
-        <label for="consent">He leído y acepto la <a href="../legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> de Yoruu AI Studio.</label>
-      </div>
-      <button type="submit" class="cform-btn">QUIERO HABLAR</button>
-      <p class="form-msg" id="formMsg" role="alert" aria-live="polite"></p>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <p class="footer-brand"><span class="lg-main">YORUU</span><span class="lg-sub">AI STUDIO</span></p>
-  <p><a href="https://yoruuia.com" target="_blank" rel="noopener">yoruuia.com</a> · <a href="../legal/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="../legal/cookies.html" target="_blank" rel="noopener">Cookies</a></p>
+<footer class="pie">
+  <a href="/" class="logo" aria-label="Yoruu AI Studio — inicio"><b>YORUU</b><small>AI STUDIO</small></a>
+  <div><a href="/" target="_blank" rel="noopener">yoruuia.com</a> · <a href="/legal/privacidad.html" target="_blank" rel="noopener">Privacidad</a> · <a href="/legal/cookies.html" target="_blank" rel="noopener">Cookies</a></div>
 </footer>
 
-<!-- STICKY CTA -->
-<div class="sticky-cta" id="stickyCta">
-  <button type="button" id="stickyBtn">RELLENAR EL FORMULARIO</button>
+<div class="sticky" id="sticky">
+  <button type="button" class="lead-btn">Quiero mis exclusivas</button>
 </div>
 
 <script>
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.15});
-document.querySelectorAll('.fi').forEach((el,i)=>{
-  if(el.closest('.hero-cnt')){setTimeout(()=>el.classList.add('on'),250+i*180);}
-  else io.observe(el);
-});
+window.YORUU_CAPI = true; // Conversions API (/api/lead) activa en esta landing
+/* ── Formulario (compartido por el bloque superior y el CTA final) ── */
+(function(){
+  var ENDPOINT='https://formspree.io/f/mqejvrkj';
+  var forms=[].slice.call(document.querySelectorAll('form.lead'));
+  var wraps=[].slice.call(document.querySelectorAll('.lead-wrap'));
+  var sticky=document.getElementById('sticky');
+  var wa=document.getElementById('wa');
+  var enviado=false;
 
-const sticky=document.getElementById('stickyCta');
-const formEl=document.getElementById('contacto');
-window.addEventListener('scroll',()=>{
-  const heroDone=window.scrollY>window.innerHeight*.6;
-  const formRect=formEl.getBoundingClientRect();
-  const pastForm=formRect.top<window.innerHeight*.3;
-  sticky.classList.toggle('show', heroDone && !pastForm);
-},{passive:true});
+  function telValido(v){
+    var n=String(v||'').replace(/[\s.\-()]/g,'');
+    return /^(?:\+34|0034)?[67]\d{8}$/.test(n) || /^(?:\+|00)(?!34)\d{8,14}$/.test(n);
+  }
+  function genEventId(){
+    return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'ev_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+  }
+  function getCookie(name){
+    var m=document.cookie.match(new RegExp('(?:^|; )'+name+'=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : undefined;
+  }
+  function sendCapiEvent(eventName,eventId,extra){
+    if(!window.YORUU_CAPI) return;
+    try{
+      fetch('/api/lead',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify(Object.assign({
+          event_name:eventName,event_id:eventId,event_source_url:location.href,
+          fbc:getCookie('_fbc'),fbp:getCookie('_fbp')
+        },extra||{})),
+        keepalive:true
+      }).catch(function(){});
+    }catch(_){}
+  }
+  function ga(name,params){ if(typeof window.gtag==='function') window.gtag('event',name,params||{}); }
 
-document.getElementById('stickyBtn').addEventListener('click',()=>{
-  formEl.scrollIntoView({behavior:'smooth',block:'start'});
-});
+  forms.forEach(function(form){
+    var msg=form.querySelector('.lead-msg');
+    var nombre=form.elements.nombre, inmo=form.elements.inmobiliaria, tel=form.elements.telefono, consent=form.elements.consentimiento;
+    var btn=form.querySelector('button[type=submit]');
+    function error(campo,texto){
+      [nombre,inmo,tel].forEach(function(c){ c.removeAttribute('aria-invalid'); });
+      if(campo) campo.setAttribute('aria-invalid','true');
+      msg.textContent=texto||'';
+      return false;
+    }
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!nombre.value.trim()) return error(nombre,'Indica tu nombre.');
+      if(!inmo.value.trim()) return error(inmo,'Indica el nombre de tu inmobiliaria.');
+      if(!telValido(tel.value)) return error(tel,'Introduce un teléfono válido (móvil o WhatsApp).');
+      if(!consent.checked) return error(null,'Para continuar, acepta la política de privacidad.');
+      error(null,'');
+      btn.disabled=true; var txt=btn.textContent; btn.textContent='Enviando…';
+      fetch(ENDPOINT,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}})
+        .then(function(res){
+          if(!res.ok) throw new Error('Formspree '+res.status);
+          // Evento Lead solo tras un envío correcto. Mismo event_id en Pixel y CAPI para que Meta deduplique.
+          var eventId=genEventId();
+          if(typeof window.fbq==='function') window.fbq('track','Lead',{},{eventID:eventId});
+          sendCapiEvent('Lead',eventId,{nombre:nombre.value.trim(),telefono:tel.value.trim()});
+          ga('generate_lead',{lead_source:form.elements.origen.value});
+          exito(nombre.value.trim());
+        })
+        .catch(function(){
+          btn.disabled=false; btn.textContent=txt;
+          error(null,'No se ha podido enviar. Revisa tu conexión e inténtalo de nuevo.');
+        });
+    });
+  });
 
-/* ── Meta CAPI helpers ──────────────────────────────── */
-function genEventId(){
-  return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : 'ev_'+Date.now()+'_'+Math.random().toString(36).slice(2);
-}
-function getCookie(name){
-  const m=document.cookie.match(new RegExp('(?:^|; )'+name+'=([^;]*)'));
-  return m ? decodeURIComponent(m[1]) : undefined;
-}
-function sendCapiEvent(eventName,eventId,extra){
-  try{
-    fetch('/api/lead',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify(Object.assign({
-        event_name:eventName,
-        event_id:eventId,
-        event_source_url:window.location.href,
-        fbc:getCookie('_fbc'),
-        fbp:getCookie('_fbp')
-      },extra||{})),
-      keepalive:true
-    }).catch(()=>{});
-  }catch(_){}
-}
-
-/* ── Validación del formulario ──────────────────────── */
-const formMsg=document.getElementById('formMsg');
-function setFormMsg(text,type){
-  formMsg.textContent=text;
-  formMsg.className='form-msg'+(type?' form-msg--'+type:'');
-}
-function validarFormulario(form){
-  const errores=[];
-  const nombre=form.nombre.value.trim();
-  const inmobiliaria=form.inmobiliaria.value.trim();
-  const email=form.email.value.trim();
-  const telefono=form.telefono.value.trim();
-  if(!nombre) errores.push('Indica tu nombre.');
-  if(!inmobiliaria) errores.push('Indica el nombre de tu inmobiliaria.');
-  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errores.push('Introduce un email válido.');
-  if(!telefono || !/^[+\d][\d\s().-]{6,}$/.test(telefono)) errores.push('Introduce un teléfono válido.');
-  if(!form.consent.checked) errores.push('Debes aceptar la política de privacidad.');
-  return errores;
-}
-
-document.getElementById('leadform').addEventListener('submit',async e=>{
-  e.preventDefault();
-  const form=e.target;
-  const btn=form.querySelector('.cform-btn');
-
-  const errores=validarFormulario(form);
-  if(errores.length){
-    setFormMsg(errores[0],'error');
-    return;
+  function exito(n){
+    enviado=true;
+    var primero=(n||'').split(/\s+/)[0];
+    wraps.forEach(function(w){
+      var f=w.querySelector('form.lead'), ok=w.querySelector('.lead-ok');
+      if(f) f.hidden=true;
+      if(ok){
+        var s=ok.querySelector('[data-nombre]'); if(s) s.textContent=primero?', '+primero:'';
+        ok.hidden=false;
+      }
+    });
+    actualizar();
   }
 
-  btn.disabled=true;
-  btn.textContent='ENVIANDO…';
-  setFormMsg('','');
-
-  const eventId=genEventId();
-
-  try{
-    const fd=new FormData(form);
-    fd.append('_source','meta-landing');
-    const res=await fetch('https://formspree.io/f/mqejvrkj',{
-      method:'POST',
-      body:fd,
-      headers:{Accept:'application/json'}
-    });
-    if(!res.ok) throw new Error('Formspree '+res.status);
-
-    // Solo se dispara el evento Lead si el formulario se validó y envió con éxito.
-    // Mismo event_id en Pixel (navegador) y CAPI (servidor) para que Meta deduplique.
-    if(window.fbq) fbq('track','Lead',{},{eventID:eventId});
-    sendCapiEvent('Lead',eventId,{
-      nombre:form.nombre.value.trim(),
-      email:form.email.value.trim(),
-      telefono:form.telefono.value.trim()
-    });
-
-    btn.textContent='ENVIADO — TE CONTACTAMOS PRONTO ✓';
-    btn.style.cssText='background:var(--navy);color:var(--gold);border:1px solid var(--gold);';
-    setFormMsg('Gracias, hemos recibido tus datos. Te contactamos en menos de 24h.','success');
-    form.reset();
-  }catch(err){
-    btn.textContent='ERROR — INTÉNTALO DE NUEVO';
-    btn.style.cssText='background:transparent;color:var(--gold);border:1px solid var(--gold);';
-    setFormMsg('Ha habido un error al enviar el formulario. Inténtalo de nuevo en unos segundos.','error');
-  }finally{
-    setTimeout(()=>{btn.disabled=false;},3000);
+  /* ── Botón fijo: visible solo cuando ningún formulario está en pantalla ── */
+  var visibles=new Set();
+  function actualizar(){
+    var mostrar=!enviado && visibles.size===0;
+    if(sticky) sticky.classList.toggle('show',mostrar);
+    if(wa){
+      wa.classList.toggle('show',visibles.size===0);
+      wa.style.setProperty('--lift',(mostrar && sticky ? sticky.offsetHeight : 0)+'px');
+    }
   }
-});
-
-document.querySelectorAll('.hero video').forEach(v=>{
-  v.muted=true;
-  const tryPlay=()=>v.play().catch(()=>{});
-  tryPlay();
-  document.addEventListener('touchstart',tryPlay,{once:true});
-  document.addEventListener('click',tryPlay,{once:true});
-});
-
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ e.isIntersecting ? visibles.add(e.target) : visibles.delete(e.target); });
+      actualizar();
+    },{threshold:0.12});
+    wraps.forEach(function(w){ io.observe(w); });
+  }
+  if(sticky){
+    sticky.querySelector('button').addEventListener('click',function(){
+      var c=innerHeight/2, mejor=wraps[0], d=Infinity;
+      wraps.forEach(function(w){
+        var r=w.getBoundingClientRect(), dist=Math.abs(r.top+r.height/2-c);
+        if(dist<d){ d=dist; mejor=w; }
+      });
+      mejor.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  }
+})();
 </script>
-
-
-
-</body></html>
+</body>
+</html>
