@@ -56,3 +56,15 @@ Dominio: `yoruuia.com`. GA4: `G-0FBJLGEZS4`. GSC: verificado.
 
 - Branch de desarrollo: `claude/peaceful-fermi-vng28`
 - Para que los cambios lleguen a producción: PR a `main` + merge
+
+## Pendientes — RECORDATORIO OBLIGATORIO
+
+**Antes de lanzar o preparar cualquier campaña de Meta Ads para leads**, recuérdale a Mario (al inicio de la conversación, antes de nada) que está pendiente montar el tracking por lead. Sin esto no se sabe de qué anuncio viene cada lead:
+
+1. **Captura de UTM** en `/meta-landing` y `/guiones`: leer `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content`, `ad_id` y `fbclid` al cargar, guardarlos en `sessionStorage` (first-touch) y enviarlos como campos ocultos con el formulario (Formspree).
+2. **CRM en Google Sheets**: `/api/lead` reenvía cada lead a un Apps Script (web app) cuya URL va en la env var de Vercel `SHEETS_WEBHOOK_URL`. Columnas: Fecha · Origen · Nombre · Teléfono · Inmobiliaria · Rol · Fuente · Medio · Campaña · Conjunto · Anuncio · ad_id · Estado · Notas (Estado con desplegable: Nuevo / Contactado / Reunión / Propuesta / Cliente / Descartado).
+3. **Parámetros de URL en cada anuncio** (Ads Manager → Seguimiento):
+   `utm_source=meta&utm_medium=paid&utm_campaign={{campaign.name}}&utm_term={{adset.name}}&utm_content={{ad.name}}&ad_id={{ad.id}}`
+4. **Política de privacidad** (`legal/privacidad.html`): añadir Google Sheets como encargado y los campos teléfono / inmobiliaria / rol del formulario de `/guiones`.
+
+Mario pospuso esta tarea (nov 2026). Elimina esta sección cuando esté hecha.
