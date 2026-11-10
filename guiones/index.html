@@ -127,6 +127,21 @@ button{cursor:pointer;font-family:inherit}
 .pasos strong{color:#fff;font-weight:500}
 .nota{font-size:12px;font-weight:300;line-height:1.5;color:#C8C4BC;margin-top:6px}
 
+/* ── Servicio (tras la descarga) ── */
+.servicio{background:#fff;border:1px solid rgba(184,151,46,.45);border-top:none;padding:28px 22px 26px}
+.servicio .lbl{display:block;text-align:center;margin-bottom:12px}
+.servicio-h{font-family:var(--font-serif);font-weight:600;font-size:26px;line-height:1.2;color:var(--navy);text-align:center;margin-bottom:12px}
+.servicio-p{font-size:15px;font-weight:300;line-height:1.55;color:var(--navy);text-align:center;margin-bottom:22px}
+.servicio-p strong{font-weight:500}
+.fases{list-style:none;display:flex;flex-direction:column;gap:16px;margin-bottom:24px}
+.fases li{display:flex;gap:14px;align-items:flex-start}
+.fase-n{flex-shrink:0;font-family:var(--font-serif);font-size:24px;font-weight:600;line-height:1;color:var(--gold);width:22px}
+.fases h3{font-size:15px;font-weight:500;color:var(--navy);margin-bottom:3px}
+.fases p{font-size:14px;font-weight:300;line-height:1.5;color:var(--grey-oncream)}
+.wa-cta{display:block;width:100%;background:var(--navy);color:#fff;text-align:center;text-decoration:none;padding:17px 16px;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border-bottom:3px solid var(--gold)}
+.wa-cta:hover{background:#13263D}
+.wa-nota{font-size:12px;font-weight:300;line-height:1.5;color:var(--grey-oncream);text-align:center;margin-top:10px}
+
 /* ── Qué incluye ── */
 .incluye{margin-top:34px;padding-top:26px;border-top:1px solid rgba(184,151,46,.4)}
 .incluye .lbl{text-align:center;margin-bottom:16px}
@@ -190,6 +205,19 @@ button{cursor:pointer;font-family:inherit}
       <li>Abre un chat nuevo y escribe: <strong>"Quiero ideas de ángulos para captar propietarios en [tu zona]"</strong>.</li>
     </ol>
     <p class="nota">La instalación se hace desde Claude en el ordenador (web o app de escritorio). Si estás en el móvil, guarda los archivos y termina desde el ordenador.</p>
+  </section>
+
+  <section class="servicio" id="servicio" hidden aria-labelledby="servicio-h">
+    <span class="lbl">Siguiente paso</span>
+    <h2 class="servicio-h" id="servicio-h">El guion es el primer paso. Nosotros hacemos el resto.</h2>
+    <p class="servicio-p">Somos <strong>Yoruu</strong>, agencia de marketing inmobiliario. Montamos un sistema para que tu inmobiliaria capte <strong>1-2 exclusivas al mes en tu zona</strong>, sin que tengas que grabarte.</p>
+    <ol class="fases">
+      <li><span class="fase-n">1</span><div><h3>Ángulo y guion</h3><p>Estudiamos tu zona y lo que frena al propietario a firmar en exclusiva.</p></div></li>
+      <li><span class="fase-n">2</span><div><h3>Vídeo sin cámaras</h3><p>Lo producimos con IA: avatar, voz y las imágenes de tus inmuebles. Tú no te grabas.</p></div></li>
+      <li><span class="fase-n">3</span><div><h3>Propietarios que te escriben</h3><p>Lo mostramos a propietarios de tu zona y automatizamos la respuesta, para que solo atiendas a los interesados.</p></div></li>
+    </ol>
+    <a class="wa-cta" id="waCta" href="https://wa.me/34684786443?text=Hola%20Mario%2C%20he%20descargado%20el%20generador%20de%20guiones%20y%20quiero%20saber%20c%C3%B3mo%20captar%20exclusivas%20en%20mi%20zona%20sin%20tener%20que%20grabarme." target="_blank" rel="noopener">Quiero captar exclusivas</a>
+    <p class="wa-nota">Te respondo por WhatsApp. Sin compromiso.</p>
   </section>
 
   <section class="incluye" aria-labelledby="incluye-h">
@@ -296,6 +324,7 @@ form.addEventListener('submit',async e=>{
     document.getElementById('bloque-form').hidden=true;
     const gracias=document.getElementById('gracias');
     gracias.hidden=false;
+    document.getElementById('servicio').hidden=false;
     gracias.focus({preventScroll:true});
     gracias.scrollIntoView({behavior:'smooth',block:'start'});
   }catch(err){
@@ -303,6 +332,12 @@ form.addEventListener('submit',async e=>{
     btn.textContent='Quiero el generador';
     setFormMsg('No se ha podido enviar. Revisa tu conexión e inténtalo de nuevo.','error');
   }
+});
+
+/* ── Clic en WhatsApp desde la oferta de servicio ── */
+document.getElementById('waCta').addEventListener('click',function(){
+  if(typeof fbq==='function') fbq('track','Contact',{content_name:'guiones-servicio'});
+  if(typeof gtag==='function') gtag('event','contact_whatsapp',{lead_source:'guiones'});
 });
 </script>
 </body></html>
