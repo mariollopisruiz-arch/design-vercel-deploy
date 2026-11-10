@@ -115,8 +115,16 @@ button{cursor:pointer;font-family:inherit}
 .form-msg--error{color:var(--error)}
 
 /* ── Vista de gracias ── */
-.gracias{background:var(--navy);color:#fff;padding:28px 22px;text-align:center;border-top:3px solid var(--gold)}
-.gracias-h{font-family:var(--font-serif);font-weight:600;font-size:28px;line-height:1.2;margin-bottom:20px}
+.gracias{background:var(--navy);color:#fff;padding:24px 22px 18px;text-align:center;border-top:3px solid var(--gold)}
+.gracias-h{font-family:var(--font-serif);font-weight:600;font-size:26px;line-height:1.2;margin-bottom:16px}
+.instalar{text-align:left;margin-top:6px;border-top:1px solid rgba(184,151,46,.35)}
+.instalar summary{cursor:pointer;list-style:none;padding:14px 0 4px;font-size:13px;font-weight:400;color:var(--gold);text-align:center;letter-spacing:.04em}
+.instalar summary::-webkit-details-marker{display:none}
+.instalar summary::after{content:' +';}
+.instalar[open] summary::after{content:' −';}
+.instalar .pasos{border-top:none;margin-top:10px;padding-top:0}
+.teaser{display:block;width:100%;margin-top:14px;padding:12px 0 0;border:none;border-top:1px solid rgba(184,151,46,.35);background:none;color:#fff;font-family:var(--font-sans);font-size:14px;font-weight:300;cursor:pointer}
+.teaser .nw{color:var(--gold);font-weight:500;white-space:nowrap}
 .dl{display:block;width:100%;padding:16px;font-size:13px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;margin-bottom:10px}
 .dl--main{background:var(--gold);color:var(--navy)}
 .dl--main:hover{background:var(--gold-hover)}
@@ -198,6 +206,8 @@ button{cursor:pointer;font-family:inherit}
     <h2 class="gracias-h" id="gracias-h">Listo. Aquí tienes tu generador.</h2>
     <a class="dl dl--main" href="/guiones/descargas/guiones-captacion-propietarios.zip" download>Descargar el generador (.zip)</a>
     <a class="dl dl--alt" href="/guiones/descargas/Guia_instalacion_skill_Yoruu.pdf" target="_blank" rel="noopener">Guía de instalación (PDF)</a>
+    <details class="instalar">
+      <summary>Cómo instalarlo en 4 pasos</summary>
     <ol class="pasos">
       <li>Descarga el <strong>.zip</strong> y guárdalo tal cual, <strong>sin descomprimirlo</strong>.</li>
       <li>En Claude, entra en <strong>Ajustes &gt; Capacidades</strong> y activa <strong>Ejecutar código en la nube</strong>.</li>
@@ -205,6 +215,8 @@ button{cursor:pointer;font-family:inherit}
       <li>Abre un chat nuevo y escribe: <strong>"Quiero ideas de ángulos para captar propietarios en [tu zona]"</strong>.</li>
     </ol>
     <p class="nota">La instalación se hace desde Claude en el ordenador (web o app de escritorio). Si estás en el móvil, guarda los archivos y termina desde el ordenador.</p>
+    </details>
+    <button type="button" class="teaser" id="verServicio">¿Prefieres que lo hagamos por ti? <span class="nw">Mira cómo&nbsp;↓</span></button>
   </section>
 
   <section class="servicio" id="servicio" hidden aria-labelledby="servicio-h">
@@ -325,6 +337,7 @@ form.addEventListener('submit',async e=>{
     const gracias=document.getElementById('gracias');
     gracias.hidden=false;
     document.getElementById('servicio').hidden=false;
+    const inc=document.querySelector('.incluye'); if(inc) inc.hidden=true;
     gracias.focus({preventScroll:true});
     gracias.scrollIntoView({behavior:'smooth',block:'start'});
   }catch(err){
@@ -332,6 +345,11 @@ form.addEventListener('submit',async e=>{
     btn.textContent='Quiero el generador';
     setFormMsg('No se ha podido enviar. Revisa tu conexión e inténtalo de nuevo.','error');
   }
+});
+
+/* ── Teaser: baja a la oferta sin añadir ancla a la URL ── */
+document.getElementById('verServicio').addEventListener('click',function(){
+  document.getElementById('servicio').scrollIntoView({behavior:'smooth',block:'start'});
 });
 
 /* ── Clic en WhatsApp desde la oferta de servicio ── */
