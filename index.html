@@ -64,8 +64,9 @@ window.addEventListener('cookie-consent', (e) => { if (e.detail === 'accepted') 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="image" href="/assets/img/hero-captacion-600.webp" imagesrcset="/assets/img/hero-captacion-600.webp 600w, /assets/img/hero-captacion-787.webp 787w" imagesizes="(min-width: 900px) 340px, 100vw" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/assets/img/hero-villa-mobile.webp" media="(max-width: 899px)" fetchpriority="high">
+<link rel="preload" as="image" href="/assets/img/hero-villa-desktop.webp" media="(min-width: 900px)" fetchpriority="high">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#0B1929;--navy-2:#13263D;--cream:#FBF9F5;--white:#FFFFFF;
@@ -87,44 +88,55 @@ a{color:inherit}
 .logo{display:inline-flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none}
 .logo b{font-family:var(--serif);font-weight:700;font-size:22px;letter-spacing:.1em;color:var(--gold);line-height:1}
 .logo small{font-size:9px;font-weight:300;letter-spacing:.32em;color:var(--gold);line-height:1}
+.top-right{position:absolute;right:16px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:12px}
+.mario{display:block;width:42px;height:42px;border-radius:50%;border:2px solid var(--gold);box-shadow:0 6px 16px rgba(0,0,0,.35);object-fit:cover;animation:flota 4s ease-in-out infinite}
+@keyframes flota{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.mario{animation:none}}
 
 /* ── Bloque superior ── */
 .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden}
-.hero-in{max-width:1080px;margin:0 auto}
-.hero-copy{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:6px 20px 28px}
-.hero-media{position:absolute;inset:0;z-index:0;margin:0}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:center 18%}
-.hero-media::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,25,41,.82) 0%,rgba(11,25,41,.90) 40%,rgba(11,25,41,.97) 100%)}
-.hero-cap{display:none}
-.hero-h1{font-family:var(--serif);font-weight:600;font-size:clamp(32px,9vw,36px);line-height:1.08;letter-spacing:-.005em;margin:0 0 12px;text-wrap:balance}
-.hero-h1 em{font-style:normal;color:var(--gold-h)}
-.nw{white-space:nowrap}
-.hero-sub{font-size:15px;font-weight:300;line-height:1.5;color:var(--on-navy);margin:0 0 18px}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% center}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,25,41,.45) 0%,rgba(11,25,41,.62) 30%,rgba(11,25,41,.80) 58%,rgba(11,25,41,.92) 100%)}
+.hero-in{position:relative;z-index:2;max-width:520px;margin:0 auto;padding:6px 20px 26px;display:grid;gap:0}
 
-/* ── Formulario en 2 pasos ── */
+/* Oferta (H1 y H2 final) en tres líneas */
+.oferta{text-shadow:0 2px 18px rgba(11,25,41,.55);font-family:var(--serif);font-weight:600;font-size:clamp(32px,9vw,36px);line-height:1.04;margin:0 0 12px;letter-spacing:-.005em}
+.oferta>span{display:block}
+.of-1{font-weight:500;font-size:.8em;color:#fff}
+.of-2{font-weight:700;font-size:1.06em;color:var(--gold-h);white-space:nowrap}
+.of-3{font-weight:500;font-size:.8em;color:#fff}
+.of-3 em{font-style:italic;color:var(--on-navy)}
+.oferta::after{content:'';display:block;width:44px;height:1px;margin-top:12px;background:var(--gold)}
+.hero-sub{text-shadow:0 1px 10px rgba(11,25,41,.7);font-size:15px;font-weight:300;line-height:1.5;color:var(--on-navy);margin:0 0 16px}
+.hero-sub strong{font-weight:500;color:#fff}
+
+/* ── Formulario (un solo paso) ── */
 .lead{display:flex;flex-direction:column;gap:10px;margin:0}
-.lead-step{display:flex;flex-direction:column;gap:10px}
-.lead-step[hidden],.lead[hidden],.lead-ok[hidden]{display:none}
-.lead-paso{display:flex;justify-content:space-between;align-items:center;min-height:20px;margin:0;font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-h)}
-.lead input[type=text],.lead input[type=tel]{width:100%;min-height:50px;margin:0;padding:12px 16px;font:400 16px/1.25 var(--sans);color:var(--ink);background:#fff;border:1px solid #fff;border-radius:2px;-webkit-appearance:none;appearance:none}
+.lead[hidden],.lead-ok[hidden]{display:none}
+.lead input[type=text],.lead input[type=tel]{width:100%;min-height:48px;margin:0;padding:11px 16px;font:400 16px/1.25 var(--sans);color:var(--ink);background:#fff;border:1px solid #fff;border-radius:2px;-webkit-appearance:none;appearance:none}
 .lead input::placeholder{color:#7A786F;opacity:1}
 .lead input:focus{outline:2px solid var(--gold-h);outline-offset:1px}
 .lead input[aria-invalid=true]{border-color:var(--err-light);box-shadow:0 0 0 2px var(--err-light)}
 .lead-btn{display:block;width:100%;min-height:52px;margin:0;padding:14px 16px;border:0;border-radius:2px;background:var(--gold);color:var(--navy);font:600 16px/1.2 var(--sans);letter-spacing:.02em;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .2s}
 .lead-btn:hover,.lead-btn:focus-visible{background:var(--gold-h)}
 .lead-btn:disabled{opacity:.7;cursor:default}
-.lead-back{min-height:32px;padding:0 0 0 12px;border:0;background:none;color:var(--on-navy);font:400 13px var(--sans);letter-spacing:0;text-transform:none;text-decoration:underline;cursor:pointer}
-.lead-consent{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;font-weight:300;line-height:1.45;color:var(--on-navy)}
+.lead-consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;font-weight:300;line-height:1.4;color:var(--on-navy)}
 .lead-consent input{flex-shrink:0;width:20px;height:20px;margin:0;accent-color:var(--gold)}
 .lead-consent a{color:var(--gold-h)}
 .lead-msg{margin:0;font-size:14px;line-height:1.4;color:var(--err-light)}
 .lead-msg:empty{display:none}
-.lead-ok{padding:18px 18px 16px;border:1px solid var(--gold);border-left-width:3px;background:rgba(184,151,46,.10)}
+.lead-ok{padding:18px 18px 16px;border:1px solid var(--gold);border-left-width:3px;background:rgba(11,25,41,.6)}
 .lead-ok:focus{outline:none}
 .lead-ok .lead-ok-h{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.15;margin:0 0 8px;color:#fff}
 .lead-ok p{margin:0;font-size:15px;font-weight:300;line-height:1.5;color:var(--on-navy)}
-.proof{margin:14px 0 0;text-align:center;font-size:13px;font-weight:300;color:var(--on-navy);letter-spacing:.01em}
-.proof strong{font-weight:500;color:#fff}
+
+/* ── Clientes ── */
+.trust{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+.trust span{font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--on-navy)}
+.trust img{width:auto;opacity:.9}
+.trust .t-dsh{height:30px}
+.trust .t-cw{height:15px}
 
 /* ── Secciones ── */
 .sec{padding:56px 0}
@@ -143,7 +155,9 @@ a{color:inherit}
 .ph span{font-family:ui-monospace,Menlo,monospace;font-size:12px;line-height:1.6;letter-spacing:.04em;text-transform:uppercase;color:#7A6418}
 .caso-txt{max-width:480px;margin:0 auto;text-align:center;font-size:15px;font-weight:300;line-height:1.55;color:var(--muted)}
 .caso-txt strong{font-weight:500;color:var(--ink)}
-.cta-final .h2{color:#fff}
+.oferta--c{text-align:center}
+.oferta--c::after{margin-left:auto;margin-right:auto}
+.cta-final .trust{margin-top:18px}
 .cta-final .intro{color:var(--on-navy)}
 .cta-box{max-width:480px;margin:0 auto}
 
@@ -159,15 +173,15 @@ a{color:inherit}
 
 /* ── Escritorio ── */
 @media (min-width:900px){
-  .top{height:72px;padding:0 32px}
-  .hero-in{display:grid;grid-template-columns:minmax(0,520px) 340px;justify-content:space-between;align-items:center;gap:56px;padding:16px 32px 72px}
-  .hero-copy{margin:0;padding:0}
-  .hero-media{position:relative;inset:auto;border:1px solid rgba(184,151,46,.5)}
-  .hero-media img{height:auto;aspect-ratio:9/16;object-position:center}
-  .hero-media::after{display:none}
-  .hero-cap{display:block;position:absolute;left:0;right:0;bottom:0;padding:28px 16px 14px;background:linear-gradient(180deg,rgba(11,25,41,0),rgba(11,25,41,.9));font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-h);text-align:center}
-  .hero-h1{font-size:52px}
-  .hero-sub{font-size:17px}
+  .top{height:76px;padding:0 32px}
+  .top-right{right:32px}
+  .mario{width:52px;height:52px}
+  .hero-in{max-width:1080px;grid-template-columns:minmax(0,1fr) 400px;grid-template-areas:"texto form" "trust form";column-gap:72px;align-items:center;padding:28px 32px 88px}
+  .hero-text{grid-area:texto}
+  .hero .lead-wrap{grid-area:form;padding:28px;background:rgba(11,25,41,.72);border:1px solid rgba(184,151,46,.45)}
+  .hero .trust{grid-area:trust;justify-content:flex-start;align-self:start;margin-top:8px}
+  .oferta{font-size:54px}
+  .hero-sub{font-size:17px;max-width:520px}
   .sec{padding:88px 0}
   .wrap{max-width:760px}
   .pasos{grid-template-columns:1fr 1fr;gap:36px 48px}
@@ -175,18 +189,20 @@ a{color:inherit}
 }
 
 /* ── Solo web principal: menú, problema, historia, FAQ, WhatsApp, cookies ── */
-.top--nav{justify-content:space-between}
+.top--nav{justify-content:flex-start}
 .nav-toggle{min-height:44px;padding:0 2px;border:0;background:none;color:var(--gold-h);font:500 12px var(--sans);letter-spacing:.18em;text-transform:uppercase;cursor:pointer}
 .nav{display:none;position:absolute;top:56px;left:0;right:0;z-index:5;flex-direction:column;padding:4px 20px;background:var(--navy-2);border-top:1px solid rgba(184,151,46,.4);border-bottom:1px solid rgba(184,151,46,.4)}
 .nav.open{display:flex}
 .nav a{padding:14px 0;color:#fff;text-decoration:none;font-size:15px;border-bottom:1px solid rgba(255,255,255,.08)}
 .nav a:last-child{border-bottom:0}
-.problemas{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.problemas li{background:#fff;border:1px solid rgba(184,151,46,.35);border-left:3px solid var(--gold);padding:18px}
-.problemas h3{margin:0 0 6px;font-size:17px;font-weight:600;line-height:1.3}
-.problemas p{margin:0;font-size:15px;font-weight:300;line-height:1.55;color:var(--muted)}
-.puente{margin:28px auto 0;max-width:520px;text-align:center;font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.2}
-.puente em{font-style:normal;color:var(--gold)}
+.giro{background:var(--cream);padding:64px 0;text-align:center}
+.adios{list-style:none;margin:0 0 28px;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.adios li{padding:7px 12px;border:1px solid rgba(184,151,46,.55);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.giro-h{margin:0 auto 20px;max-width:620px;font-family:var(--serif);font-weight:600;line-height:1.08;text-wrap:balance}
+.giro-h span{display:block;font-size:clamp(26px,7vw,34px);color:var(--ink)}
+.giro-h em{display:block;margin-top:6px;font-style:italic;font-weight:500;font-size:clamp(36px,10.5vw,56px);color:var(--gold)}
+.giro-h::after{content:'';display:block;width:56px;height:1px;margin:22px auto 0;background:var(--gold)}
+.giro-p{max-width:480px;margin:0 auto;font-size:16px;font-weight:300;line-height:1.55;color:var(--muted)}
 .historia-in{display:grid;gap:20px;justify-items:center;text-align:center}
 .historia-foto{width:120px;height:120px;border-radius:50%;object-fit:cover;object-position:center 15%;border:1px solid var(--gold)}
 .historia-txt p{margin:0 0 10px;font-size:15px;font-weight:300;line-height:1.6;color:var(--muted)}
@@ -215,7 +231,8 @@ a{color:inherit}
   .nav{display:flex;position:static;flex-direction:row;gap:28px;padding:0;background:none;border:0}
   .nav a{padding:0;border:0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--on-navy)}
   .nav a:hover{color:var(--gold-h)}
-  .problemas{grid-template-columns:repeat(3,1fr)}
+  .giro{padding:110px 0}
+  .top--nav .nav{position:absolute;left:auto;right:116px;top:50%;transform:translateY(-50%)}
   .historia-in{grid-template-columns:160px 1fr;text-align:left;justify-items:start;gap:40px}
   .historia-foto{width:160px;height:160px}
   .wa{right:32px;bottom:32px;width:60px;height:60px}
@@ -311,9 +328,16 @@ a{color:inherit}
 <body>
 
 <section class="hero" aria-labelledby="hero-h">
+  <picture class="hero-bg" aria-hidden="true">
+    <source media="(min-width: 900px)" srcset="/assets/img/hero-villa-desktop.webp">
+    <img src="/assets/img/hero-villa-mobile.webp" width="828" height="1108" alt="" fetchpriority="high" decoding="async">
+  </picture>
   <header class="top top--nav">
     <a href="/" class="logo" aria-label="Yoruu AI Studio — inicio"><b>YORUU</b><small>AI STUDIO</small></a>
-    <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav">Menú</button>
+    <div class="top-right">
+      <img class="mario" src="/assets/img/mario-160.webp" width="42" height="42" alt="Mario, fundador de Yoruu AI Studio" decoding="async">
+      <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav">Menú</button>
+    </div>
     <nav class="nav" id="nav" aria-label="Navegación principal">
       <a href="#como-funciona" data-scroll>Cómo funciona</a>
       <a href="#caso" data-scroll>Caso</a>
@@ -322,26 +346,20 @@ a{color:inherit}
     </nav>
   </header>
   <div class="hero-in">
-    <div class="hero-copy">
-      <h1 class="hero-h1" id="hero-h">Consigue <em><span class="nw">de 1 a 2</span> exclusivas al mes</em> sin grabarte</h1>
-      <p class="hero-sub">Instalamos en tu inmobiliaria un sistema de captación de propietarios con vídeo IA. Tú no grabas nada: nosotros producimos el contenido y lo ponemos a trabajar para que los propietarios te encuentren a ti.</p>
-      <div class="lead-wrap">
+    <div class="hero-text">
+      <h1 class="oferta" id="hero-h"><span class="of-1">Consigue</span><span class="of-2">de 1 a 2 exclusivas</span><span class="of-3">al mes, <em>sin grabarte</em></span></h1>
+      <p class="hero-sub">Instalamos en tu inmobiliaria un sistema de captación de propietarios con vídeo IA. <strong>Tú no grabas nada:</strong> nosotros producimos el contenido y lo ponemos a trabajar para que los propietarios te encuentren a ti.</p>
+    </div>
+    <div class="lead-wrap">
       <form class="lead" id="f1" novalidate>
-        <div class="lead-step" data-step="1">
-          <p class="lead-paso">Paso 1 de 2</p>
-          <label class="sr" for="f1-nombre">Tu nombre</label>
-          <input id="f1-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
-          <label class="sr" for="f1-inmo">Nombre de la inmobiliaria</label>
-          <input id="f1-inmo" name="inmobiliaria" type="text" placeholder="Nombre de la inmobiliaria" autocomplete="organization" autocapitalize="words" enterkeyhint="next" required>
-          <button type="button" class="lead-btn" data-next>Continuar →</button>
-        </div>
-        <div class="lead-step" data-step="2" hidden>
-          <p class="lead-paso"><span>Paso 2 de 2</span><button type="button" class="lead-back" data-back>← Volver</button></p>
-          <label class="sr" for="f1-tel">Teléfono (WhatsApp)</label>
-          <input id="f1-tel" name="telefono" type="tel" inputmode="tel" placeholder="Teléfono (WhatsApp)" autocomplete="tel" enterkeyhint="send" required>
-          <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp o teléfono.</span></label>
-          <button type="submit" class="lead-btn">Quiero mis exclusivas</button>
-        </div>
+        <label class="sr" for="f1-nombre">Tu nombre</label>
+        <input id="f1-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f1-inmo">Nombre de la inmobiliaria</label>
+        <input id="f1-inmo" name="inmobiliaria" type="text" placeholder="Nombre de la inmobiliaria" autocomplete="organization" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f1-tel">Teléfono (WhatsApp)</label>
+        <input id="f1-tel" name="telefono" type="tel" inputmode="tel" placeholder="Teléfono (WhatsApp)" autocomplete="tel" enterkeyhint="send" required>
+        <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp o teléfono.</span></label>
+        <button type="submit" class="lead-btn">Quiero mis exclusivas</button>
         <input type="hidden" name="origen" value="web">
         <input type="hidden" name="_subject" value="Nuevo lead — Exclusivas sin grabarte (web)">
         <p class="lead-msg" role="alert" aria-live="polite"></p>
@@ -350,28 +368,20 @@ a{color:inherit}
         <p class="lead-ok-h">Recibido<span data-nombre></span>.</p>
         <p>Te escribimos por WhatsApp para conocer tu inmobiliaria y tu zona, y empezar por el primer paso: analizar tu captación actual.</p>
       </div>
-      <p class="proof">Trabajamos con <strong>Deluxe Sweet Homes</strong></p>
     </div>
-    </div>
-    <figure class="hero-media">
-      <img src="/assets/img/hero-captacion-600.webp" srcset="/assets/img/hero-captacion-600.webp 600w, /assets/img/hero-captacion-787.webp 787w" sizes="(min-width: 900px) 340px, 100vw" width="787" height="1400" alt="" fetchpriority="high" decoding="async">
-      <figcaption class="hero-cap">Vídeo producido con IA · Sin cámaras</figcaption>
-    </figure>
+    <div class="trust"><span>Trabajamos con</span><img class="t-dsh" src="/assets/img/clients/dsh-white.png" width="59" height="30" alt="Deluxe Sweet Homes" decoding="async"><img class="t-cw" src="/assets/img/clients/cunatweber-logo-white.png" width="95" height="15" alt="cuñatweber" decoding="async"></div>
   </div>
 </section>
 
 <main>
 
-<section class="sec" id="problema" aria-labelledby="problema-h">
+<section class="sec giro" id="problema" aria-labelledby="giro-h">
   <div class="wrap">
-    <span class="lbl">El problema</span>
-    <h2 class="h2" id="problema-h">La captación de siempre te obliga a perseguir al propietario</h2>
-    <ul class="problemas">
-      <li><h3>Buzoneo</h3><p>Horas y presupuesto en folletos que compiten en el buzón con los de todas las agencias de tu zona.</p></li>
-      <li><h3>Llamadas en frío</h3><p>Llamar a quien no espera tu llamada desgasta al equipo y empieza la relación con el propietario a la defensiva.</p></li>
-      <li><h3>Dependencia de portales</h3><p>Esperas a que el propietario publique su anuncio y ese mismo día compites con todas las agencias que le llaman.</p></li>
+    <ul class="adios" aria-label="Lo que deja de hacer falta">
+      <li>Sin buzoneo</li><li>Sin llamadas en frío</li><li>Sin depender de portales</li>
     </ul>
-    <p class="puente">El sistema le da la vuelta: <em>el propietario te encuentra a ti.</em></p>
+    <h2 class="giro-h" id="giro-h"><span>El sistema le da la vuelta:</span><em>el propietario te encuentra a ti.</em></h2>
+    <p class="giro-p">Instalamos en tu inmobiliaria el sistema que sustituye al buzoneo, a las llamadas en frío y a la espera en los portales.</p>
   </div>
 </section>
 
@@ -432,26 +442,19 @@ a{color:inherit}
 <section class="sec sec--navy cta-final" id="empezar" aria-labelledby="cta-h">
   <div class="wrap">
     <span class="lbl">Empezamos por tu zona</span>
-    <h2 class="h2" id="cta-h">Consigue <span class="nw">de 1 a 2</span> exclusivas al mes sin grabarte</h2>
+    <h2 class="oferta oferta--c" id="cta-h"><span class="of-1">Consigue</span><span class="of-2">de 1 a 2 exclusivas</span><span class="of-3">al mes, <em>sin grabarte</em></span></h2>
     <p class="intro">Déjanos tus datos y empezamos por el primer paso: analizar tu captación actual.</p>
     <div class="cta-box">
       <div class="lead-wrap">
       <form class="lead" id="f2" novalidate>
-        <div class="lead-step" data-step="1">
-          <p class="lead-paso">Paso 1 de 2</p>
-          <label class="sr" for="f2-nombre">Tu nombre</label>
-          <input id="f2-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
-          <label class="sr" for="f2-inmo">Nombre de la inmobiliaria</label>
-          <input id="f2-inmo" name="inmobiliaria" type="text" placeholder="Nombre de la inmobiliaria" autocomplete="organization" autocapitalize="words" enterkeyhint="next" required>
-          <button type="button" class="lead-btn" data-next>Continuar →</button>
-        </div>
-        <div class="lead-step" data-step="2" hidden>
-          <p class="lead-paso"><span>Paso 2 de 2</span><button type="button" class="lead-back" data-back>← Volver</button></p>
-          <label class="sr" for="f2-tel">Teléfono (WhatsApp)</label>
-          <input id="f2-tel" name="telefono" type="tel" inputmode="tel" placeholder="Teléfono (WhatsApp)" autocomplete="tel" enterkeyhint="send" required>
-          <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp o teléfono.</span></label>
-          <button type="submit" class="lead-btn">Quiero mis exclusivas</button>
-        </div>
+        <label class="sr" for="f2-nombre">Tu nombre</label>
+        <input id="f2-nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f2-inmo">Nombre de la inmobiliaria</label>
+        <input id="f2-inmo" name="inmobiliaria" type="text" placeholder="Nombre de la inmobiliaria" autocomplete="organization" autocapitalize="words" enterkeyhint="next" required>
+        <label class="sr" for="f2-tel">Teléfono (WhatsApp)</label>
+        <input id="f2-tel" name="telefono" type="tel" inputmode="tel" placeholder="Teléfono (WhatsApp)" autocomplete="tel" enterkeyhint="send" required>
+        <label class="lead-consent"><input type="checkbox" name="consentimiento" value="Sí" required><span>Acepto la <a href="/legal/privacidad.html" target="_blank" rel="noopener">política de privacidad</a> y que Yoruu me contacte por WhatsApp o teléfono.</span></label>
+        <button type="submit" class="lead-btn">Quiero mis exclusivas</button>
         <input type="hidden" name="origen" value="web">
         <input type="hidden" name="_subject" value="Nuevo lead — Exclusivas sin grabarte (web)">
         <p class="lead-msg" role="alert" aria-live="polite"></p>
@@ -460,8 +463,8 @@ a{color:inherit}
         <p class="lead-ok-h">Recibido<span data-nombre></span>.</p>
         <p>Te escribimos por WhatsApp para conocer tu inmobiliaria y tu zona, y empezar por el primer paso: analizar tu captación actual.</p>
       </div>
-      <p class="proof">Trabajamos con <strong>Deluxe Sweet Homes</strong></p>
     </div>
+      <div class="trust"><span>Trabajamos con</span><img class="t-dsh" src="/assets/img/clients/dsh-white.png" width="59" height="30" alt="Deluxe Sweet Homes" decoding="async"><img class="t-cw" src="/assets/img/clients/cunatweber-logo-white.png" width="95" height="15" alt="cuñatweber" decoding="async"></div>
     </div>
   </div>
 </section>
@@ -491,7 +494,7 @@ a{color:inherit}
 </div>
 
 <script>
-/* ── Formulario en 2 pasos (compartido por el bloque superior y el CTA final) ── */
+/* ── Formulario (compartido por el bloque superior y el CTA final) ── */
 (function(){
   var ENDPOINT='https://formspree.io/f/mqejvrkj';
   var forms=[].slice.call(document.querySelectorAll('form.lead'));
@@ -528,36 +531,19 @@ a{color:inherit}
   function ga(name,params){ if(typeof window.gtag==='function') window.gtag('event',name,params||{}); }
 
   forms.forEach(function(form){
-    var s1=form.querySelector('[data-step="1"]');
-    var s2=form.querySelector('[data-step="2"]');
     var msg=form.querySelector('.lead-msg');
     var nombre=form.elements.nombre, inmo=form.elements.inmobiliaria, tel=form.elements.telefono, consent=form.elements.consentimiento;
     var btn=form.querySelector('button[type=submit]');
-
     function error(campo,texto){
       [nombre,inmo,tel].forEach(function(c){ c.removeAttribute('aria-invalid'); });
       if(campo) campo.setAttribute('aria-invalid','true');
       msg.textContent=texto||'';
+      return false;
     }
-    function paso2(){
-      if(!nombre.value.trim()) return error(nombre,'Indica tu nombre.');
-      if(!inmo.value.trim()) return error(inmo,'Indica el nombre de tu inmobiliaria.');
-      error(null,'');
-      s1.hidden=true; s2.hidden=false;
-      // Foco solo tras la acción del usuario (nunca al cargar la página).
-      try{ tel.focus({preventScroll:true}); }catch(_){ tel.focus(); }
-      ga('lead_paso_1',{lead_source:form.elements.origen.value});
-    }
-    form.querySelector('[data-next]').addEventListener('click',paso2);
-    form.querySelector('[data-back]').addEventListener('click',function(){
-      error(null,''); s2.hidden=true; s1.hidden=false;
-    });
-    nombre.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); inmo.focus({preventScroll:true}); } });
-    inmo.addEventListener('keydown',function(e){ if(e.key==='Enter'){ e.preventDefault(); paso2(); } });
-
     form.addEventListener('submit',function(e){
       e.preventDefault();
-      if(!s1.hidden){ paso2(); return; }
+      if(!nombre.value.trim()) return error(nombre,'Indica tu nombre.');
+      if(!inmo.value.trim()) return error(inmo,'Indica el nombre de tu inmobiliaria.');
       if(!telValido(tel.value)) return error(tel,'Introduce un teléfono válido (móvil o WhatsApp).');
       if(!consent.checked) return error(null,'Para continuar, acepta la política de privacidad.');
       error(null,'');
